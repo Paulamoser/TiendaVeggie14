@@ -18,7 +18,7 @@ class ResPartner(models.Model):
                 result.append((record.id, record.name))
         return result
 
-    def update_from_padron(self):
+    """def update_from_padron(self):
         company_id = self.env.company
         if self.l10n_latam_identification_type_id.name == 'CUIT':
             ws_sr_padron_a5 = company_id.get_connection('ws_sr_padron_a5').connect()
@@ -71,5 +71,5 @@ class ResPartner(models.Model):
                     self.state_id = state_id.id
         else:
             iva_afip = self.env['l10n_ar.afip.responsibility.type'].search([('name', '=', 'Consumidor Final')], limit=1)
-            self.l10n_ar_afip_responsibility_type_id = iva_afip.id
+            self.l10n_ar_afip_responsibility_type_id = iva_afip.id"""
 

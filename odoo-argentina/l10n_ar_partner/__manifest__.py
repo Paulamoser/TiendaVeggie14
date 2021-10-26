@@ -12,7 +12,7 @@ Datos Extras para Contacto de Argentina
     """,
     'author': 'Codize, Exemax',
     'website': 'http://www.codize.ar',
-    'depends': ['base', 'l10n_ar_afipws'],
+    'depends': ['base'],
     'data': ['partner_view.xml'],
     'installable': True,
 }
