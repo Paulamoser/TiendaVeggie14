@@ -13,7 +13,10 @@ class ResPartner(models.Model):
         result = []
         for record in self:
             if record.internal_reference:
-                result.append((record.id, record.internal_reference + ' - [' + record.name + ']'))
+                if record.parent_id:
+                    result.append((record.id, record.parent_id.name + ', ' + record.internal_reference + ' - [' + record.name + ']'))
+                else:
+                    result.append((record.id, record.internal_reference + ' - [' + record.name + ']'))
             else:
                 if record.parent_id:
                     result.append((record.id, record.parent_id.name + ', ' + record.name))
