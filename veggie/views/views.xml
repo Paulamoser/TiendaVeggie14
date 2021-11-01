@@ -12,6 +12,8 @@
             <field name="dry_roadmap" />
             <field name="order" />
             <field name="rute" />
+            <field name="total_weight" />
+            <field name="total_volume" />
         </xpath>
       </field>
   </record>

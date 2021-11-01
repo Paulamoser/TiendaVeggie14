@@ -14,6 +14,9 @@ class StockPicking(models.Model):
     order = fields.Integer('Orden')
     rute = fields.Char('Ruta')
 
+    total_weight = fields.Float('Peso Total')
+    total_volume = fields.Float('Volumen Total')
+
 class SaleAdvancePaymentInv(models.Model):
     _inherit = "sale.order"
 
