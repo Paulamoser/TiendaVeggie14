@@ -49,7 +49,7 @@ class SaleAdvancePaymentInv(models.Model):
         """
         self.ensure_one()
         if self.invoicing == False:
-            journal = self.env['account.journal'].sudo().search([('invoicing', '=', True)]).id
+            journal = self.env['account.journal'].sudo().search([('invoicing', '=', True)])
         else:
             journal = self.env['account.move'].with_context(default_move_type='out_invoice')._get_default_journal()
         if not journal:
