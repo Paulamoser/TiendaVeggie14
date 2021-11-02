@@ -148,8 +148,8 @@ class ReportStockPickingQs(models.AbstractModel):
                     secos = []
                     code = None
                     main_categ = None
-                    date_order = datetime.strptime(
-                        line.date_order, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
+                    #date_order = datetime.strptime(line.date_order, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
+                    date_order = rec.scheduled_date
                     for order_line in line.order_line:
                         if order_line.product_id.categ_id:
                             if order_line.product_id.categ_id.parent_id:
