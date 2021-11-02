@@ -38,7 +38,7 @@
                         height: 100px;                   
                         padding-right: 0;padding-left: 0;"/>
                             <div class="container-fluid">
-                                <div class="row" t-foreach="docs['total_parent']['refrigerados']" t-as="cogelados" style="font-size:16px;">
+                                <div class="row" t-foreach="docs['total_parent']['refrigerados']" t-as="cogelados" style="font-size:14px; border-bottom:1px solid #000;">
                                     <t t-call="veggie.roadmap_report_table" />
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                         height: 100px;                          
                         column-rule-style: solid;"/>
                         <div class="container-fluid">
-                            <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:16px;">
+                            <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:14px; border-bottom:1px solid #000;">
                                 <t t-call="veggie.roadmap_report_table" />
                             </div>
                         </div>
