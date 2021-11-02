@@ -214,9 +214,21 @@ class ReportStockPickingQs(models.AbstractModel):
                     city = line.partner_id.city if line.partner_id.city is not False else ''
                     #date_order = datetime.strptime(line.date_order, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
                     date_order = rec.scheduled_date
+                    ruta_name = rec.rute if rec.rute else ''
+                    order_name = rec.order if rec.order != 0 else ''
+                    
+                    ruta = f'{ruta_name}{order_name}'
+                    stock_name_count = len(rec.origin)
+                    stock_name_count = stock_name_count - 3 
+                    stock_name= rec.origin[:stock_name_count]
+                    code_name = rec.origin[stock_name_count:] + "C"
+
                     date = {
                         'date_order': date_order,
                         'cliente': line.partner_id.name,
+                        'stock_name':stock_name,
+                        'stock_name_cort':code_name,
+                        'nombre_fant': line.partner_id.ref,
                         'dir': '%s %s' % (street, city),
                         'subtotal': line.amount_untaxed,
                         'total': line.amount_total,
@@ -225,6 +237,7 @@ class ReportStockPickingQs(models.AbstractModel):
                         'code': code,
                         'refrigerados': refrigerados,
                         'secos': secos,
+                        'ruta':ruta,
                         'qr_prueba': f'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={qr}'
                     }
 
