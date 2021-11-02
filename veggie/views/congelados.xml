@@ -39,7 +39,7 @@
                         padding-right: 0;padding-left: 0;"/>
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-6" t-foreach="docs['total_parent']['refrigerados']" t-as="cogelados">
+                                    <div class="col-6 float-left" t-foreach="docs['total_parent']['refrigerados']" t-as="cogelados">
                                         <t t-call="veggie.roadmap_report_table" />
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                         column-rule-style: solid;"/>
                         <div class="container">
                             <div class="row">
-                                <div class="col-6" t-foreach="total_users['congelados']" t-as="cogelados">
+                                <div class="col-6 float-left" t-foreach="total_users['congelados']" t-as="cogelados">
                                     <t t-call="veggie.roadmap_report_table" />
                                 </div>
                             </div>
