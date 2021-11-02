@@ -14,8 +14,18 @@ class StockPicking(models.Model):
     order = fields.Integer('Orden')
     rute = fields.Char('Ruta')
 
-    total_weight = fields.Float('Peso Total')
-    total_volume = fields.Float('Volumen Total')
+    total_weight = fields.Float('Peso Total',compute='_compute_total_weight')
+    total_volume = fields.Float('Volumen Total',compute='_compute_total_volume')
+
+    def _compute_total_weight(self):
+        self.total_weight=0
+        for line in self.move_ids_without_package:
+            self.total_weight+=line.product_uom_qty*line.product_id.weight
+
+    def _compute_total_volume(self):
+        self.total_volume=0
+        for line in self.move_ids_without_package:
+            self.total_volume+=line.product_uom_qty*line.product_id.volume
 
 class SaleAdvancePaymentInv(models.Model):
     _inherit = "sale.order"
@@ -40,7 +50,7 @@ class SaleAdvancePaymentInv(models.Model):
             return True
         else:
             return False
-
+    
     def _prepare_invoice(self):
         """
         Prepare the dict of values to create the new invoice for a sales order. This method may be
