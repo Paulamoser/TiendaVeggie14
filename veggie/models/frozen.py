@@ -46,6 +46,7 @@ class ReportStockPickingFrozen(models.AbstractModel):
                         else:
                             raise ValidationError(f'El producto  {order_line.product_id.description_pickingout}, no tiene categoria padre, referencia {rec.name}!! ')  
                         try:
+                            raise ValidationError(main_categ)
                             if main_categ == 'Congelados':
                                 
                                 if categoria_cogelados:
