@@ -101,7 +101,6 @@ class ReportStockPickingFrozen(models.AbstractModel):
                     #date_order = datetime.strptime(rec.scheduled_date, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
                     date_order = rec.scheduled_date
                     for order_line in line.order_line:
-                        raise ValidationError(order_line.product_id.categ_id.name)
                         if order_line.product_id.categ_id.name == 'Todos':
                             continue
                         if order_line.product_id.categ_id:
@@ -135,6 +134,7 @@ class ReportStockPickingFrozen(models.AbstractModel):
                                 }
                             else:
                                 raise ValidationError(f'El producto {order_line.product_id.description_pickingout}, no tiene categoria padre, referencia {rec.name}!! ') 
+                            raise ValidationError(main_categ)
                             if main_categ == 'Congelados':
                                 if congelados:
                                     congelados = self.filterCategory(congelados,line_data)
