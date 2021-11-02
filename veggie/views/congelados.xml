@@ -92,10 +92,10 @@
                         height: 100px;                          
                         column-rule-style: solid;"/>
                         <div class="container overflow-hidden">
-                            <div class="row" style="width:50%;">
-                                <t t-foreach="total_users['congelados']" t-as="cogelados">
+                            <div class="row">
+                                <div class="col-6" t-foreach="total_users['congelados']" t-as="cogelados">
                                     <t t-call="veggie.roadmap_report_table" />
-                                </t>
+                                </div>
                             </div>
                         </div>
                     </div>
