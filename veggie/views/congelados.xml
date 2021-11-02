@@ -38,10 +38,10 @@
                         height: 100px;                   
                         padding-right: 0;padding-left: 0;"/>
                             <div class="container overflow-hidden">
-                                <div class="row" style="width:50%;">
-                                    <t t-foreach="docs['total_parent']['refrigerados']" t-as="cogelados">
+                                <div class="row">
+                                    <div class="col-6" t-foreach="docs['total_parent']['refrigerados']" t-as="cogelados">
                                         <t t-call="veggie.roadmap_report_table" />
-                                    </t>
+                                    </div>
                                 </div>
                             </div>
                         </div>
