@@ -4,6 +4,7 @@
 
         <template id="roadmap_report_table">
 
+          <div class="row">
             <div class="col-6">
                 <span style="font-size: 22px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
                 <span t-esc="cogelados['categ']" style="font-size: 22px;"/>
@@ -39,6 +40,8 @@
                     margin:0px;                                        
                     padding:0px;"/>
             </div>
+          </div>
+
         </template>
 
    </data>
