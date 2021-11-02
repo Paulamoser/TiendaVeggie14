@@ -4,12 +4,12 @@
 
         <template id="roadmap_report_table">
 
-            <div style="col-6">
+            <div class="col-6">
                 <span style="font-size: 22px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
                 <span t-esc="cogelados['categ']" style="font-size: 22px;"/>
             </div>
 
-            <div style="col-6">
+            <div class="col-6">
               <t t-set="i" t-value="1"/>
               <t t-foreach="cogelados['data']" t-as="products">
                 <t t-set="i" t-value="i+1"/>
