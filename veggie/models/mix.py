@@ -212,8 +212,8 @@ class ReportStockPickingQs(models.AbstractModel):
 
                     street = line.partner_id.street if line.partner_id.street is not False else ''
                     city = line.partner_id.city if line.partner_id.city is not False else ''
-                    date_order = datetime.strptime(
-                        line.date_order, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
+                    #date_order = datetime.strptime(line.date_order, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
+                    date_order = rec.scheduled_date
                     date = {
                         'date_order': date_order,
                         'cliente': line.partner_id.name,

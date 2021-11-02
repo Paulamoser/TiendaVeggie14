@@ -172,8 +172,8 @@ class ReportStockPickingDry(models.AbstractModel):
                             
                     street = line.partner_id.street if line.partner_id.street is not False else ''
                     city = line.partner_id.city if line.partner_id.city is not False else ''
-                    date_order = datetime.strptime(
-                        rec.scheduled_date, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
+                    #date_order = datetime.strptime(rec.scheduled_date, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
+                    date_order = rec.scheduled_date
                     ruta_name = rec.rute if rec.rute else ''
                     order_name = rec.order if rec.order != 0 else ''
                     
