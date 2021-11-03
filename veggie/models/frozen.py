@@ -2,7 +2,7 @@
 
 from odoo import api, models, fields
 from odoo.tools.float_utils import float_round as round
-from openerp.exceptions import ValidationError, Warning
+from odoo.exceptions import ValidationError, Warning
 from datetime import timedelta, date, datetime, time
 from num2words import num2words
 

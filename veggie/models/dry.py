@@ -2,10 +2,9 @@
 
 from odoo import api, models, fields
 from odoo.tools.float_utils import float_round as round
-from openerp.exceptions import ValidationError, Warning
+from odoo.exceptions import ValidationError, Warning
 from datetime import timedelta, date, datetime, time
 from num2words import num2words
-
 
 import locale
 import logging
@@ -27,7 +26,6 @@ class ReportStockPickingDry(models.AbstractModel):
                         if order_line.product_id.categ_id.name == 'Todos':
                             continue
                         if order_line.product_id.categ_id.parent_id.name:
-
                             main_categ = order_line.product_id.categ_id.parent_id.name if order_line.product_id.categ_id.parent_id else None
                             categ = order_line.product_id.categ_id.name
                             order_category = order_line.product_id.categ_id.order_report

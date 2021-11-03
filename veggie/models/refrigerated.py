@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-# -*- coding: utf-8 -*-
 
 from odoo import api, models, fields
 from odoo.tools.float_utils import float_round as round
-from openerp.exceptions import ValidationError, Warning
+from odoo.exceptions import ValidationError, Warning
 from datetime import timedelta, date, datetime, time
 from num2words import num2words
 
@@ -48,6 +47,7 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                         else:
                             raise ValidationError(f'El producto  {order_line.product_id.description_pickingout}, no tiene categoria padre, referencia {rec.name}!! ')  
                         try:
+                            raise ValidationError(main_categ)
                             if main_categ == 'Refrigerados':
                                 
                                 if categoria_refrigerados:
