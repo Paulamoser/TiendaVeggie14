@@ -87,7 +87,7 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
         find_stock_pickig = self.env['stock.picking'].search([
             ('id', 'in', docids)
         ])
-        raise ValidationError(find_stock_pickig)
+        raise ValidationError(len(find_stock_pickig))
         if len(find_stock_pickig) > 1:
             total_parent = self._all_products_for_clients(find_stock_pickig)
 
