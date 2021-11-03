@@ -14,7 +14,6 @@ _logger = logging.getLogger(__name__)
 class ReportStockPickingDry(models.AbstractModel):
     _name = "report.veggie.roadmap_report_dry"
     
-
     def _all_products_for_clients(self, date):
         categoria_secos = []
         main_categ = None
