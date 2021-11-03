@@ -22,6 +22,8 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
             for rec in date:
                 for line in rec.sale_id:
                     for order_line in line.order_line:
+                        _logger.info('>>>>>>>>>>>>>>')
+                        _logger.info(order_line.product_id.categ_id.parent_id.name)
                         if order_line.product_id.categ_id.name == 'Todos':
                             continue
                         if order_line.product_id.categ_id.parent_id.name:
@@ -47,7 +49,6 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                         else:
                             raise ValidationError(f'El producto  {order_line.product_id.description_pickingout}, no tiene categoria padre, referencia {rec.name}!! ')  
                         try:
-                            raise ValidationError(main_categ)
                             if main_categ == 'Refrigerados':
                                 
                                 if categoria_refrigerados:
@@ -65,7 +66,6 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                         except Exception as e:
                             _logger.debug(e)
                             raise ValidationError('Verifique que todos los productos tengas categoria Padre!!')
-
                                     
                     date_order = rec.scheduled_date
                     all_date = {
@@ -185,7 +185,6 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
             'total_users': total_users,
             'total_parent': total_parent,
         }
-        _logger.debug('lleeegaaa')
         _logger.debug(list_so)
         docargs = {
             'doc_ids': docids,
