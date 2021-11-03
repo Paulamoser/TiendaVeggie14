@@ -90,9 +90,11 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
         if len(find_stock_pickig) > 1:
             total_parent = self._all_products_for_clients(find_stock_pickig)
 
-        raise ValidationError(total_parent)
-
         for rec in find_stock_pickig:
+
+            refrigerados = []
+
+            raise ValidationError(rec.sale_id)
             if rec.sale_id:
                 for line in rec.sale_id:
                     refrigerados = []
@@ -155,7 +157,6 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                     code_name = rec.origin[stock_name_count:] + "R"
                     categoria = main_categ[:-1]
                     categoria = 'REFRIGERADO'
-                    
                     
                     date = {
                         'categoria':categoria,
