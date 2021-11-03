@@ -87,7 +87,7 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
         find_stock_pickig = self.env['stock.picking'].search([
             ('id', 'in', docids)
         ])
-        if len(find_stock_pickig) >= 1:
+        if len(find_stock_pickig) > 1:
             total_parent = self._all_products_for_clients(find_stock_pickig)
 
         for rec in find_stock_pickig:
@@ -97,8 +97,9 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
             if rec.sale_id:
                 for line in rec.sale_id:
                     refrigerados = []
-                    main_categ = None
                     code = None
+                    main_categ = None
+                    #date_order = datetime.strptime(rec.scheduled_date, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
                     date_order = rec.scheduled_date
                     for order_line in line.order_line:
                         if order_line.product_id.categ_id.name == 'Todos':
@@ -110,15 +111,16 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                                 order_category = order_line.product_id.categ_id.order_report
                                 product_name = order_line.product_id.description_pickingout
                                 quantity_product = order_line.product_uom_qty
-                                qr = str(line.name) + 'R'
-                                if len(product_name) > 13:
-                                    product_name = product_name[:13]
+                                qr= str(line.name) + "C"
+
                                 if rec.order and rec.rute:
                                     code = f'{rec.rute}{rec.order}'
                                 elif rec.order and not rec.rute:
                                     code = f'{rec.order}'
                                 elif rec.rute and not rec.order:
                                     code = f'{rec.rute}'
+                                if len(product_name) > 13:
+                                    product_name = product_name[:13]
                                 line_data = {
                                     'categ': categ,
                                     'main_categ': main_categ,
@@ -146,16 +148,19 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
 
                     street = line.partner_id.street if line.partner_id.street is not False else ''
                     city = line.partner_id.city if line.partner_id.city is not False else ''
+                    # date_order = datetime.strptime(rec.scheduled_date, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
                     date_order = rec.scheduled_date
                     ruta_name = rec.rute if rec.rute else ''
                     order_name = rec.order if rec.order != 0 else ''
+                    
                     ruta = f'{ruta_name}{order_name}'
                     stock_name_count = len(rec.origin)
                     stock_name_count = stock_name_count - 3 
                     stock_name= rec.origin[:stock_name_count]
-                    code_name = rec.origin[stock_name_count:] + "R"
+                    code_name = rec.origin[stock_name_count:] + "C"
                     categoria = main_categ[:-1]
-                    categoria = 'REFRIGERADO'
+                    categoria = categoria.upper()
+                    
                     
                     date = {
                         'categoria':categoria,
@@ -170,12 +175,12 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                         'deuda': line.get_deuda_total(line.partner_id),
                         'refrigerados': refrigerados,
                         'code': code,
-                        'qr_prueba': f'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={qr}',
                         'ruta':ruta,
+                        'qr_prueba': f'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={qr}',
                     }
-
                     total_users.append(date)
-                rec.refrigerated_roadmap = True    
+                    
+                rec.frozen_roadmap = True
                     
         list_so = {
             'total_users': total_users,
