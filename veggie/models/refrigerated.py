@@ -22,6 +22,7 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
             for rec in date:
                 for line in rec.sale_id:
                     for order_line in line.order_line:
+                        raise ValidationError(order_line.product_id)
                         if order_line.product_id.categ_id.name == 'Todos':
                             continue
                         if order_line.product_id.categ_id.parent_id.name:
@@ -94,7 +95,6 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
 
             refrigerados = []
 
-            raise ValidationError(rec.sale_id)
             if rec.sale_id:
                 for line in rec.sale_id:
                     refrigerados = []
