@@ -15,6 +15,11 @@
                                 <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label" id="inv_tax_id_label"/>
                                 <t t-else="">Tax ID</t>: <span t-field="o.partner_id.vat"/></div>
                         </t>
+
+                        <t t-set="address_ship">
+                            <address class="mt-2" t-field="o.partner_shipping_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                        </t>
+                        
                         <div class="page">
                             <h2>
                                 <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">Presupuesto</span>
