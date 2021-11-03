@@ -16,8 +16,9 @@
                                 <t t-else="">Tax ID</t>: <span t-field="o.partner_id.vat"/></div>
                             <br />
                             <strong t-if="o.partner_shipping_id">Dirección de Entrega:</strong>
-                            <span t-if="o.partner_shipping_id.street" t-field="o.partner_shipping_id.street" />, 
-                            <span t-if="o.partner_shipping_id.city" t-field="o.partner_shipping_id.city" />
+                            <span t-if="o.partner_shipping_id.street"><span t-field="o.partner_shipping_id.street" />, </span>
+                            <span t-if="o.partner_shipping_id.city"><span t-field="o.partner_shipping_id.street" />, </span>
+                            <span t-if="o.partner_shipping_id.state_id"><span t-field="o.partner_shipping_id.state_id.name" /></span>
                         </t>
 
                         <div class="page">
