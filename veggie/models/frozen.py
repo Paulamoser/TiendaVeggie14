@@ -86,7 +86,7 @@ class ReportStockPickingFrozen(models.AbstractModel):
         find_stock_pickig = self.env['stock.picking'].search([
             ('id', 'in', docids)
         ])
-        if len(find_stock_pickig) > 1:
+        if len(find_stock_pickig) >= 1:
             total_parent = self._all_products_for_clients(find_stock_pickig)
 
         for rec in find_stock_pickig:
