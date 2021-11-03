@@ -20,6 +20,7 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
         all_date = {}
         if len(date) > 1:
             for rec in date:
+                raise ValidationError(rec)
                 for line in rec.sale_id:
                     for order_line in line.order_line:
                         if order_line.product_id.categ_id.name == 'Todos':
@@ -87,7 +88,6 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
         find_stock_pickig = self.env['stock.picking'].search([
             ('id', 'in', docids)
         ])
-        raise ValidationError(find_stock_pickig + ' - ' + docids)
         if len(find_stock_pickig) > 1:
             total_parent = self._all_products_for_clients(find_stock_pickig)
 
