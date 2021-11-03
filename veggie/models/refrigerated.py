@@ -18,9 +18,9 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
         categoria_refrigerados = []
         main_categ = None
         all_date = {}
+        raise ValidationError(date)
         if len(date) > 1:
             for rec in date:
-                raise ValidationError(rec)
                 for line in rec.sale_id:
                     for order_line in line.order_line:
                         if order_line.product_id.categ_id.name == 'Todos':
