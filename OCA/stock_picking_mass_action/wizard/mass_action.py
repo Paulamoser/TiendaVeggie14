@@ -5,6 +5,7 @@
 
 from odoo import api, fields
 from odoo.models import TransientModel
+from odoo import models
 
 
 class StockPickingMassAction(TransientModel):
@@ -81,3 +82,11 @@ class StockPickingMassAction(TransientModel):
             if any([pick._check_backorder() for pick in assigned_picking_lst]):
                 return assigned_picking_lst.action_generate_backorder_wizard()
             assigned_picking_lst.action_done()
+
+class StockPickingCustom(models.Model):
+    _inherit = "stock.picking"
+    _description = 'stock_picking.stock_picking_custom'
+
+    def change_qty(self):
+        for move in self.move_ids_without_package:
+            move.quantity_done = move.product_uom_qty

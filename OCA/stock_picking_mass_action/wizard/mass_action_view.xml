@@ -79,6 +79,8 @@
             if records:
                 for rec in records:
                     rec._action_done()
+                    rec.change_qty()
+
         </field>
     </record>
 </odoo>
