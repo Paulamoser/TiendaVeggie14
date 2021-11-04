@@ -17,14 +17,12 @@ class StockPicking(models.Model):
     total_weight = fields.Float('Peso Total',compute='_compute_total_weight',store=True)
     total_volume = fields.Float('Volumen Total',compute='_compute_total_volume',store=True)
 
-    @api.depends('move_ids_without_package')
     def _compute_total_weight(self):
         for rec in self:
             rec.total_weight=0
             for line in rec.move_ids_without_package:
                 rec.total_weight+=line.product_uom_qty*line.product_id.weight
 
-    @api.depends('move_ids_without_package')
     def _compute_total_volume(self):
         for rec in self:
             rec.total_volume=0
