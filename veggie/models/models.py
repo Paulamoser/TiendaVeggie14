@@ -19,15 +19,17 @@ class StockPicking(models.Model):
 
     def _compute_total_weight(self):
         for rec in self:
-            rec.total_weight=0
+            tw=0
             for line in rec.move_ids_without_package:
-                rec.total_weight+=line.product_uom_qty*line.product_id.weight
+                tw+=line.product_uom_qty*line.product_id.weight
+            rec.total_weight=tw
 
     def _compute_total_volume(self):
         for rec in self:
-            rec.total_volume=0
-            for line in self.move_ids_without_package:
-                rec.total_volume+=line.product_uom_qty*line.product_id.volume
+            tv=0
+            for line in rec.move_ids_without_package:
+                tv+=line.product_uom_qty*line.product_id.volume
+            rec.total_volume=tv
 
 class SaleAdvancePaymentInv(models.Model):
     _inherit = "sale.order"
