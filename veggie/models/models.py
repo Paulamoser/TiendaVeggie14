@@ -14,8 +14,8 @@ class StockPicking(models.Model):
     order = fields.Integer('Orden')
     rute = fields.Char('Ruta')
 
-    total_weight = fields.Float('Peso Total',compute='_compute_total_weight',store=True)
-    total_volume = fields.Float('Volumen Total',compute='_compute_total_volume',store=True)
+    total_weight = fields.Float('Peso Total',compute='_compute_total_weight')
+    total_volume = fields.Float('Volumen Total',compute='_compute_total_volume')
 
     def _compute_total_weight(self):
         for rec in self:
