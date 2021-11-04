@@ -14,18 +14,22 @@ class StockPicking(models.Model):
     order = fields.Integer('Orden')
     rute = fields.Char('Ruta')
 
-    total_weight = fields.Float('Peso Total',compute='_compute_total_weight')
-    total_volume = fields.Float('Volumen Total',compute='_compute_total_volume')
+    total_weight = fields.Float('Peso Total',compute='_compute_total_weight',store=True)
+    total_volume = fields.Float('Volumen Total',compute='_compute_total_volume',store=True)
 
+    @api.depends('move_ids_without_package')
     def _compute_total_weight(self):
-        self.total_weight=0
-        for line in self.move_ids_without_package:
-            self.total_weight+=line.product_uom_qty*line.product_id.weight
+        for rec in self:
+            rec.total_weight=0
+            for line in rec.move_ids_without_package:
+                rec.total_weight+=line.product_uom_qty*line.product_id.weight
 
+    @api.depends('move_ids_without_package')
     def _compute_total_volume(self):
-        self.total_volume=0
-        for line in self.move_ids_without_package:
-            self.total_volume+=line.product_uom_qty*line.product_id.volume
+        for rec in self:
+            rec.total_volume=0
+            for line in self.move_ids_without_package:
+                rec.total_volume+=line.product_uom_qty*line.product_id.volume
 
 class SaleAdvancePaymentInv(models.Model):
     _inherit = "sale.order"
