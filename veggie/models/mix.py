@@ -92,7 +92,8 @@ class ReportStockPickingQs(models.AbstractModel):
                         except Exception as e:
                             raise ValidationError('Verifique que todos los productos tengas categoria Padre!!')
 
-                    date_order = datetime.strptime(line.date_order, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
+                    #date_order = datetime.strptime(line.date_order, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
+                    date_order = rec.scheduled_date
                     all_date = {
                         'date_order': date_order,
                         'congelados': categoria_cogelados,
