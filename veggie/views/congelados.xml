@@ -38,7 +38,7 @@
                         height: 100px;                   
                         padding-right: 0;padding-left: 0;"/>
                             <div class="container-fluid">
-                                <div class="row" t-foreach="docs['total_parent']['refrigerados']" t-as="cogelados" style="font-size:14px !important; border-bottom:1px solid #000;">
+                                <div class="row" t-foreach="docs['total_parent']['congelados']" t-as="cogelados" style="font-size:14px !important; border-bottom:1px solid #000;">
                                     <t t-call="veggie.roadmap_report_table" />
                                 </div>
                             </div>
