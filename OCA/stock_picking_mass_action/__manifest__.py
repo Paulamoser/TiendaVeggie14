@@ -10,5 +10,5 @@
     "license": "AGPL-3",
     "category": "Warehouse Management",
     "depends": ["stock_account"],
-    "data": ["wizard/mass_action_view.xml", "data/ir_cron.xml"],
+    "data": ["wizard/mass_action_view.xml", "data/ir_cron.xml", "wizard/mass_account_action.xml"],
 }
