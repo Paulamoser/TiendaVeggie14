@@ -11,6 +11,11 @@ _logger = logging.getLogger(__name__)
 class AccountPayment(models.Model):
     _inherit = "account.payment"
 
+    move_id = fields.Many2one(
+        comodel_name='account.move',
+        string='Journal Entry', required=True, readonly=False, ondelete='cascade',
+        check_company=True)
+
     payment_group_id = fields.Many2one(
         'account.payment.group',
         'Recibo',
