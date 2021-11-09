@@ -222,7 +222,7 @@ class ReportStockPickingQs(models.AbstractModel):
                     stock_name_count = len(rec.origin)
                     stock_name_count = stock_name_count - 3 
                     stock_name= rec.origin[:stock_name_count]
-                    code_name = rec.origin[stock_name_count:] + "C"
+                    code_name = rec.origin[stock_name_count:] + "M"
 
                     date = {
                         'date_order': date_order,
