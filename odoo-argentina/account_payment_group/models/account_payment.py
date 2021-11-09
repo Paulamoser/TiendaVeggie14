@@ -71,6 +71,35 @@ class AccountPayment(models.Model):
         string='Company currency',
     )
 
+    def _seek_for_lines(self):
+        ''' Helper used to dispatch the journal items between:
+        - The lines using the temporary liquidity account.
+        - The lines using the counterpart account.
+        - The lines being the write-off lines.
+        :return: (liquidity_lines, counterpart_lines, writeoff_lines)
+        '''
+        self.ensure_one()
+
+        liquidity_lines = self.env['account.move.line']
+        counterpart_lines = self.env['account.move.line']
+        writeoff_lines = self.env['account.move.line']
+
+        for line in self.move_id.line_ids:
+            if line.account_id in (
+                    self.journal_id.default_account_id,
+                    self.journal_id.payment_debit_account_id,
+                    self.journal_id.payment_credit_account_id,
+            ):
+                liquidity_lines += line
+            elif line.account_id.internal_type in ('receivable', 'payable') or line.partner_id == line.company_id.partner_id:
+                counterpart_lines += line
+            else:
+                writeoff_lines += line
+
+        raise ValidationError(str(liquidity_lines) + '-' + str(counterpart_lines) + '-' str(writeoff_lines))
+
+        return liquidity_lines, counterpart_lines, writeoff_lines
+
     @api.depends('amount', 'payment_type', 'partner_type', 'amount_company_currency')
     def _compute_signed_amount(self):
         for rec in self:
