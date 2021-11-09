@@ -126,6 +126,7 @@
                                                 <br/>
                                                 <span t-esc="total_users['stock_name']" style="font-size:28.5px;"/>
                                                 <span style="font-size:46px;   font-weight: bold;" t-esc="total_users['stock_name_cort']"/>
+                                                <span style="font-size:46px;   font-weight: bold;">C</span>
                                                 <br/>
                                                 <br/>
                                                 <span style="font-size:23.5px; font-weight:bolder;" t-esc="total_users['nombre_fant']"/>
@@ -176,6 +177,7 @@
                                                 <br/>
                                                 <span t-esc="total_users['stock_name']" style="font-size:28.5px;"/>
                                                 <span style="font-size:46px; font-weight: bold;" t-esc="total_users['stock_name_cort']"/>
+                                                <span style="font-size:46px;   font-weight: bold;">R</span>
                                                 <br/>
                                                 <br/>
                                                 <span style="font-size:23.5px; font-weight:bolder;" t-esc="total_users['nombre_fant']"/>
@@ -232,6 +234,7 @@
                                                 <br/>
                                                 <span t-esc="total_users['stock_name']" style="font-size:28.5px;"/>
                                                 <span style="font-size:46px; font-weight: bold;" t-esc="total_users['stock_name_cort']"/>
+                                                <span style="font-size:46px;   font-weight: bold;">S</span>
                                                 <br/>
                                                 <br/>
                                                 <span style="font-size:23.5px; font-weight:bolder;" t-esc="total_users['nombre_fant']"/>
