@@ -66,8 +66,20 @@ class AccountPayment(models.Model):
         string='Company currency',
     )
 
-    @api.depends(
-        'amount', 'payment_type', 'partner_type', 'amount_company_currency')
+    def _seek_for_lines(self):
+        self.ensure_one()
+
+        liquidity_lines = self.env['account.move.line']
+        counterpart_lines = self.env['account.move.line']
+        writeoff_lines = self.env['account.move.line']
+
+        liquidity_lines += line
+        counterpart_lines += line
+        writeoff_lines += line
+
+        return liquidity_lines, counterpart_lines, writeoff_lines
+
+    @api.depends('amount', 'payment_type', 'partner_type', 'amount_company_currency')
     def _compute_signed_amount(self):
         for rec in self:
             sign = 1.0
