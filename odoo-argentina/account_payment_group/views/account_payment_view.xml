@@ -139,7 +139,7 @@
             </field>
 
             <field name="partner_id" position="after">
-                <field name="move_id"/>
+                <field name="move_id" readonly="0"/>
             </field>
 
             <!-- <field name="state" position="attributes">
