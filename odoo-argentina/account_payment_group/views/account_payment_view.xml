@@ -41,6 +41,7 @@
             <field name="journal_id"/>
             <!-- <field name="payment_method_id"/> -->
             <field name="payment_method_description" string="Tipo de pago"/>
+            <field name="move_id"/>
 
             <!-- lo agregamos para que al usar guardar y nuevo se ejecute onchange en la form y previsualice bien importe en la tree -->
             <field name="amount" invisible="1"/>
