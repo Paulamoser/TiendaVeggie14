@@ -96,7 +96,7 @@ class AccountPayment(models.Model):
             else:
                 writeoff_lines += line
 
-        raise ValidationError(str(liquidity_lines) + '-' + str(counterpart_lines) + '-' str(writeoff_lines))
+        raise ValidationError(str(liquidity_lines) + '-' + str(counterpart_lines) + '-' + str(writeoff_lines))
 
         return liquidity_lines, counterpart_lines, writeoff_lines
 
