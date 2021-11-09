@@ -73,9 +73,9 @@ class AccountPayment(models.Model):
         counterpart_lines = self.env['account.move.line']
         writeoff_lines = self.env['account.move.line']
 
-        liquidity_lines += 1
-        counterpart_lines += 1
-        writeoff_lines += 1
+        liquidity_lines = 1
+        counterpart_lines = 1
+        writeoff_lines = 1
 
         return liquidity_lines, counterpart_lines, writeoff_lines
 
