@@ -21,7 +21,7 @@
                                         <br/>
                                         <div style="height: 100px;padding-right: 0;padding-left: 0;"/>
                                         <div class="container-fluid">
-                                            <div class="row" t-foreach="docs['total_parent']['congelados']" t-as="cogelados" style="font-size:14px !important; border-bottom:1px solid #000;">
+                                            <div class="row" t-foreach="docs['total_parent']['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
                                                 <t t-call="veggie.roadmap_report_table" />
                                             </div>
                                         </div>
@@ -59,7 +59,7 @@
                                         <br/>
                                         <div style="height: 100px;padding-right: 0;padding-left: 0;"/>
                                         <div class="container-fluid">
-                                            <div class="row" t-foreach="docs['total_parent']['refrigerados']" t-as="cogelados" style="font-size:14px !important; border-bottom:1px solid #000;">
+                                            <div class="row" t-foreach="docs['total_parent']['refrigerados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
                                                 <t t-call="veggie.roadmap_report_table" />
                                             </div>
                                         </div>
@@ -95,7 +95,7 @@
                                         <br/>
                                         <div style="height: 100px;padding-right: 0;padding-left: 0;"/>
                                         <div class="container-fluid">
-                                            <div class="row" t-foreach="docs['total_parent']['secos']" t-as="cogelados" style="font-size:14px !important; border-bottom:1px solid #000;">
+                                            <div class="row" t-foreach="docs['total_parent']['secos']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
                                                 <t t-call="veggie.roadmap_report_table" />
                                             </div>
                                         </div>
@@ -147,7 +147,7 @@
                                         height: 100px;                          
                                         column-rule-style: solid;"/>
                                         <div class="container-fluid">
-                                            <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:14px !important; border-bottom:1px solid #000;">
+                                            <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
                                                 <t t-call="veggie.roadmap_report_table" />
                                             </div>
                                         </div>
@@ -200,7 +200,7 @@
                                         column-rule-style: solid;
                                         padding-right: 0;padding-left: 0;"/>
                                         <div class="container-fluid">
-                                            <div class="row" t-foreach="total_users['refrigerados']" t-as="cogelados" style="font-size:14px !important; border-bottom:1px solid #000;">
+                                            <div class="row" t-foreach="total_users['refrigerados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
                                                 <t t-call="veggie.roadmap_report_table" />
                                             </div>
                                         </div>
@@ -256,7 +256,7 @@
                                         column-rule-style: solid;
                                         padding-right: 0;padding-left: 0;"/>
                                         <div class="container-fluid">
-                                            <div class="row" t-foreach="total_users['secos']" t-as="cogelados" style="font-size:14px !important; border-bottom:1px solid #000;">
+                                            <div class="row" t-foreach="total_users['secos']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
                                                 <t t-call="veggie.roadmap_report_table" />
                                             </div>
                                         </div>
