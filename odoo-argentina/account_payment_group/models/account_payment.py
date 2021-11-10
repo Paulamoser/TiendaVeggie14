@@ -102,6 +102,7 @@ class AccountPayment(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
+        _logger.info('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
         # OVERRIDE
         write_off_line_vals_list = []
 
