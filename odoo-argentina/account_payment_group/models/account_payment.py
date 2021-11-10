@@ -100,88 +100,54 @@ class AccountPayment(models.Model):
 
         return liquidity_lines, counterpart_lines, writeoff_lines
 
-    def _synchronize_from_moves(self, changed_fields):
-        ''' Update the account.payment regarding its related account.move.
-        Also, check both models are still consistent.
-        :param changed_fields: A set containing all modified fields on account.move.
-        '''
-        return
-        
-        if self._context.get('skip_account_move_synchronization'):
-            return
+    @api.model_create_multi
+    def create(self, vals_list):
+        # OVERRIDE
+        write_off_line_vals_list = []
 
-        for pay in self.with_context(skip_account_move_synchronization=True):
+        for vals in vals_list:
 
-            # After the migration to 14.0, the journal entry could be shared between the account.payment and the
-            # account.bank.statement.line. In that case, the synchronization will only be made with the statement line.
-            if pay.move_id.statement_line_id:
-                continue
+            # Hack to add a custom write-off line.
+            write_off_line_vals_list.append(vals.pop('write_off_line_vals', None))
 
-            move = pay.move_id
-            move_vals_to_write = {}
-            payment_vals_to_write = {}
+            # Force the move_type to avoid inconsistency with residual 'default_move_type' inside the context.
+            vals['move_type'] = 'entry'
 
-            if 'journal_id' in changed_fields:
-                if pay.journal_id.type not in ('bank', 'cash'):
-                    raise UserError(_("A payment must always belongs to a bank or cash journal."))
+            # Force the computation of 'journal_id' since this field is set on account.move but must have the
+            # bank/cash type.
+            if 'journal_id' not in vals:
+                vals['journal_id'] = self._get_default_journal().id
 
-            if 'line_ids' in changed_fields:
-                all_lines = move.line_ids
+            # Since 'currency_id' is a computed editable field, it will be computed later.
+            # Prevent the account.move to call the _get_default_currency method that could raise
+            # the 'Please define an accounting miscellaneous journal in your company' error.
+            if 'currency_id' not in vals:
+                journal = self.env['account.journal'].browse(vals['journal_id'])
+                vals['currency_id'] = journal.currency_id.id or journal.company_id.currency_id.id
 
-                liquidity_lines, counterpart_lines, writeoff_lines = pay._seek_for_lines()
+        payments = super().create(vals_list)
 
-                if len(liquidity_lines) != 1 or len(counterpart_lines) != 1:
-                    raise UserError(_(
-                        "The journal entry %s reached an invalid state relative to its payment.\n"
-                        "To be consistent, the journal entry must always contains:\n"
-                        "- one journal item involving the outstanding payment/receipts account.\n"
-                        "- one journal item involving a receivable/payable account.\n"
-                        "- optional journal items, all sharing the same account.\n\n"
-                    ) % move.display_name)
+        for i, pay in enumerate(payments):
+            write_off_line_vals = write_off_line_vals_list[i]
 
-                if writeoff_lines and len(writeoff_lines.account_id) != 1:
-                    raise UserError(_(
-                        "The journal entry %s reached an invalid state relative to its payment.\n"
-                        "To be consistent, all the write-off journal items must share the same account."
-                    ) % move.display_name)
+            # Write payment_id on the journal entry plus the fields being stored in both models but having the same
+            # name, e.g. partner_bank_id. The ORM is currently not able to perform such synchronization and make things
+            # more difficult by creating related fields on the fly to handle the _inherits.
+            # Then, when partner_bank_id is in vals, the key is consumed by account.payment but is never written on
+            # account.move.
+            to_write = {'payment_id': pay.id}
+            for k, v in vals_list[i].items():
+                if k in self._fields and self._fields[k].store and k in pay.move_id._fields and pay.move_id._fields[k].store:
+                    to_write[k] = v
 
-                if any(line.currency_id != all_lines[0].currency_id for line in all_lines):
-                    raise UserError(_(
-                        "The journal entry %s reached an invalid state relative to its payment.\n"
-                        "To be consistent, the journal items must share the same currency."
-                    ) % move.display_name)
+            if 'line_ids' not in vals_list[i]:
+                _logger.info('>>>> LINES')
+                _logger.info(line_vals)
+                to_write['line_ids'] = [(0, 0, line_vals) for line_vals in pay._prepare_move_line_default_vals(write_off_line_vals=write_off_line_vals)]
 
-                if any(line.partner_id != all_lines[0].partner_id for line in all_lines):
-                    raise UserError(_(
-                        "The journal entry %s reached an invalid state relative to its payment.\n"
-                        "To be consistent, the journal items must share the same partner."
-                    ) % move.display_name)
+            pay.move_id.write(to_write)
 
-                if counterpart_lines.account_id.user_type_id.type == 'receivable':
-                    partner_type = 'customer'
-                else:
-                    partner_type = 'supplier'
-
-                liquidity_amount = liquidity_lines.amount_currency
-
-                move_vals_to_write.update({
-                    'currency_id': liquidity_lines.currency_id.id,
-                    'partner_id': liquidity_lines.partner_id.id,
-                })
-                payment_vals_to_write.update({
-                    'amount': abs(liquidity_amount),
-                    'partner_type': partner_type,
-                    'currency_id': liquidity_lines.currency_id.id,
-                    'destination_account_id': counterpart_lines.account_id.id,
-                    'partner_id': liquidity_lines.partner_id.id,
-                })
-                if liquidity_amount > 0.0:
-                    payment_vals_to_write.update({'payment_type': 'inbound'})
-                elif liquidity_amount < 0.0:
-                    payment_vals_to_write.update({'payment_type': 'outbound'})
-
-            move.write(move._cleanup_write_orm_values(move, move_vals_to_write))
-            pay.write(move._cleanup_write_orm_values(pay, payment_vals_to_write))
+        return payments
 
     @api.depends('amount', 'payment_type', 'partner_type', 'amount_company_currency')
     def _compute_signed_amount(self):
