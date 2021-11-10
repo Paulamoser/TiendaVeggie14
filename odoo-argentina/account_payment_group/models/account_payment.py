@@ -105,6 +105,8 @@ class AccountPayment(models.Model):
         Also, check both models are still consistent.
         :param changed_fields: A set containing all modified fields on account.move.
         '''
+        return
+        
         if self._context.get('skip_account_move_synchronization'):
             return
 
@@ -125,6 +127,7 @@ class AccountPayment(models.Model):
 
             if 'line_ids' in changed_fields:
                 all_lines = move.line_ids
+
                 liquidity_lines, counterpart_lines, writeoff_lines = pay._seek_for_lines()
 
                 if len(liquidity_lines) != 1 or len(counterpart_lines) != 1:
@@ -177,7 +180,6 @@ class AccountPayment(models.Model):
                 elif liquidity_amount < 0.0:
                     payment_vals_to_write.update({'payment_type': 'outbound'})
 
-            move.line_ids = False
             move.write(move._cleanup_write_orm_values(move, move_vals_to_write))
             pay.write(move._cleanup_write_orm_values(pay, payment_vals_to_write))
 
