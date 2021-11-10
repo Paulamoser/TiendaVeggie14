@@ -100,55 +100,79 @@ class AccountPayment(models.Model):
 
         return liquidity_lines, counterpart_lines, writeoff_lines
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        _logger.info('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-        # OVERRIDE
-        write_off_line_vals_list = []
+    def _synchronize_to_moves(self, changed_fields):
+        ''' Update the account.move regarding the modified account.payment.
+        :param changed_fields: A list containing all modified fields on account.payment.
+        '''
+        if self._context.get('skip_account_move_synchronization'):
+            return
 
-        for vals in vals_list:
+        if not any(field_name in changed_fields for field_name in (
+            'date', 'amount', 'payment_type', 'partner_type', 'payment_reference', 'is_internal_transfer',
+            'currency_id', 'partner_id', 'destination_account_id', 'partner_bank_id', 'journal_id',
+        )):
+            return
 
-            # Hack to add a custom write-off line.
-            write_off_line_vals_list.append(vals.pop('write_off_line_vals', None))
+        for pay in self.with_context(skip_account_move_synchronization=True):
+            liquidity_lines, counterpart_lines, writeoff_lines = pay._seek_for_lines()
 
-            # Force the move_type to avoid inconsistency with residual 'default_move_type' inside the context.
-            vals['move_type'] = 'entry'
+            # Make sure to preserve the write-off amount.
+            # This allows to create a new payment with custom 'line_ids'.
 
-            # Force the computation of 'journal_id' since this field is set on account.move but must have the
-            # bank/cash type.
-            if 'journal_id' not in vals:
-                vals['journal_id'] = self._get_default_journal().id
+            if liquidity_lines and counterpart_lines and writeoff_lines:
 
-            # Since 'currency_id' is a computed editable field, it will be computed later.
-            # Prevent the account.move to call the _get_default_currency method that could raise
-            # the 'Please define an accounting miscellaneous journal in your company' error.
-            if 'currency_id' not in vals:
-                journal = self.env['account.journal'].browse(vals['journal_id'])
-                vals['currency_id'] = journal.currency_id.id or journal.company_id.currency_id.id
+                counterpart_amount = sum(counterpart_lines.mapped('amount_currency'))
+                writeoff_amount = sum(writeoff_lines.mapped('amount_currency'))
 
-        payments = super().create(vals_list)
+                # To be consistent with the payment_difference made in account.payment.register,
+                # 'writeoff_amount' needs to be signed regarding the 'amount' field before the write.
+                # Since the write is already done at this point, we need to base the computation on accounting values.
+                if (counterpart_amount > 0.0) == (writeoff_amount > 0.0):
+                    sign = -1
+                else:
+                    sign = 1
+                writeoff_amount = abs(writeoff_amount) * sign
 
-        for i, pay in enumerate(payments):
-            write_off_line_vals = write_off_line_vals_list[i]
+                write_off_line_vals = {
+                    'name': writeoff_lines[0].name,
+                    'amount': writeoff_amount,
+                    'account_id': writeoff_lines[0].account_id.id,
+                }
+            else:
+                write_off_line_vals = {}
 
-            # Write payment_id on the journal entry plus the fields being stored in both models but having the same
-            # name, e.g. partner_bank_id. The ORM is currently not able to perform such synchronization and make things
-            # more difficult by creating related fields on the fly to handle the _inherits.
-            # Then, when partner_bank_id is in vals, the key is consumed by account.payment but is never written on
-            # account.move.
-            to_write = {'payment_id': pay.id}
-            for k, v in vals_list[i].items():
-                if k in self._fields and self._fields[k].store and k in pay.move_id._fields and pay.move_id._fields[k].store:
-                    to_write[k] = v
+            line_vals_list = pay._prepare_move_line_default_vals(write_off_line_vals=write_off_line_vals)
 
-            if 'line_ids' not in vals_list[i]:
-                _logger.info('>>>> LINES')
-                _logger.info(line_vals)
-                to_write['line_ids'] = [(0, 0, line_vals) for line_vals in pay._prepare_move_line_default_vals(write_off_line_vals=write_off_line_vals)]
+            _logger.info('>>>> - - - - - ')
+            _logger.info(line_vals_list)
 
-            pay.move_id.write(to_write)
+            line_ids_commands = []
+            if liquidity_lines:
+                line_ids_commands.append((1, liquidity_lines.id, line_vals_list[0]))
+            else:
+                line_ids_commands.append((0, 0, line_vals_list[0]))
+            if counterpart_lines:
+                line_ids_commands.append((1, counterpart_lines.id, line_vals_list[1]))
+            else:
+                line_ids_commands.append((0, 0, line_vals_list[1]))
 
-        return payments
+            for line in writeoff_lines:
+                line_ids_commands.append((2, line.id))
+
+            for extra_line_vals in line_vals_list[2:]:
+                line_ids_commands.append((0, 0, extra_line_vals))
+
+            # Update the existing journal items.
+            # If dealing with multiple write-off lines, they are dropped and a new one is generated.
+
+            _logger.info('>>>> APPEND LINES')
+            _logger.info(line_ids_commands)
+            pay.move_id.write({
+                'partner_id': pay.partner_id.id,
+                'currency_id': pay.currency_id.id,
+                'partner_bank_id': pay.partner_bank_id.id,
+                'line_ids': line_ids_commands,
+            })
 
     @api.depends('amount', 'payment_type', 'partner_type', 'amount_company_currency')
     def _compute_signed_amount(self):
