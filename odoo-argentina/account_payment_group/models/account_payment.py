@@ -177,8 +177,7 @@ class AccountPayment(models.Model):
                 elif liquidity_amount < 0.0:
                     payment_vals_to_write.update({'payment_type': 'outbound'})
 
-            _logger.info('>>>>>>>>>> PAYMENT')
-            _logger.info(move_vals_to_write)
+            move.line_ids = False
             move.write(move._cleanup_write_orm_values(move, move_vals_to_write))
             pay.write(move._cleanup_write_orm_values(pay, payment_vals_to_write))
 
