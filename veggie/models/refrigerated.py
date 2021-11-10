@@ -111,7 +111,7 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                                 order_category = order_line.product_id.categ_id.order_report
                                 product_name = order_line.product_id.description_pickingout
                                 quantity_product = order_line.product_uom_qty
-                                qr= str(line.name) + "C"
+                                qr= str(line.name) + "R"
 
                                 if rec.order and rec.rute:
                                     code = f'{rec.rute}{rec.order}'
