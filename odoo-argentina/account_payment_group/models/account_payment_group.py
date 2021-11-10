@@ -675,6 +675,8 @@ class AccountPaymentGroup(models.Model):
         # TODO si usamos los move lines esto no haria falta
         rec = super(AccountPaymentGroup, self).default_get(fields)
         to_pay_move_line_ids = self._context.get('to_pay_move_line_ids')
+        _logger.info('>>>>>>>')
+        _logger.info(to_pay_move_line_ids)
         to_pay_move_lines = self.env['account.move.line'].browse(
             to_pay_move_line_ids).filtered(lambda x: (
                 x.account_id.reconcile and
