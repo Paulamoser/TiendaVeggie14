@@ -19,7 +19,7 @@ class ResPartner(models.Model):
                     result.append((record.id, record.internal_reference + ' - [' + record.name + ']'))
             else:
                 if record.parent_id:
-                    result.append((record.id, record.parent_id.name + ', ' + record.name))
+                    result.append((record.id, str(record.parent_id.name) + ', ' + str(record.name)))
                 else:    
                     result.append((record.id, record.name))
         return result

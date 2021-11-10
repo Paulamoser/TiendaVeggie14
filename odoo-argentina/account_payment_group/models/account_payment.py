@@ -97,9 +97,6 @@ class AccountPayment(models.Model):
                     counterpart_lines += line
             else:
                 writeoff_lines += line
-                
-        _logger.info('>>>>>>>')
-        _logger.info(str(liquidity_lines) + '-' + str(counterpart_lines) + '-' + str(writeoff_lines))
 
         return liquidity_lines, counterpart_lines, writeoff_lines
 
