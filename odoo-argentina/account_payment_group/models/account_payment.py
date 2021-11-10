@@ -257,6 +257,8 @@ class AccountPayment(models.Model):
         amls = self.get_amls()
         if not amls:
             return res
+        _logger.info('> AMLS')
+        _logger.info(amls)
 
         # odoo manda partner type segun si el pago es positivo o no, nosotros
         # mejoramos infiriendo a partir de que tipo de deuda se esta pagando
