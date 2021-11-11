@@ -113,6 +113,9 @@ class AccountPayment(models.Model):
         )):
             return
 
+        if pay.payment_group_id:
+            return
+
         for pay in self.with_context(skip_account_move_synchronization=True):
             if not pay.payment_group_id:
                 liquidity_lines, counterpart_lines, writeoff_lines = pay._seek_for_lines()
@@ -327,8 +330,6 @@ class AccountPayment(models.Model):
         amls = self.get_amls()
         if not amls:
             return res
-        _logger.info('> AMLS')
-        _logger.info(amls)
 
         # odoo manda partner type segun si el pago es positivo o no, nosotros
         # mejoramos infiriendo a partir de que tipo de deuda se esta pagando

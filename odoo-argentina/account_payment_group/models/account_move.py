@@ -49,8 +49,6 @@ class AccountMove(models.Model):
             rec.open_move_line_ids = rec.line_ids.filtered(
                 lambda r: not r.reconciled and r.account_id.internal_type in (
                     'payable', 'receivable'))
-            _logger.info('> OPEN LINE IDS')
-            _logger.info(rec.open_move_line_ids)
 
 
     def action_account_invoice_payment_group(self):
