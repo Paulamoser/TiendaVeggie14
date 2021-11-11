@@ -113,8 +113,7 @@ class AccountPayment(models.Model):
         )):
             return
 
-        if pay.payment_group_id:
-            return
+        
 
         for pay in self.with_context(skip_account_move_synchronization=True):
             if not pay.payment_group_id:
