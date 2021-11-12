@@ -88,7 +88,6 @@
 	    <table class="table">
 	        <thead>
 	            <tr class="border-black">
-	                <th>Cod</th>
 	                <th>Tipo</th>
 	                <th>Diario</th>
 	                <th>Fecha Cobro</th>
@@ -98,7 +97,6 @@
 	        </thead>
 	        <tbody class="invoice_tbody">
 	            <tr t-foreach="o.payment_ids" t-as="p">
-	              <td><span t-if="p.communication" t-field="p.communication"/></td>
 	              <td><span t-if="p.payment_type_copy" t-field="p.payment_type_copy"/></td>
 	              <td><span t-if="p.journal_id" t-field="p.journal_id"/></td>
 	              <td><span t-if="p.payment_date" t-field="p.payment_date"/></td>
