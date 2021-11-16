@@ -66,16 +66,9 @@
                                     </div>
                                     <div class="footer">
                                         <div class="text-center" style="border-top: 1px negro sólido;">
-                                            <ul class="list-inline">
-                                                <li> Página: </li>
-                                                <li>
-                                                    <span class="page"/>
-                                                </li>
-                                                <li> / </li>
-                                                <li>
-                                                    <span class="topage"/>
-                                                </li>
-                                            </ul>
+                                            <div class="text-muted">
+                                                Página: <span class="page"/> / <span class="topage"/>
+                                            </div>
                                         </div>
                                     </div>
                                     <p style="page-break-before:always;"/>
@@ -102,16 +95,9 @@
                                     </div>
                                     <div class="footer">
                                         <div class="text-center" style="border-top: 1px negro sólido;">
-                                            <ul class="list-inline">
-                                                <li> Página: </li>
-                                                <li>
-                                                    <span class="page"/>
-                                                </li>
-                                                <li> / </li>
-                                                <li>
-                                                    <span class="topage"/>
-                                                </li>
-                                            </ul>
+                                            <div class="text-muted">
+                                                Página: <span class="page"/> / <span class="topage"/>
+                                            </div>
                                         </div>
                                     </div>
                                     <p style="page-break-before:always;"/>
