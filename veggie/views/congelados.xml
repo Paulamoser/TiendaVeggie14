@@ -128,7 +128,7 @@
 <report
          id="action_report_print_roadmap_frozen"
          model="stock.picking"
-         string="Picking Congelados"
+         string="Picking Congelados1"
          report_type="qweb-pdf"
          paperformat="veggie.paperformat_roapmap"
          name="veggie.roadmap_report_frozen"
