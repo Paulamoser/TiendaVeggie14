@@ -4,12 +4,12 @@
 
         <template id="roadmap_report_table">
 
-            <!--<div class="row mt32 mb32" style="font-size:18px !important;">-->
+            <div class="row mt32 mb32" style="font-size:18px !important;">
+                <t t-foreach="cogelados['data']" t-as="products">
                 <div class="col-xs-2">
                     <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
                     <span t-esc="cogelados['categ']" style="font-size: 16px;"/>
                     <t t-set="i" t-value="1"/>
-                    <t t-foreach="cogelados['data']" t-as="products">
                     <t t-set="i" t-value="i+1"/>
 
                         <div class="float-left" style="padding-left: 0 !important;padding-right: 0 !important;width:80%;">
@@ -18,9 +18,10 @@
                         <div class="float-right" style="width:19%;">
                             <span style="font-size: 16px;" t-esc="products['quantity_product']"/>
                         </div>
-                  </t>
+                
                 </div>
-         <!--   </div>-->
+                </t>
+            </div>
 
 
                 <!--div style="border-left: 2px solid black;                                      
