@@ -13,12 +13,14 @@
               <t t-set="i" t-value="1"/>
               <t t-foreach="cogelados['data']" t-as="products">
                 <t t-set="i" t-value="i+1"/>
-                <div style="position:relative; left:100% important;">
-                    <div class="float-left" style="padding-left: 0 !important;padding-right: 0 !important;width:80%;">
-                        <span style="font-size: 16px;" t-esc="products['product_name']"/>
-                    </div>
-                    <div class="float-right" style="width:19%;">
-                        <span style="font-size: 16px;" t-esc="products['quantity_product']"/>
+                <div class="row mt32 mb32" style="font-size:18px !important;">
+                    <div class="col-xs-4">
+                        <div class="float-left" style="padding-left: 0 !important;padding-right: 0 !important;width:80%;">
+                            <span style="font-size: 16px;" t-esc="products['product_name']"/>
+                        </div>
+                        <div class="float-right" style="width:19%;">
+                            <span style="font-size: 16px;" t-esc="products['quantity_product']"/>
+                        </div>
                     </div>
                 </div>
               </t>
