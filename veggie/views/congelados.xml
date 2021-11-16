@@ -34,29 +34,24 @@
                             </div>
                         </div>
                         <br/>
-                        <div>
+                        <div style="
+                        height: 100px;                   
+                        padding-right: 0;padding-left: 0;"/>
+                            <div class="container-fluid">
                                 <t t-foreach="docs['total_parent']['congelados']" t-as="cogelados">
-                                    <div class="row mt32 mb32" >
+                                    <div class="row mt32 mb32" style="font-size:18px !important; border-bottom:1px solid #000;">
                                         <div class="col-xs-4">
-                                            <div >
-                                                <span style="font-size: 20px;" t-esc="products['product_name']"/>
+                                            <div class="float-left" style="padding-left: 0 !important;padding-right: 0 !important;width:80%;">
+                                                <span style="font-size: 18px;" t-esc="products['product_name']"/>
                                             </div>
-                                            <div >
-                                                <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-4">
-                                            <div >
-                                                <span style="font-size: 20px;" t-esc="products['product_name']"/>
-                                            </div>
-                                            <div >
+                                            <div class="float-right" style="width:19%;">
                                                 <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
                                             </div>
                                         </div>
                                     </div>
                                 </t>
+                            </div>
                         </div>
-                    </div>
                     <div class="footer">
                         <div class="text-center" style="border-top: 1px black solid;">
                             <ul class="list-inline">
@@ -79,7 +74,7 @@
                     <div class="page">
                         <div class="row">
                             <div class="col-6">
-                                <span>CONGELADOS2</span>
+                                <span>CONGELADOS</span>
                                 <br/>
                                 <span t-esc="total_users['stock_name']" style="font-size:28.5px;"/>
                                 <span style="font-size:46px;   font-weight: bold;" t-esc="total_users['stock_name_cort']"/>
@@ -104,24 +99,9 @@
                         height: 50px;                          
                         column-rule-style: solid;"/>
                         <div class="container-fluid">
-                                 <div class="row mt32 mb32"  t-foreach="total_users['congelados']" t-as="products" style="font-size:16px !important; border-bottom:1px solid #000;">
-                                          <div class="col-xs-4">
-                                            <div >
-                                                <span style="font-size: 20px;" t-esc="products['product_name']"/>
-                                            </div>
-                                            <div >
-                                                <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-4">
-                                            <div >
-                                                <span style="font-size: 20px;" t-esc="products['product_name']"/>
-                                            </div>
-                                            <div >
-                                                <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
-                                            </div>
-                                        </div>
-                                 </div>
+                            <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
+                                <t t-call="veggie.roadmap_report_table" />
+                            </div>
                         </div>
                     </div>
                     <div class="footer">
