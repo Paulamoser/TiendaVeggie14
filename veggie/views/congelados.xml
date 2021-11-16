@@ -45,6 +45,14 @@
                                                 <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
                                             </div>
                                         </div>
+                                        <div class="col-xs-4">
+                                            <div >
+                                                <span style="font-size: 20px;" t-esc="products['product_name']"/>
+                                            </div>
+                                            <div >
+                                                <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </t>
                         </div>
@@ -71,7 +79,7 @@
                     <div class="page">
                         <div class="row">
                             <div class="col-6">
-                                <span>Congelados</span>
+                                <span>CONGELADOS</span>
                                 <br/>
                                 <span t-esc="total_users['stock_name']" style="font-size:28.5px;"/>
                                 <span style="font-size:46px;   font-weight: bold;" t-esc="total_users['stock_name_cort']"/>
