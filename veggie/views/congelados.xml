@@ -30,7 +30,7 @@
                                 <h2 t-esc="docs['total_parent']['date_order']"/>
                             </div>
                             <div style="left: 35% !important; position: relative !important;">
-                                <h2>Congelados</h2>
+                                <h2>CONGELADOS</h2>
                             </div>
                         </div>
                         <br/>
