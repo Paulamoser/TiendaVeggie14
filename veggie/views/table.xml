@@ -3,13 +3,13 @@
    <data>
 
         <template id="roadmap_report_table">
-
+            <t t-foreach="cogelados['data']" t-as="products">
             <div class="row mt32 mb32" style="font-size:18px !important;">
                 <div class="col-xs-2">
-                    <span style="font-size: 16px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
+                    <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
                     <span t-esc="cogelados['categ']" style="font-size: 16px;"/>
-                    <t t-set="i" t-value="1"/>
-                    <t t-foreach="cogelados['data']" t-as="products">
+                    <!--<t t-set="i" t-value="1"/>-->
+                    <!--<t t-foreach="cogelados['data']" t-as="products">-->
                     <!--<t t-set="i" t-value="i+1"/>-->
 
                         <div class="float-left" style="padding-left: 0 !important;padding-right: 0 !important;width:80%;">
@@ -18,14 +18,14 @@
                         <div class="float-right" style="width:19%;">
                             <span style="font-size: 16px;" t-esc="products['quantity_product']"/>
                         </div>
-                  </t>
+                  <!--></t>-->
                 </div>
                  <div class="col-xs-2">
-                    <span style="font-size: 16px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
+                    <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
                     <span t-esc="cogelados['categ']" style="font-size: 16px;"/>
-                    <t t-set="i" t-value="1"/>
+                    <!--<t t-set="i" t-value="1"/>
                     <t t-foreach="cogelados['data']" t-as="products">
-                    <t t-set="i" t-value="i+1"/>
+                    <t t-set="i" t-value="i+1"/>-->
 
                         <div class="float-left" style="padding-left: 0 !important;padding-right: 0 !important;width:80%;">
                             <span style="font-size: 16px;" t-esc="products['product_name']"/>
@@ -33,11 +33,9 @@
                         <div class="float-right" style="width:19%;">
                             <span style="font-size: 16px;" t-esc="products['quantity_product']"/>
                         </div>
-                  </t>
                 </div>
             </div>
-
-
+            </t>
                 <!--div style="border-left: 2px solid black;                                      
                 height: 200%;                                                   
                 position:absolute;                                          
