@@ -12,7 +12,7 @@
                             <!--<span t-esc="cogelados['categ']" style="font-size: 18px;"/>-->
                             <span style="font-size: 18px;" t-esc="products['product_name']"/>
                     </div>
-                    <div class="float-right"  style="font-size:18px !important;margin-rigth:5px">
+                    <div style="font-size:18px !important;margin-rigth:5px; text-align:right">
                             <!--<span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>-->
                             <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
                     </div>
