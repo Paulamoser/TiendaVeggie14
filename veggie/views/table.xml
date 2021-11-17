@@ -5,12 +5,12 @@
         <template id="roadmap_report_table">
 
             <div class="row mt32 mb32" style="font-size:18px !important;">
-                <div t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:18px !important; border-bottom:1px solid #000;">
+                <div t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:18px !important; solid #000;"><!--border-bottom:1px -->
                     <!-- el que sigue es el div de categoria y sus productos-->
-                    <div class="col-xs-6" style="float-left; overflow: hidden ; min-width: 300px;border-right: 1px solid black; display:inline-block; ">
+                    <div class="col-xs-6" style="float-left;  min-width: 300px;border-right: 1px solid black; display:inline-block; ">
                         <!--encabezado categoria-->
-                        <div style="padding-left: 5px; padding-right:5px;">
-                                <span t-esc="cogelados['categ']" style="font-size: 18px;style= !important;"/>
+                        <div class="float-left" style="padding-left: 5px; padding-right:5px;">
+                                <span t-esc="cogelados['categ']" style="font-size: 18px;font-weight:bold;"/>
                         </div>
                         <div style="font-size:18px !important;padding-right:5px; text-align:right">
                                 <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
