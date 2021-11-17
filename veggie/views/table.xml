@@ -7,7 +7,7 @@
             <div class="d-flex" style="font-size:18px !important;  display: flex; -webkit-flex-wrap: wrap; -ms-flex-wrap:  wrap;  flex-wrap: wrap;">
                 <div t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:18px !important; solid #000;"><!--border-bottom:1px -->
                     <!-- el que sigue es el div de categoria y sus productos-->
-                    <div class="col-md-6" style="float-left;    min-width: 00px; border-right: 1px solid black;  ">
+                    <div class="col-md-6" style="float-left;    min-width: 300px; border-right: 1px solid black;  ">
                         <!--encabezado categoria-->
                         <div class="float-left" style="padding-left: 2px; padding-right:5px;">
                                 <span t-esc="cogelados['categ']" style="font-size: 18px;font-weight:bold;"/>
