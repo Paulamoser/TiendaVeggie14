@@ -108,8 +108,8 @@
          string="Picking Congelados (cols)"
          report_type="qweb-pdf"
          paperformat="veggie.paperformat_roapmap"
-         name="veggie.roadmap_report_frozen_col"
-         file="veggie.roadmap_report_frozen_col"
+         name="veggie.roadmap_report_frozen"
+         file="veggie.roadmap_report_frozen"
          />
 
 
