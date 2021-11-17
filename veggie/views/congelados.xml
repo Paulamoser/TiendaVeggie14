@@ -115,22 +115,12 @@
                         column-rule-style: solid;"/>
                         <!--<div class="container-fluid">-->
                            <!-- <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">-->
-                                <t t-call="veggie.roadmap_report_table" />
+                                <t t-call="veggie.roadmap_report_table_cols" />
                            <!-- </div>-->
                         <!--</div>-->
                     </div>
                     <div class="footer">
                         <div class="text-center" style="border-top: 1px black solid;">
-                           <!--<ul class="list-inline">
-                                <li> Página: </li>
-                                <li>
-                                    <span class="page"/>
-                                </li>
-                                <li> / </li>
-                                <li>
-                                    <span class="topage"/>
-                                </li>
-                            </ul>-->
                             <div class="col-xs-6 text-right">
                                  Page <span class="page"/> of <span class="topage"/>
                             </div>
@@ -146,21 +136,13 @@
 <report
          id="action_report_print_roadmap_frozen"
          model="stock.picking"
-         string="Picking Congelados"
+         string="Picking Congelados (cols)"
          report_type="qweb-pdf"
          paperformat="veggie.paperformat_roapmap"
          name="veggie.roadmap_report_frozen"
          file="veggie.roadmap_report_frozen"
          />
 
-<report  id="action_reportLands_print_roadmap_frozen"
-         model="stock.picking"
-         string="Picking Congelados Horizontal"
-         report_type="qweb-pdf"
-         paperformat="veggie.paperformatLands_roapmap"
-         name="veggie.roadmap_report_frozen"
-         file="veggie.roadmap_report_frozen"
-         />
 
 </data>
 
