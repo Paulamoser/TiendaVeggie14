@@ -7,11 +7,13 @@
             <!--<div class="row mt32 mb32" style="font-size:18px !important;">-->
             <div class="col-xs-6"  style="font-size:18px !important; border-bottom:1px solid #000;">
             <t t-foreach="total_users['congelados']" t-as="cogelados">
-                <div class="float-left" style="padding-left: 0 !important;padding-right: 0 !important;">
-                    <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
-                </div>
-                <div class="float-right" >
-                    <span t-esc="cogelados['categ']" style="font-size: 18px;"/>
+                <div>
+                    <div class="float-left" style="padding-left: 0 !important;padding-right: 0 !important;">
+                        <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
+                    </div>
+                    <div class="float-right" >
+                        <span t-esc="cogelados['categ']" style="font-size: 18px;"/>
+                    </div>
                 </div>
             </t>
             </div>
