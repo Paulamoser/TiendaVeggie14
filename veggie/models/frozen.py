@@ -141,7 +141,9 @@ class ReportStockPickingFrozen(models.AbstractModel):
                                     congelados.append(line_data)                                
                                 congelados = sorted(congelados, key=lambda k: k['order_category'])
                                 for sorted_produc in congelados:
-                                    sorted_produc['data'] = sorted(sorted_produc['data'], key=lambda k: k['order_product'])
+                                    #sorted_produc['data'] = sorted(sorted_produc['data'], key=lambda k: k['order_product'])
+                                    sorted_produc['data'] = sorted(sorted_produc['data'],
+                                                                   key=lambda k: k['product_name'])
                                     
                             line_data = None
 
@@ -177,6 +179,7 @@ class ReportStockPickingFrozen(models.AbstractModel):
                         'ruta':ruta,
                         'qr_prueba': f'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={qr}',
                     }
+
                     total_users.append(date)
                     
                 rec.frozen_roadmap = True
