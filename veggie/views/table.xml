@@ -5,7 +5,7 @@
         <template id="roadmap_report_table">
 
             <!--<div class="row mt32 mb32" style="font-size:18px !important;">-->
-                <div class="col-sm-6">
+                <div class="col-xs-2">
                     <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
                     <span t-esc="cogelados['categ']" style="font-size: 16px;"/>
                     <t t-set="i" t-value="1"/>
