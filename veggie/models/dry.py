@@ -165,7 +165,7 @@ class ReportStockPickingDry(models.AbstractModel):
                                 secos = sorted(
                                     secos, key=lambda k: k['order_category'])            
                                 for sorted_produc in secos:
-                                    sorted_produc['data'] = sorted(sorted_produc['data'], key=lambda k: k['order_product'])
+                                    sorted_produc['data'] = sorted(sorted_produc['data'], key=lambda k: k['product_name'])
                             line_data = None
                             
                     street = line.partner_id.street if line.partner_id.street is not False else ''

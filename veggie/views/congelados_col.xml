@@ -103,7 +103,7 @@
 </template>
 
 <report
-         id="action_report_print_roadmap_frozen"
+         id="action_report_print_roadmap_frozen_cols"
          model="stock.picking"
          string="Picking Congelados (cols)"
          report_type="qweb-pdf"
