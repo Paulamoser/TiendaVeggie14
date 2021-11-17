@@ -121,7 +121,7 @@
                     </div>
                     <div class="footer">
                         <div class="text-center" style="border-top: 1px black solid;">
-                            <ul class="list-inline">
+                           <!--<ul class="list-inline">
                                 <li> Página: </li>
                                 <li>
                                     <span class="page"/>
@@ -130,7 +130,10 @@
                                 <li>
                                     <span class="topage"/>
                                 </li>
-                            </ul>
+                            </ul>-->
+                            <div class="col-xs-6 text-right">
+                                 Page <span class="page"/> of <span class="topage"/>
+                            </div>
                         </div>
                     </div>
                     <p style="page-break-before:always;"/>
