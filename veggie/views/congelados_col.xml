@@ -18,7 +18,7 @@
     <field name="dpi">95</field>
 </record>
 
-<template id="roadmap_report_frozen_col">
+<template id="roadmap_report_frozen">
     <t t-call="web.html_container">
     <div class="header"/>
     <div class="article">
