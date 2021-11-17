@@ -158,8 +158,8 @@
          string="Picking Congelados Horizontal"
          report_type="qweb-pdf"
          paperformat="veggie.paperformatLands_roapmap"
-         name="veggie.roadmap_reportLandscaoe_frozen"
-         file="veggie.roadmap_reportLandscape_frozen"
+         name="veggie.roadmap_report_frozen"
+         file="veggie.roadmap_report_frozen"
          />
 
 </data>
