@@ -101,7 +101,7 @@
         </div>
         </t>
 </template>
-
+<!--
 <report
          id="action_report_print_roadmap_frozen"
          model="stock.picking"
@@ -113,5 +113,5 @@
          />
 
 </data>
-
+-->
 </odoo>
