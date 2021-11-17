@@ -8,16 +8,19 @@
                 <div class="col-sm-6">
                     <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
                     <span t-esc="cogelados['categ']" style="font-size: 16px;"/>
+                </div>
+                <div class="col-sm-6">
                     <t t-set="i" t-value="1"/>
                     <t t-foreach="cogelados['data']" t-as="products">
                     <t t-set="i" t-value="i+1"/>
-
+                    <div style="position:relative; left:100% important;">
                         <div class="float-left" style="padding-left: 0 !important;padding-right: 0 !important;width:80%;">
                             <span style="font-size: 16px;" t-esc="products['product_name']"/>
                         </div>
                         <div class="float-right" style="width:19%;">
                             <span style="font-size: 16px;" t-esc="products['quantity_product']"/>
                         </div>
+                    </div>
                     </t>
                 </div>
 
