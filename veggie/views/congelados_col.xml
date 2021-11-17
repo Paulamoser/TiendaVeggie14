@@ -77,16 +77,16 @@
                                 <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba']" alt="Qr code" width="255" height="270"/>
                             </div>
                         </div>
-                        <div style="border-color: black;
-                        border-width: 1px;
-                        border-style: solid;
-                        height: 50px;
+                        <div style="border-color: black;      
+                        border-width: 1px;                      
+                        border-style: solid;                     
+                        height: 50px;                          
                         column-rule-style: solid;"/>
-                        <div class="container-fluid">
-                            <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
-                                <t t-call="veggie.roadmap_report_table" />
-                            </div>
-                        </div>
+                        <!--<div class="container-fluid">-->
+                           <!-- <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">-->
+                                <t t-call="veggie.roadmap_report_table_cols" />
+                           <!-- </div>-->
+                        <!--</div>-->
                     </div>
                     <div class="footer">
                         <div class="text-center" style="border-top: 1px black solid;">
@@ -105,12 +105,13 @@
 <report
          id="action_report_print_roadmap_frozen"
          model="stock.picking"
-         string="Picking Congelados"
+         string="Picking Congelados (cols)"
          report_type="qweb-pdf"
          paperformat="veggie.paperformat_roapmap"
          name="veggie.roadmap_report_frozen"
          file="veggie.roadmap_report_frozen"
          />
+
 
 </data>
 
