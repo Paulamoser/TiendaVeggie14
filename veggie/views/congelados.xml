@@ -8,6 +8,21 @@
     <field name="format">A4</field>
     <field name="page_height">0</field>
     <field name="page_width">0</field>
+    <field name="orientation">Portrait</field>
+    <field name="margin_top">5</field>
+    <field name="margin_bottom">5</field>
+    <field name="margin_left">7</field>
+    <field name="margin_right">7</field>
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">10</field>
+    <field name="dpi">95</field>
+</record>
+<record id="paperformatLands_roapmap" model="report.paperformat">
+    <field name="name">Hoja de ruta A4</field>
+    <field name="default" eval="False"/>
+    <field name="format">A4</field>
+    <field name="page_height">0</field>
+    <field name="page_width">0</field>
     <field name="orientation">Landscape</field>
     <field name="margin_top">5</field>
     <field name="margin_bottom">5</field>
@@ -128,9 +143,18 @@
 <report
          id="action_report_print_roadmap_frozen"
          model="stock.picking"
-         string="Picking Congelados1"
+         string="Picking Congelados"
          report_type="qweb-pdf"
          paperformat="veggie.paperformat_roapmap"
+         name="veggie.roadmap_report_frozen"
+         file="veggie.roadmap_report_frozen"
+         />
+
+<report  id="action_report_print_roadmap_frozen"
+         model="stock.picking"
+         string="Picking Congelados Horizontal"
+         report_type="qweb-pdf"
+         paperformat="veggie.paperformatLands_roapmap"
          name="veggie.roadmap_report_frozen"
          file="veggie.roadmap_report_frozen"
          />
