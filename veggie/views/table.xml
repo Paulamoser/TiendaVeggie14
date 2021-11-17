@@ -5,13 +5,13 @@
         <template id="roadmap_report_table">
 
             <!--<div class="row mt32 mb32" style="font-size:18px !important;">-->
-        <t t-foreach="total_users['congelados']" t-as="cogelados">
             <div class="col-xs-6"  style="font-size:16px !important; border-bottom:1px solid #000;">
-
+            <t t-foreach="total_users['congelados']" t-as="cogelados">
                     <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
                     <span t-esc="cogelados['categ']" style="font-size: 18px;"/>
+            </t>
             </div>
-        </t>
+
        <!--<div class="col-xs-6"  >
                     <div >
                     <t t-set="i" t-value="1"/>
