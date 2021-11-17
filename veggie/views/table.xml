@@ -10,14 +10,12 @@
                 <!--<div class="col-xs-6">-->
                     <t t-foreach="cogelados['data']" t-as="products">
                     <div class="float-left" style="padding-left: 0 !important; !important;">
-                        <div class="row mt32 mb32" style="font-size:18px !important;">
-                            <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
+                            <!--<span t-esc="cogelados['categ']" style="font-size: 18px;"/>-->
                             <span style="font-size: 18px;" t-esc="products['product_name']"/>
-                        </div>
-                        <div class="row mt32 mb32" style="font-size:18px !important;">
-                            <span t-esc="cogelados['categ']" style="font-size: 18px;"/>
+                    </div>
+                    <div class="float-left" style="font-size:18px !important;">
+                            <!--<span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>-->
                             <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
-                        </div>
                     </div>
                     </t>
                 <!--</div>-->
