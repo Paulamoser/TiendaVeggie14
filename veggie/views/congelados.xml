@@ -150,7 +150,7 @@
          file="veggie.roadmap_report_frozen"
          />
 
-<report  id="action_report_print_roadmap_frozen"
+<report  id="action_reportLands_print_roadmap_frozen"
          model="stock.picking"
          string="Picking Congelados Horizontal"
          report_type="qweb-pdf"
