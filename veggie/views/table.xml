@@ -15,9 +15,12 @@
                         <div style="font-size:18px !important;padding-right:5px; text-align:right">
                                 <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
                         </div>
-                        <!--fin categora-->
+                        <!--fin categoria-->
+                        <!--i  contador para mandar nuevo row despues del 4to prod-->
+                        <t t-set="i" t-value="1"/>
                         <t t-foreach="cogelados['data']" t-as="products" >
                         <!--recorro productos-->
+                            <t t-set="i" t-value="i+1"/>
                             <div class="float-left" style="padding-left: 5px; padding-right:5px;">
                                     <span style="font-size: 18px;" t-esc="products['product_name']"/>
                             </div>
@@ -25,6 +28,10 @@
                                     <!--<span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>-->
                                     <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
                             </div>
+                            <t t-if="i==4">
+                                <!--nuevo roww-->
+                                <div class="w-100"></div>
+                            </t>
                         </t>
 
 
