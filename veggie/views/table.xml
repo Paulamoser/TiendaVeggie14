@@ -8,37 +8,23 @@
             <div t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:18px !important; border-bottom:1px solid #000;">
                 <div class="col-xs-6" style="float-left; overflow: hidden ; min-width: 200px; nowrap">
                     <t t-foreach="cogelados['data']" t-as="products" style="font-size:18px !important;">
-                    <div class="float-left" style="padding-left: 0; margin-rigth:5px;">
+                    <div class="float-left" style="padding-left: 0; margin-right:5px;">
                             <!--<span t-esc="cogelados['categ']" style="font-size: 18px;"/>-->
                             <span style="font-size: 18px;" t-esc="products['product_name']"/>
                     </div>
-                    <div style="font-size:18px !important;margin-rigth:5px; text-align:right">
+                    <div style="font-size:18px !important;margin-right:5px; text-align:right">
                             <!--<span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>-->
                             <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
                     </div>
+
+                    <div style="border-left: 2px solid black; display:inline-block;"/>
                     </t>
                 </div>
             </div>
             </div>
 
-       <!--<div class="col-xs-6"  >
-                    <div >
-                    <t t-set="i" t-value="1"/>
-                    <t t-foreach="cogelados['data']" t-as="products">
-                    <t t-set="i" t-value="i+1"/>
-                        <div class="float-left" style="padding-left: 0 !important;padding-right: 0 !important;width:80%;">
-                            <span style="font-size: 18px;" t-esc="products['product_name']"/>
-                        </div>
-                        <div class="float-right" style="width:19%;">
-                            <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
-                        </div>
-                    </t>
-                    </div>-->
-            <!--</div>-->
 
 
-                <!--<div style="border-left: 2px solid black;
-                    display:inline-block;"/>
             
 
             <div t-if="i-1 == len(cogelados['data'])">
