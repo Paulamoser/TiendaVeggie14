@@ -84,8 +84,9 @@
                         column-rule-style: solid;"/>
                         <!--<div class="container-fluid">-->
                            <!-- <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">-->
-                        <t  t-foreach="total_users['congelados_piezas']" t-as="cogelados">
-                                <t t-call="veggie.roadmap_report_table_cols" />
+                        <t  t-foreach="total_users['congelados_piezas']" t-as="pieza">
+                               <!-- <t t-call="veggie.roadmap_report_table_cols" />-->
+                                <span style="font-size:20px;" t-esc="pieza"/>
                         </t>
                            <!-- </div>-->
                         <!--</div>-->
