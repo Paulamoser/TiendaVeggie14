@@ -10,7 +10,7 @@
                     <!-- el que sigue es el div de categoria y sus productos-->
                     <t t-set="i" t-value="i+1"/>
                     <div class="row row-cols-4">
-                    <div class="col-sm-6" style="  min-width: 250px;  border-right: 1px solid black; padding-left:0px; "><!--float:auto;   -->
+                    <div class="col" style="  min-width: 250px;  border-right: 1px solid black; padding-left:0px; "><!--float:auto;   -->
                         <!--encabezado categoria-->
                             <div class="float-left" style="padding-left: 1px; padding-right:1px;nowrap " witdh="90%">
                                     <span t-esc="cogelados['categ']" style="font-size: 18px;font-weight:bold;"/>
