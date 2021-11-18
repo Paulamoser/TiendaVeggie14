@@ -181,14 +181,10 @@ class ReportStockPickingFrozen(models.AbstractModel):
                     }
 
                     total_users.append(date)
-                    pieces_total_users= []
-                    size =5
-                    while len(total_users) > size:
-                        pice = total_users[:size]
-                        pieces_total_users.append(pice)
-                        total_users = total_users[size:]
-                    pieces_total_users.append(total_users)
-                    
+                    piezas_total_users[]
+                    piezas_total_users = tuple(total_users[x:x + 5]
+                                for x in range(0, len(total_users), 5))
+
                 rec.frozen_roadmap = True
                     
         list_so = {
