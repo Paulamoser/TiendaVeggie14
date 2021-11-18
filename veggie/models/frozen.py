@@ -181,6 +181,13 @@ class ReportStockPickingFrozen(models.AbstractModel):
                     }
 
                     total_users.append(date)
+                    pieces_total_users= []
+                    size =5
+                    while len(total_users) > size:
+                        pice = total_users[:size]
+                        pieces_total_users.append(pice)
+                        total_users = total_users[size:]
+                    pieces_total_users.append(total_users)
                     
                 rec.frozen_roadmap = True
                     
