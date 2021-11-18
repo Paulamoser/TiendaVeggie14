@@ -164,7 +164,7 @@ class ReportStockPickingFrozen(models.AbstractModel):
                     piezas=[]
                     piezas=tuple(congelados[x:x + 5]
                           for x in range(0, len(congelados), 5))
-
+                    _logger.error("my tupla :", piezas)
                     date = {
                         'categoria':categoria,
                         'date_order': date_order,
