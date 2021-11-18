@@ -161,8 +161,10 @@ class ReportStockPickingFrozen(models.AbstractModel):
                     code_name = rec.origin[stock_name_count:] + "C"
                     categoria = main_categ[:-1]
                     categoria = categoria.upper()
-                    
-                    
+                    piezas=[]
+                    piezas=tuple(congelados[x:x + 5]
+                          for x in range(0, len(congelados), 5))
+
                     date = {
                         'categoria':categoria,
                         'date_order': date_order,
@@ -175,21 +177,18 @@ class ReportStockPickingFrozen(models.AbstractModel):
                         'total': line.amount_total,
                         'deuda': line.get_deuda_total(line.partner_id),
                         'congelados': congelados,
+                        'congelados_piezas': piezas,
                         'code': code,
                         'ruta':ruta,
                         'qr_prueba': f'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={qr}',
                     }
 
                     total_users.append(date)
-                    piezas_total_users=[]
-                    piezas_total_users = tuple(total_users[x:x + 5]
-                                for x in range(0, len(total_users), 5))
 
                 rec.frozen_roadmap = True
                     
         list_so = {
             'total_users': total_users,
-            'piezas_total_users': piezas_total_users,
             'total_parent': total_parent,
         }
         _logger.debug(list_so)
