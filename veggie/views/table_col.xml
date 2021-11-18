@@ -9,20 +9,24 @@
                     <!-- el que sigue es el div de categoria y sus productos-->
                     <div class="col-sm-6" style="float:auto;    border-right: 1px solid black; padding-left:0px; "><!--min-width: 240px; -->
                         <!--encabezado categoria-->
-                        <div class="float-left" style="padding-left: 1px; padding-right:1px;nowrap " witdh="90%">
-                                <span t-esc="cogelados['categ']" style="font-size: 18px;font-weight:bold;"/>
-                        </div>
-                        <div style="font-size:18px !important;padding-right:2px; text-align:right">
-                                <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
+                        <div display="inline-block">
+                            <div class="float-left" style="padding-left: 1px; padding-right:1px;nowrap " witdh="90%">
+                                    <span t-esc="cogelados['categ']" style="font-size: 18px;font-weight:bold;"/>
+                            </div>
+                            <div style="font-size:18px !important;padding-right:2px; text-align:right">
+                                    <span style="font-size: 18px;  padding-left: 0; font-weight:bold;" t-esc="cogelados['total_products']"/>
+                            </div>
                         </div>
                         <!--fin categoria-->
                         <t t-foreach="cogelados['data']" t-as="products" >
                         <!--recorro productos-->
-                            <div class="float-left" style="padding-left: 1px; padding-right:2px;">
-                                    <span style="font-size: 18px;" t-esc="products['product_name']"/>
-                            </div>
-                            <div style="font-size:18px !important;padding-right:2px; text-align:right">
-                                    <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
+                            <div display="inline-block">
+                                <div class="float-left" style="padding-left: 1px; padding-right:2px;">
+                                        <span style="font-size: 18px;" t-esc="products['product_name']"/>
+                                </div>
+                                <div style="font-size:18px !important;padding-right:2px; text-align:right">
+                                        <span style="font-size: 18px;" t-esc="products['quantity_product']"/>
+                                </div>
                             </div>
                         </t>
                     </div>
