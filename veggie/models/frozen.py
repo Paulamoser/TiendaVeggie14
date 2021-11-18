@@ -189,6 +189,7 @@ class ReportStockPickingFrozen(models.AbstractModel):
                     
         list_so = {
             'total_users': total_users,
+            'piezas_total_users': piezas_total_users,
             'total_parent': total_parent,
         }
         _logger.debug(list_so)
