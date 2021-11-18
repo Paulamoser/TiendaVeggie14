@@ -87,7 +87,6 @@
                         <t  t-foreach="total_users['congelados_piezas']" t-as="pieza">
                                 <t t-call="veggie.roadmap_report_table_cols" />
                         </t>
-                    </div>
                            <!-- </div>-->
                         <!--</div>-->
                     </div>
@@ -102,6 +101,7 @@
                 </t>
             </t>
         </div>
+        </t>
 </template>
 
 <report
