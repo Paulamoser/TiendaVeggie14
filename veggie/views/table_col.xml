@@ -9,6 +9,7 @@
                 <div t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:18px !important; solid #000; "><!--min-width: 300px; -->
                     <!-- el que sigue es el div de categoria y sus productos-->
                     <t t-set="i" t-value="i+1"/>
+                    <div class="row row-cols-4">
                     <div class="col-sm-6" style="  min-width: 250px;  border-right: 1px solid black; padding-left:0px; "><!--float:auto;   -->
                         <!--encabezado categoria-->
                             <div class="float-left" style="padding-left: 1px; padding-right:1px;nowrap " witdh="90%">
@@ -29,7 +30,8 @@
                                 </div>
                         </t>
                     </div>
-                    <div t-if="i-1 ==5" class="row" style="border-bottom:solid 1px black"></div>
+                    </div>
+                    <!--<div t-if="i-1 ==5" class="row" style="border-bottom:solid 1px black"></div>-->
                 </div>
             </div>
 
