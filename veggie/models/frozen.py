@@ -162,8 +162,8 @@ class ReportStockPickingFrozen(models.AbstractModel):
                     categoria = main_categ[:-1]
                     categoria = categoria.upper()
                     piezas=[]
-                    piezas=tuple(congelados[x:x + 5]
-                          for x in range(0, len(congelados), 5))
+                    piezas=tuple(congelados[x:x + 3]
+                          for x in range(0, len(congelados), 3))
                     _logger.error("my tupla :", piezas)
                     date = {
                         'categoria':categoria,
