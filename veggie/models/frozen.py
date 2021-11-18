@@ -181,7 +181,7 @@ class ReportStockPickingFrozen(models.AbstractModel):
                     }
 
                     total_users.append(date)
-                    piezas_total_users[]
+                    piezas_total_users=[]
                     piezas_total_users = tuple(total_users[x:x + 5]
                                 for x in range(0, len(total_users), 5))
 
