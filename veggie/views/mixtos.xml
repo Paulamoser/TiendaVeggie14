@@ -20,16 +20,11 @@
                                         <div style="height: 100px; padding-right: 0;padding-left: 0;"/>
                                         <br/>
                                         <div style="height: 100px;padding-right: 0;padding-left: 0;"/>
-                                        <t  t-foreach="range(10)" t-as="indice">
-                                               <t t-if="total_users['piezas_congelados'][indice]">
-                                                     <t t-call="veggie.roadmap_report_table_cols" />
-                                               </t>
-                                            <div style="border-bottom:solid 1px grey;
-                                                width:100%;
-                                                height:5px;
-                                                margin-top:4px;
-                                                padding:0px;"/>
-                                        </t>
+                                        <div class="container-fluid">
+                                            <div class="row" t-foreach="docs['total_parent']['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
+                                                <t t-call="veggie.roadmap_report_table" />
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="footer">
                                         <div class="text-center" style="border-top: 1px negro sólido;">
