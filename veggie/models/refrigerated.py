@@ -160,8 +160,10 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                     code_name = rec.origin[stock_name_count:] + "R"
                     categoria = main_categ[:-1]
                     categoria = categoria.upper()
-                    
-                    
+                    piezas=[]
+                    piezas=tuple(refrigerados[x:x + 3]
+                          for x in range(0, len(refrigerados), 3))
+
                     date = {
                         'categoria':categoria,
                         'date_order': date_order,
@@ -174,6 +176,7 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                         'total': line.amount_total,
                         'deuda': line.get_deuda_total(line.partner_id),
                         'refrigerados': refrigerados,
+                        'piezas': piezas,
                         'code': code,
                         'ruta':ruta,
                         'qr_prueba': f'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={qr}',

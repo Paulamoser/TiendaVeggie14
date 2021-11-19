@@ -20,11 +20,17 @@
                         <div style="
                         height: 100px;
                         padding-right: 0;padding-left: 0;"/>
-                        <div class="container-fluid">
-                            <div class="row" t-foreach="docs['total_parent']['refrigerados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
-                                <t t-call="veggie.roadmap_report_table" />
-                            </div>
-                        </div>
+                        <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
+                        <t  t-foreach="range(cuantos)" t-as="indice">
+                               <t t-if="total_users['piezas'][indice]">
+                                     <t t-call="veggie.roadmap_report_table_cols" />
+                               </t>
+                            <div style="border-bottom:solid 1px grey;
+                                width:100%;
+                                height:5px;
+                                margin-top:4px;
+                                padding:0px;"/>
+                        </t>
                      </div>
                         <div class="footer">
                        <div class="text-center" style="border-top: 1px black solid;">        
@@ -72,11 +78,17 @@
                         height: 100px;                         
                         column-rule-style: solid;
                         padding-right: 0;padding-left: 0;"/>
-                        <div class="container-fluid">
-                            <div class="row" t-foreach="total_users['refrigerados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
-                                <t t-call="veggie.roadmap_report_table" />
-                            </div>
-                        </div>
+                        <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
+                        <t  t-foreach="range(cuantos)" t-as="indice">
+                               <t t-if="total_users['piezas'][indice]">
+                                     <t t-call="veggie.roadmap_report_table_cols" />
+                               </t>
+                            <div style="border-bottom:solid 1px grey;
+                                width:100%;
+                                height:5px;
+                                margin-top:4px;
+                                padding:0px;"/>
+                        </t>
                     </div>
                     <div class="footer">
                        <div class="text-center" style="border-top: 1px black solid;">        

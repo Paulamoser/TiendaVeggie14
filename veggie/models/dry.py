@@ -165,7 +165,7 @@ class ReportStockPickingDry(models.AbstractModel):
                                 secos = sorted(
                                     secos, key=lambda k: k['order_category'])            
                                 for sorted_produc in secos:
-                                    sorted_produc['data'] = sorted(sorted_produc['data'], key=lambda k: k['order_product'])
+                                    sorted_produc['data'] = sorted(sorted_produc['data'], key=lambda k: k['product_name'])
                             line_data = None
                             
                     street = line.partner_id.street if line.partner_id.street is not False else ''
@@ -182,7 +182,9 @@ class ReportStockPickingDry(models.AbstractModel):
                     code_name = rec.origin[stock_name_count:] + 'S'
                     categoria = main_categ[:-1]
                     categoria = 'SECOS'
-                    
+                    piezas = []
+                    piezas = tuple(secos[x:x + 3]
+                                   for x in range(0, len(secos), 3))
                     date = {
                         'categoria':categoria,
                         'date_order': date_order,
@@ -195,6 +197,7 @@ class ReportStockPickingDry(models.AbstractModel):
                         'total': line.amount_total,
                         'deuda': line.get_deuda_total(line.partner_id),
                         'secos': secos,
+                        'piezas': piezas,
                         'code': code,
                         'qr_prueba': f'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={qr}',
                         'ruta':ruta,
