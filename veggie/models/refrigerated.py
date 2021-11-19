@@ -161,8 +161,8 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                     categoria = main_categ[:-1]
                     categoria = categoria.upper()
                     piezas=[]
-                    piezas=tuple(refrigerados[x:x + 3]
-                          for x in range(0, len(refrigerados), 3))
+                    piezas=tuple(refrigerados[x:x + 2]
+                          for x in range(0, len(refrigerados), 2))
 
                     date = {
                         'categoria':categoria,

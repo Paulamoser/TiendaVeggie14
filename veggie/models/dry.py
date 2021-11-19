@@ -183,8 +183,8 @@ class ReportStockPickingDry(models.AbstractModel):
                     categoria = main_categ[:-1]
                     categoria = 'SECOS'
                     piezas = []
-                    piezas = tuple(secos[x:x + 3]
-                                   for x in range(0, len(secos), 3))
+                    piezas = tuple(secos[x:x + 2]
+                                   for x in range(0, len(secos), 2))
                     date = {
                         'categoria':categoria,
                         'date_order': date_order,

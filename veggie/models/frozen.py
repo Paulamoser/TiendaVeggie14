@@ -162,8 +162,8 @@ class ReportStockPickingFrozen(models.AbstractModel):
                     categoria = main_categ[:-1]
                     categoria = categoria.upper()
                     piezas=[]
-                    piezas=tuple(congelados[x:x + 3]
-                          for x in range(0, len(congelados), 3))
+                    piezas=tuple(congelados[x:x + 2]
+                          for x in range(0, len(congelados), 2))
                     date = {
                         'categoria':categoria,
                         'date_order': date_order,
