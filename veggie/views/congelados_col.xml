@@ -88,8 +88,7 @@
                         <!--        <t t-call="veggie.roadmap_report_table_cols" />-->
                                <t t-if="total_users['congelados_piezas']">
                                    <!-- <span style="font-size:20px;" t-esc="total_users['congelados_piezas'][1]"/>-->
-                                 <span style="font-size:20px;" t-esc="total_users['congelados_piezas']"/>
-                                      <!--<t t-call="veggie.roadmap_report_table_cols" />-->
+                                 <t t-call="veggie.roadmap_report_table_cols" />
                                </t>
                         </t>
                            <!-- </div>-->
