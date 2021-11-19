@@ -142,7 +142,7 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                                     refrigerados.append(line_data)                                
                                 refrigerados = sorted(refrigerados, key=lambda k: k['order_category'])
                                 for sorted_produc in refrigerados:
-                                    sorted_produc['data'] = sorted(sorted_produc['data'], key=lambda k: k['order_product'])
+                                    sorted_produc['data'] = sorted(sorted_produc['data'], key=lambda k: k['product_name'])
                                     
                             line_data = None
 
