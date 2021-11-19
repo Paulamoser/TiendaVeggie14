@@ -84,7 +84,8 @@
                         column-rule-style: solid;"/>
                         <!--<div class="container-fluid">-->
                            <!-- <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">-->
-                        <t  t-foreach="range(5)" t-as="indice">
+                        <t t-set="cuantos" t-value="len(total_users['congelados_piezas'])"/>
+                        <t  t-foreach="range(cuantos)" t-as="indice">
                         <!--        <t t-call="veggie.roadmap_report_table_cols" />-->
                                <t t-if="total_users['congelados_piezas'][indice]">
                                    <!-- <span style="font-size:20px;" t-esc="total_users['congelados_piezas'][1]"/>-->
