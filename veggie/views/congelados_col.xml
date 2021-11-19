@@ -84,12 +84,15 @@
                         column-rule-style: solid;"/>
                         <!--<div class="container-fluid">-->
                            <!-- <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">-->
-                        <t  t-foreach="total_users['congelados_piezas']" t-as="pieza">
-                                <t t-call="veggie.roadmap_report_table_cols" />
-                                <!--<t t-if="total_users['congelados_piezas'][1]">
-                                    <span style="font-size:20px;" t-esc="total_users['congelados_piezas'][1]"/>
-                                </t>-->
-                        </t>
+                        <!--<t  t-foreach="total_users['congelados_piezas']" t-as="pieza">
+                                <t t-call="veggie.roadmap_report_table_cols" />-->
+                                <t t-if="total_users['congelados_piezas'][1]">
+                                   <!-- <span style="font-size:20px;" t-esc="total_users['congelados_piezas'][1]"/>-->
+                                    <t t-set="rowcongelados" t-value="total_users['congelados_piezas'][1]">
+                                        <t t-call="veggie.roadmap_report_table_cols" />
+                                    </t>
+                                </t>
+                        <!--</t>-->
                            <!-- </div>-->
                         <!--</div>-->
                     </div>
