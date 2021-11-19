@@ -2,9 +2,9 @@
     <data>
 
     <template id="roadmap_report">
-        <t t-call="veggie.roadmap_report_frozen">
-        <t t-call="veggie.roadmap_report_refrigerated">
-        <t t-call="veggie.roadmap_report_dry">
+        <t t-call="veggie.roadmap_report_frozen"/>
+        <t t-call="veggie.roadmap_report_refrigerated"/>
+        <t t-call="veggie.roadmap_report_dry"/>
     </template>
 
 
