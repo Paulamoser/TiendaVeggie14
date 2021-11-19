@@ -75,7 +75,7 @@
                         <div style="border-color: black;                 
                         border-width: 1px;                          
                         border-style: solid;                         
-                        height: 100px;                         
+                        height: 50px;
                         column-rule-style: solid;
                         padding-right: 0;padding-left: 0;"/>
                         <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
