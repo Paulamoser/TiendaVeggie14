@@ -37,9 +37,9 @@
                         <div style="
                         height: 100px;
                         padding-right: 0;padding-left: 0;"/>
-                            <t t-set="cuantos" t-value="len(total_users['congelados_piezas'])"/>
+                            <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
                             <t  t-foreach="range(cuantos)" t-as="indice">
-                                   <t t-if="total_users['congelados_piezas'][indice]">
+                                   <t t-if="total_users['piezas'][indice]">
                                          <t t-call="veggie.roadmap_report_table_cols" />
                                    </t>
                                 <div style="border-bottom:solid 1px grey;
@@ -89,9 +89,9 @@
                         height: 50px;                          
                         column-rule-style: solid;"/>
                         <!-- categorias por fila, producto en columnas-->
-                        <t t-set="cuantos" t-value="len(total_users['congelados_piezas'])"/>
+                        <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
                         <t  t-foreach="range(cuantos)" t-as="indice">
-                               <t t-if="total_users['congelados_piezas'][indice]">
+                               <t t-if="total_users['piezas'][indice]">
                                      <t t-call="veggie.roadmap_report_table_cols" />
                                </t>
                             <div style="border-bottom:solid 1px grey;

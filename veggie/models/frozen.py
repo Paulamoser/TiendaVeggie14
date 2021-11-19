@@ -164,7 +164,6 @@ class ReportStockPickingFrozen(models.AbstractModel):
                     piezas=[]
                     piezas=tuple(congelados[x:x + 3]
                           for x in range(0, len(congelados), 3))
-                    _logger.error("my tupla :", piezas)
                     date = {
                         'categoria':categoria,
                         'date_order': date_order,
@@ -177,7 +176,7 @@ class ReportStockPickingFrozen(models.AbstractModel):
                         'total': line.amount_total,
                         'deuda': line.get_deuda_total(line.partner_id),
                         'congelados': congelados,
-                        'congelados_piezas': piezas,
+                        'piezas': piezas,
                         'code': code,
                         'ruta':ruta,
                         'qr_prueba': f'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={qr}',

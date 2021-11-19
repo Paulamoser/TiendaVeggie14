@@ -182,7 +182,9 @@ class ReportStockPickingDry(models.AbstractModel):
                     code_name = rec.origin[stock_name_count:] + 'S'
                     categoria = main_categ[:-1]
                     categoria = 'SECOS'
-                    
+                    piezas = []
+                    piezas = tuple(secos[x:x + 3]
+                                   for x in range(0, len(secos), 3))
                     date = {
                         'categoria':categoria,
                         'date_order': date_order,
@@ -195,6 +197,7 @@ class ReportStockPickingDry(models.AbstractModel):
                         'total': line.amount_total,
                         'deuda': line.get_deuda_total(line.partner_id),
                         'secos': secos,
+                        'piezas': piezas,
                         'code': code,
                         'qr_prueba': f'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={qr}',
                         'ruta':ruta,
