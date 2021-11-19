@@ -88,6 +88,7 @@
                         border-style: solid;                     
                         height: 50px;                          
                         column-rule-style: solid;"/>
+                        <!-- categorias por fila, producto en columnas-->
                         <t t-set="cuantos" t-value="len(total_users['congelados_piezas'])"/>
                         <t  t-foreach="range(cuantos)" t-as="indice">
                                <t t-if="total_users['congelados_piezas'][indice]">
