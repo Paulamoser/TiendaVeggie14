@@ -37,11 +37,17 @@
                         <div style="
                         height: 100px;
                         padding-right: 0;padding-left: 0;"/>
-                            <div class="container-fluid">
-                                <div class="row" t-foreach="docs['total_parent']['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
-                                    <t t-call="veggie.roadmap_report_table" />
-                                </div>
-                            </div>
+                            <t t-set="cuantos" t-value="len(total_users['congelados_piezas'])"/>
+                            <t  t-foreach="range(cuantos)" t-as="indice">
+                                   <t t-if="total_users['congelados_piezas'][indice]">
+                                         <t t-call="veggie.roadmap_report_table_cols" />
+                                   </t>
+                                <div style="border-bottom:solid 1px grey;
+                                    width:100%;
+                                    height:5px;
+                                    margin-top:4px;
+                                    padding:0px;"/>
+                            </t>
                         </div>
                     <div class="footer">
                         <div class="text-center" style="border-top: 1px black solid;">
@@ -77,16 +83,23 @@
                                 <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba']" alt="Qr code" width="255" height="270"/>
                             </div>
                         </div>
-                        <div style="border-color: black;
-                        border-width: 1px;
-                        border-style: solid;
-                        height: 50px;
+                        <div style="border-color: black;      
+                        border-width: 1px;                      
+                        border-style: solid;                     
+                        height: 50px;                          
                         column-rule-style: solid;"/>
-                        <div class="container-fluid">
-                            <div class="row" t-foreach="total_users['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
-                                <t t-call="veggie.roadmap_report_table" />
-                            </div>
-                        </div>
+                        <t t-set="cuantos" t-value="len(total_users['congelados_piezas'])"/>
+                        <t  t-foreach="range(cuantos)" t-as="indice">
+                               <t t-if="total_users['congelados_piezas'][indice]">
+                                     <t t-call="veggie.roadmap_report_table_cols" />
+                               </t>
+                            <div style="border-bottom:solid 1px grey;
+                                width:100%;
+                                height:5px;
+                                margin-top:4px;
+                                padding:0px;"/>
+                        </t>
+
                     </div>
                     <div class="footer">
                         <div class="text-center" style="border-top: 1px black solid;">
@@ -101,9 +114,9 @@
         </div>
         </t>
 </template>
-<!--
+
 <report
-         id="action_report_print_roadmap_frozen"
+         id="action_report_print_roadmap_frozen_cols"
          model="stock.picking"
          string="Picking Congelados"
          report_type="qweb-pdf"
@@ -111,7 +124,7 @@
          name="veggie.roadmap_report_frozen"
          file="veggie.roadmap_report_frozen"
          />
--->
+
 </data>
 
 </odoo>
