@@ -37,17 +37,11 @@
                         <div style="
                         height: 100px;
                         padding-right: 0;padding-left: 0;"/>
-                            <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
-                            <t  t-foreach="range(cuantos)" t-as="indice">
-                                   <t t-if="total_users['piezas'][indice]">
-                                         <t t-call="veggie.roadmap_report_table_cols" />
-                                   </t>
-                                <div style="border-bottom:solid 1px grey;
-                                    width:100%;
-                                    height:5px;
-                                    margin-top:4px;
-                                    padding:0px;"/>
-                            </t>
+                            <div class="container-fluid">
+                                <div class="row" t-foreach="docs['total_parent']['congelados']" t-as="cogelados" style="font-size:16px !important; border-bottom:1px solid #000;">
+                                    <t t-call="veggie.roadmap_report_table" />
+                                </div>
+                            </div>
                         </div>
                     <div class="footer">
                         <div class="text-center" style="border-top: 1px black solid;">
@@ -88,16 +82,15 @@
                         border-style: solid;                     
                         height: 50px;                          
                         column-rule-style: solid;"/>
-                        <!-- categorias por fila, producto en columnas-->
-                        <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
+                        <t t-set="cuantos" t-value="len(total_users['congelados_piezas'])"/>
                         <t  t-foreach="range(cuantos)" t-as="indice">
-                               <t t-if="total_users['piezas'][indice]">
+                               <t t-if="total_users['congelados_piezas'][indice]">
                                      <t t-call="veggie.roadmap_report_table_cols" />
                                </t>
-                            <div style="border-bottom:solid 1px grey;
+                            <div style="border-bottom:solid 1px black;
                                 width:100%;
-                                height:5px;
-                                margin-top:4px;
+                                height:1px;
+                                margin:0px;
                                 padding:0px;"/>
                         </t>
 
@@ -119,7 +112,7 @@
 <report
          id="action_report_print_roadmap_frozen_cols"
          model="stock.picking"
-         string="Picking Congelados"
+         string="Picking Congelados (cols)"
          report_type="qweb-pdf"
          paperformat="veggie.paperformat_roapmap"
          name="veggie.roadmap_report_frozen"

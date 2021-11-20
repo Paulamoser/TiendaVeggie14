@@ -26,6 +26,7 @@
         'views/refrigerados.xml',
         'views/mixtos.xml',
         'views/invoices.xml',
+        'views/product.xml',
     ],
     'demo': [],
 }

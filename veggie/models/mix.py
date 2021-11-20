@@ -187,7 +187,7 @@ class ReportStockPickingQs(models.AbstractModel):
                                     congelados.append(line_data)                                
                                 congelados = sorted(congelados, key=lambda k: k['order_category'])
                                 for sorted_produc in congelados:
-                                    sorted_produc['data'] = sorted(sorted_produc['data'], key=lambda k: k['order_product'])
+                                    sorted_produc['data'] = sorted(sorted_produc['data'], key=lambda k: k['product_name'])
                             elif main_categ == 'Refrigerados':
                                 if refrigerados:
                                     refrigerados = self.filterCategory(refrigerados,line_data)
@@ -223,7 +223,7 @@ class ReportStockPickingQs(models.AbstractModel):
                     stock_name_count = stock_name_count - 3 
                     stock_name= rec.origin[:stock_name_count]
                     code_name = rec.origin[stock_name_count:]
-
+                   
                     date = {
                         'date_order': date_order,
                         'cliente': line.partner_id.name,
