@@ -1,0 +1,22 @@
+<odoo>
+  <data>
+
+    <template
+        id="assets_backend"
+        name="helpdesk button assets"
+        inherit_id="web.assets_backend"
+    >
+        <xpath expr="." position="inside">
+            <link
+                rel="stylesheet"
+                href="/helpdesk_button/static/src/css/style.css"
+            />
+            <script
+                type="text/javascript"
+                src="/helpdesk_button/static/src/js/button.js"
+            />
+        </xpath>
+    </template>
+
+  </data>
+</odoo>
