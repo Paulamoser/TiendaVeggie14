@@ -66,13 +66,9 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                             raise ValidationError('Verifique que todos los productos tengas categoria Padre!!')
                                     
                     date_order = rec.scheduled_date
-                    piezas=[]
-                    piezas=tuple(categoria_refrigerados[x:x + 2]
-                          for x in range(0, len(categoria_refrigerados), 2))
                     all_date = {
                         'date_order': date_order,
                         'refrigerados': categoria_refrigerados,
-                        'piezas': piezas,
                     }
         del categoria_refrigerados
         
@@ -115,7 +111,7 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                                 order_category = order_line.product_id.categ_id.order_report
                                 product_name = order_line.product_id.description_pickingout
                                 quantity_product = order_line.product_uom_qty
-                                qr= str(line.name) + "R"
+                                qr= str(line.name) + "C"
 
                                 if rec.order and rec.rute:
                                     code = f'{rec.rute}{rec.order}'
