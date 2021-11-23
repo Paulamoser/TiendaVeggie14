@@ -160,6 +160,8 @@ class ReportStockPickingQs(models.AbstractModel):
                                 product_name = order_line.product_id.description_pickingout
                                 quantity_product = order_line.product_uom_qty
                                 qr = str(line.name) + str(main_categ[0])
+                                _logger.info('>>>>>>')
+                                _logger.info(qr)
                                 if rec.order and rec.rute:
                                     code = f'{rec.rute}{rec.order}'
                                 elif rec.order and not rec.rute:
