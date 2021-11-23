@@ -20,10 +20,10 @@
                         <div style="
                         height: 100px;
                         padding-right: 0;padding-left: 0;"/>
-                        <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
+                        <t t-set="cuantos" t-value="len(docs['total_parent']['piezas'])"/>
                         <t  t-foreach="range(cuantos)" t-as="indice">
-                               <t t-if="total_users['piezas'][indice]">
-                                     <t t-call="veggie.roadmap_report_table_cols" />
+                               <t t-if="docs['total_parent']['piezas'][indice]">
+                                     <t t-call="veggie.roadmap_report_table_parent_cols" />
                                </t>
                             <div style="border-bottom:solid 1px grey;
                                 width:100%;
