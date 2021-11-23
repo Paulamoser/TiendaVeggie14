@@ -69,9 +69,13 @@ class ReportStockPickingDry(models.AbstractModel):
                             
                     # date_order = datetime.strptime(rec.scheduled_date, "%Y-%m-%d %H:%M:%S").strftime('%A %d')
                     date_order = rec.scheduled_date
+                    piezas=[]
+                    piezas=tuple(categoria_secos[x:x + 2]
+                          for x in range(0, len(categoria_secos), 2))
                     all_date = {
                         'date_order': date_order,
                         'secos':categoria_secos,
+                        'piezas': piezas,
                     }
                     
 

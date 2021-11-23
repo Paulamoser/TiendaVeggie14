@@ -65,9 +65,13 @@ class ReportStockPickingFrozen(models.AbstractModel):
                             raise ValidationError('¡Verifique que todos los productos tengan categoria Padre!')
 
                     date_order = rec.scheduled_date
+                    piezas=[]
+                    piezas=tuple(categoria_cogelados[x:x + 2]
+                          for x in range(0, len(categoria_cogelados), 2))
                     all_date = {
                         'date_order': date_order,
                         'congelados': categoria_cogelados,
+                        'piezas': piezas,
                     }
         del categoria_cogelados
         
