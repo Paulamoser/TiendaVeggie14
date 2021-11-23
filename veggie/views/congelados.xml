@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <br/>
-                        <div style="
+               <!--         <div style="
                         height: 100px;
                         padding-right: 0;padding-left: 0;"/>
                             <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
@@ -47,7 +47,7 @@
                                     height:5px;
                                     margin-top:4px;
                                     padding:0px;"/>
-                            </t>
+                            </t>-->
                         </div>
                     <div class="footer">
                         <div class="text-center" style="border-top: 1px black solid;">
