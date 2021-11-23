@@ -21,6 +21,7 @@
         'views/views.xml',
         'views/templates.xml',
         'views/table.xml',
+        'views/table_parent_col.xml',
         'views/congelados.xml',
         'views/secos.xml',
         'views/refrigerados.xml',
