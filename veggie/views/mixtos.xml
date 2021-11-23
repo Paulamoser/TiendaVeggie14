@@ -125,7 +125,7 @@
                                                 <span style="font-size:20px;" t-esc="total_users['date_order']"/>
                                             </div>
                                             <div class="col-3">
-                                                <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba']" alt="Qr code" width="255" height="270"/>
+                                                <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba'] + 'C'" alt="Qr code" width="255" height="270"/>
                                             </div>
                                         </div>
                                         <div style="border-color: black;      
@@ -178,7 +178,7 @@
                                                 <span style="font-size:20px;" t-esc="total_users['date_order']"/>
                                             </div>
                                             <div class="col-3">
-                                                <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba']" alt="Qr code" width="250" height="270"/>
+                                                <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba'] + 'R'" alt="Qr code" width="250" height="270"/>
                                             </div>
                                         </div>
                                         <div style="border-color: black;                 
@@ -235,7 +235,7 @@
                                                 <span style="font-size:20px;" t-esc="total_users['date_order']"/>
                                             </div>
                                             <div class="col-3">
-                                                <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba']" alt="Qr code" width="250" height="270"/>
+                                                <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba'] + 'S'" alt="Qr code" width="250" height="270"/>
                                             </div>
                                         </div>
                                         <div style="border-color: black;                 
