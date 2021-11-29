@@ -20,10 +20,10 @@
                         <div style="
                         height: 100px;
                         padding-right: 0;padding-left: 0;"/>
-                        <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
+                        <t t-set="cuantos" t-value="len(docs['total_parent']['piezas'])"/>
                         <t  t-foreach="range(cuantos)" t-as="indice">
-                               <t t-if="total_users['piezas'][indice]">
-                                     <t t-call="veggie.roadmap_report_table_cols" />
+                               <t t-if="docs['total_parent']['piezas'][indice]">
+                                     <t t-call="veggie.roadmap_report_table_parent_cols" />
                                </t>
                             <div style="border-bottom:solid 1px grey;
                                 width:100%;
@@ -33,16 +33,12 @@
                         </t>
                      </div>
                         <div class="footer">
-                       <div class="text-center" style="border-top: 1px black solid;">        
-               
-                           <ul class="list-inline">
-                               <li> Página: </li>
-                               <li> <span class="page"/> </li>
-                               <li> / </li>
-                               <li> <span class="topage"/> </li>
-                           </ul>
+                       <div class="text-center" style="border-top: 1px black solid;">
+                            <div class="text-muted">
+                                Página: <span class="page"/> / <span class="topage"/>
+                            </div>
                        </div>
-                      </div>  
+                      </div>
                      <p style="page-break-before:always;"> </p>
                   </t>
                </t>
@@ -64,17 +60,17 @@
                             <div class="col-3">
                                 <span style="font-size: 39px !important; font-weight:bolder;" t-esc="total_users['ruta']"/>
                                 <br>
-                                    
-                                </br> 
+
+                                </br>
                                 <span style="font-size:20px;" t-esc="total_users['date_order']"/>
                             </div>
                             <div class="col-3">
                                 <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba']" alt="Qr code" width="250" height="270"/>
                             </div>
                         </div>
-                        <div style="border-color: black;                 
-                        border-width: 1px;                          
-                        border-style: solid;                         
+                        <div style="border-color: black;
+                        border-width: 1px;
+                        border-style: solid;
                         height: 50px;
                         column-rule-style: solid;
                         padding-right: 0;padding-left: 0;"/>
@@ -91,14 +87,10 @@
                         </t>
                     </div>
                     <div class="footer">
-                       <div class="text-center" style="border-top: 1px black solid;">        
-               
-                           <ul class="list-inline">
-                               <li> Página: </li>
-                               <li> <span class="page"/> </li>
-                               <li> / </li>
-                               <li> <span class="topage"/> </li>
-                           </ul>
+                       <div class="text-center" style="border-top: 1px black solid;">
+                            <div class="text-muted">
+                                Página: <span class="page"/> / <span class="topage"/>
+                            </div>
                        </div>
                       </div>  
                     <p style="page-break-before:always;"/>

@@ -1,60 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+   <data>
 
-        <template id="roadmap_report_refrigerated">
-        <t t-call="web.html_container">
-            <div class="header"/>
-            <div class="article">
-               <t t-if="docs['total_parent'] != False">
-                  <t t-if="docs['total_parent']['refrigerados']">
-                     <div class="page">
+<record id="paperformat_roapmap" model="report.paperformat">
+    <field name="name">Hoja de ruta A4</field>
+    <field name="default" eval="False"/>
+    <field name="format">A4</field>
+    <field name="page_height">0</field>
+    <field name="page_width">0</field>
+    <field name="orientation">Portrait</field>
+    <field name="margin_top">5</field>
+    <field name="margin_bottom">5</field>
+    <field name="margin_left">7</field>
+    <field name="margin_right">7</field>
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">10</field>
+    <field name="dpi">95</field>
+</record>
+
+<template id="roadmap_report_frozen">
+    <t t-call="web.html_container">
+    <div class="header"/>
+    <div class="article">
+            <t t-if="docs['total_parent'] != False">
+                <t t-if="docs['total_parent']['congelados']">
+                    <div class="page">
                         <div class="container">
-                           <div style="float: left !important;">
-                              <h2 t-esc="docs['total_parent']['date_order']"/>
-                           </div>
-                           <div style="left: 35% !important; position: relative !important;">
-                              <h2>Refrigerados  </h2>
-                           </div>
+                            <div style="float: left !important;">
+                                <h2 t-esc="docs['total_parent']['date_order']"/>
+                            </div>
+                            <div style="left: 35% !important; position: relative !important;">
+                                <h2>Congelados</h2>
+                            </div>
                         </div>
                         <br/>
                         <div style="
                         height: 100px;
                         padding-right: 0;padding-left: 0;"/>
-                        <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
-                        <t  t-foreach="range(cuantos)" t-as="indice">
-                               <t t-if="total_users['piezas'][indice]">
-                                     <t t-call="veggie.roadmap_report_table_cols" />
-                               </t>
-                            <div style="border-bottom:solid 1px grey;
-                                width:100%;
-                                height:5px;
-                                margin-top:4px;
-                                padding:0px;"/>
-                        </t>
-                     </div>
-                        <div class="footer">
-                       <div class="text-center" style="border-top: 1px black solid;">        
-               
-                           <ul class="list-inline">
-                               <li> Página: </li>
-                               <li> <span class="page"/> </li>
-                               <li> / </li>
-                               <li> <span class="topage"/> </li>
-                           </ul>
-                       </div>
-                      </div>  
-                     <p style="page-break-before:always;"> </p>
-                  </t>
-               </t>
-               <t t-foreach="docs['total_users']" t-as="total_users">
-                <t t-if="total_users['refrigerados']">
+                            <t t-set="cuantos" t-value="len(docs['total_parent']['piezas'])"/>
+                            <t  t-foreach="range(cuantos)" t-as="indice">
+                                   <t t-if="docs['total_parent']['piezas'][indice]">
+                                         <t t-call="veggie.roadmap_report_table_parent_cols" />
+                                   </t>
+                                <div style="border-bottom:solid 1px grey;
+                                    width:100%;
+                                    height:5px;
+                                    margin-top:4px;
+                                    padding:0px;"/>
+                            </t>
+                        </div>
+                    <div class="footer">
+                        <div class="text-center" style="border-top: 1px black solid;">
+                            <div class="text-muted">
+                                Página: <span class="page"/> / <span class="topage"/>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="page-break-before:always;"/>
+                </t>
+            </t>
+            <t t-foreach="docs['total_users']" t-as="total_users">
+                <t t-if="total_users['congelados']">
                     <div class="page">
                         <div class="row">
                             <div class="col-6">
-                                    <span>REFRIGERADOS</span>
+                                <span>CONGELADOS</span>
                                 <br/>
                                 <span t-esc="total_users['stock_name']" style="font-size:28.5px;"/>
-                                <span style="font-size:46px; font-weight: bold;" t-esc="total_users['stock_name_cort']"/>
+                                <span style="font-size:46px;   font-weight: bold;" t-esc="total_users['stock_name_cort']"/>
                                 <br/>
                                 <br/>
                                 <span style="font-size:23.5px; font-weight:bolder;" t-esc="total_users['nombre_fant']"/>
@@ -63,21 +76,19 @@
                             </div>
                             <div class="col-3">
                                 <span style="font-size: 39px !important; font-weight:bolder;" t-esc="total_users['ruta']"/>
-                                <br>
-                                    
-                                </br> 
+                                <br></br>
                                 <span style="font-size:20px;" t-esc="total_users['date_order']"/>
                             </div>
                             <div class="col-3">
-                                <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba']" alt="Qr code" width="250" height="270"/>
+                                <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba']" alt="Qr code" width="255" height="270"/>
                             </div>
                         </div>
-                        <div style="border-color: black;                 
-                        border-width: 1px;                          
-                        border-style: solid;                         
+                        <div style="border-color: black;
+                        border-width: 1px;
+                        border-style: solid;
                         height: 50px;
-                        column-rule-style: solid;
-                        padding-right: 0;padding-left: 0;"/>
+                        column-rule-style: solid;"/>
+                        <!-- categorias por fila, producto en columnas-->
                         <t t-set="cuantos" t-value="len(total_users['piezas'])"/>
                         <t  t-foreach="range(cuantos)" t-as="indice">
                                <t t-if="total_users['piezas'][indice]">
@@ -89,34 +100,32 @@
                                 margin-top:4px;
                                 padding:0px;"/>
                         </t>
+
                     </div>
                     <div class="footer">
-                       <div class="text-center" style="border-top: 1px black solid;">        
-               
-                           <ul class="list-inline">
-                               <li> Página: </li>
-                               <li> <span class="page"/> </li>
-                               <li> / </li>
-                               <li> <span class="topage"/> </li>
-                           </ul>
-                       </div>
-                      </div>  
+                        <div class="text-center" style="border-top: 1px black solid;">
+                            <div class="text-muted">
+                                Página: <span class="page"/> / <span class="topage"/>
+                            </div>
+                        </div>
+                    </div>
                     <p style="page-break-before:always;"/>
                 </t>
             </t>
-            </div>
-         </t>
-      </template>
+        </div>
+        </t>
+</template>
 
-      <report
-         id="action_report_print_roadmap_refrigerated"
+<report
+         id="action_report_print_roadmap_frozen_cols"
          model="stock.picking"
-         string="Picking Refrigerados"
+         string="Picking Congelados"
          report_type="qweb-pdf"
          paperformat="veggie.paperformat_roapmap"
-         name="veggie.roadmap_report_refrigerated"
-         file="veggie.roadmap_report_refrigerated"
+         name="veggie.roadmap_report_frozen"
+         file="veggie.roadmap_report_frozen"
          />
 
-    </data>
+</data>
+
 </odoo>
