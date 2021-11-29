@@ -25,33 +25,33 @@
             <t t-if="docs['total_parent'] != False">
                 <t t-if="docs['total_parent']['congelados']">
                     <div class="page">
-                        <div class="container">
+                        <div class="row">
+                            <div class="col-6">
                             <div style="float: left !important;">
                                 <h2 t-esc="docs['total_parent']['date_order']"/>
                             </div>
                             <div style="left: 35% !important; position: relative !important;">
                                 <h2>Congelados</h2>
                             </div>
-                        </div>
-                        <br/>
-                         <div style="border-color: black;
-                        border-width: 1px;
-                        border-style: solid;
-                        height: 50px;
-                        column-rule-style: solid;
-                        padding-right: 0;padding-left: 0;"/>
-                        <div class="row">
-                            <t t-set="cuantos" t-value="len(docs['total_parent']['piezas'])"/>
-                            <t  t-foreach="range(cuantos)" t-as="indice">
-                                   <t t-if="docs['total_parent']['piezas'][indice]">
-                                         <t t-call="veggie.roadmap_report_table_parent_cols" />
-                                   </t>
-                                <div style="border-bottom:solid 1px grey;
-                                    width:100%;
-                                    height:5px;
-                                    margin-top:4px;
-                                    padding:0px;"/>
-                            </t>
+                            </div>
+                            <br/>
+                            <div style="border-color: black;
+                            border-width: 1px;
+                            border-style: solid;
+                            height: 50px;
+                            column-rule-style: solid;
+                            padding-right: 0;padding-left: 0;"/>
+                                <t t-set="cuantos" t-value="len(docs['total_parent']['piezas'])"/>
+                                <t  t-foreach="range(cuantos)" t-as="indice">
+                                       <t t-if="docs['total_parent']['piezas'][indice]">
+                                             <t t-call="veggie.roadmap_report_table_parent_cols" />
+                                       </t>
+                                    <div style="border-bottom:solid 1px grey;
+                                        width:100%;
+                                        height:5px;
+                                        margin-top:4px;
+                                        padding:0px;"/>
+                                </t>
                         </div>
                     </div>
                     <div class="footer">
