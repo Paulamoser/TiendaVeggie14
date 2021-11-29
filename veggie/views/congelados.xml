@@ -40,6 +40,7 @@
                         height: 50px;
                         column-rule-style: solid;
                         padding-right: 0;padding-left: 0;"/>
+                        <div class="row">
                             <t t-set="cuantos" t-value="len(docs['total_parent']['piezas'])"/>
                             <t  t-foreach="range(cuantos)" t-as="indice">
                                    <t t-if="docs['total_parent']['piezas'][indice]">
@@ -52,6 +53,7 @@
                                     padding:0px;"/>
                             </t>
                         </div>
+                    </div>
                     <div class="footer">
                         <div class="text-center" style="border-top: 1px black solid;">
                             <div class="text-muted">
