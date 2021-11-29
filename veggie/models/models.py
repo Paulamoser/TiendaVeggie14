@@ -235,3 +235,9 @@ class AccountJournal(models.Model):
     _inherit ='account.journal'
 
     invoicing = fields.Boolean(default=False, string="Testing", index=True)
+
+class AccountMove(models.Model):
+    _inherit ='account.move'
+
+    state_id = fields.Char(string='Provincia', store=True, related='partner_id.state_id.name')
+    city = fields.Char(string='Ciudad', store=True, related='partner_id.city')
