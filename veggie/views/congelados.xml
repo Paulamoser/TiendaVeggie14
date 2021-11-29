@@ -34,8 +34,11 @@
                             </div>
                         </div>
                         <br/>
-                        <div style="
-                        height: 100px;
+                         <div style="border-color: black;
+                        border-width: 1px;
+                        border-style: solid;
+                        height: 50px;
+                        column-rule-style: solid;
                         padding-right: 0;padding-left: 0;"/>
                             <t t-set="cuantos" t-value="len(docs['total_parent']['piezas'])"/>
                             <t  t-foreach="range(cuantos)" t-as="indice">
