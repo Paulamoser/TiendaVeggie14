@@ -26,12 +26,12 @@
                 <t t-if="docs['total_parent']['congelados']">
                     <div class="page">
                         <div class="row">
-                            <div class="col-2"  colspan="2">
+                            <div class="col-6"  colspan="6">
                                 <div style="float: left " >
-                                    <h4 t-esc="docs['total_parent']['date_order']"/>
+                                    <span t-esc="docs['total_parent']['date_order']"/>
                                 </div>
                                 <div style="left: 35% !important; position: left !important;">
-                                    <h3>Congelados</h3>
+                                    <h4>Congelados</h4>
                                 </div>
                             </div>
                             <br/>
