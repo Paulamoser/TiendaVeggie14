@@ -29,11 +29,8 @@
                             <div class="col-6" >
                                     <span t-esc="docs['total_parent']['date_order']"/>
                             </div>
-                            <div class="col-3" >
+                            <div class="col-6" >
                                     <h4>Congelados</h4>
-                            </div>
-                            <div class="col-3" >
-                                    <span> </span>
                             </div>
                             <br/>
                         </div>
