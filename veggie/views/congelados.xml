@@ -27,11 +27,11 @@
                     <div class="page">
                         <div class="row">
                             <div class="col-2"  colspan="2">
-                                <div style="float: left !important;" >
-                                    <h3 t-esc="docs['total_parent']['date_order']"/>
+                                <div style="float: left " >
+                                    <h4 t-esc="docs['total_parent']['date_order']"/>
                                 </div>
                                 <div style="left: 35% !important; position: left !important;">
-                                    <h2>Congelados</h2>
+                                    <h3>Congelados</h3>
                                 </div>
                             </div>
                             <br/>
