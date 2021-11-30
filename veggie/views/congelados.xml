@@ -26,13 +26,9 @@
                 <t t-if="docs['total_parent']['congelados']">
                     <div class="page">
                         <div class="row">
-                            <div class="col-6" >
-                                <div style="float: left " >
+                            <div class="col-3" >
                                     <span t-esc="docs['total_parent']['date_order']"/>
-                                </div>
-                                <div style="position: center !important;">
                                     <h4>Congelados</h4>
-                                </div>
                             </div>
                             <br/>
                         </div>
