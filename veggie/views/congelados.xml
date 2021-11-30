@@ -26,10 +26,10 @@
                 <t t-if="docs['total_parent']['congelados']">
                     <div class="page">
                         <div class="row">
-                            <div class="col-6" >
+                            <div class="col-md-6 .ml-auto" >
                                     <span t-esc="docs['total_parent']['date_order']"/>
                             </div>
-                            <div class="col-6" >
+                            <div class="col-md-6 .ml-auto" >
                                     <h4>Congelados</h4>
                             </div>
                             <br/>
