@@ -25,13 +25,18 @@
             <t t-if="docs['total_parent'] != False">
                 <t t-if="docs['total_parent']['congelados']">
                     <div class="page">
-                       <!-- <div class="row">
-                            <div colspan="2" >
+                        <div class="row">
+                            <div class="col-6" >
                                     <span t-esc="docs['total_parent']['date_order']"/>
+                            </div>
+                            <div class="col-3" >
                                     <h4>Congelados</h4>
                             </div>
+                            <div class="col-3" >
+                                    <h4></h4>
+                            </div>
                             <br/>
-                        </div>-->
+                        </div>
                             <div style="border-color: black;
                             border-width: 1px;
                             border-style: solid;
