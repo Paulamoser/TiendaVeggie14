@@ -25,11 +25,11 @@
             <t t-if="docs['total_parent'] != False">
                 <t t-if="docs['total_parent']['congelados']">
                     <div class="page">
-                        <div class="row">
-                            <div class="col-lg-6" >
+                        <div class="row mt8 mb32">
+                            <div class="col-6" >
                                     <span t-esc="docs['total_parent']['date_order']"/>
                             </div>
-                            <div class="col-lg-6" >
+                            <div class="col-6" >
                                     <h4>Congelados</h4>
                             </div>
                             <br/>
