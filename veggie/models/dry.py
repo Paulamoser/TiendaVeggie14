@@ -192,7 +192,7 @@ class ReportStockPickingDry(models.AbstractModel):
                     date = {
                         'categoria':categoria,
                         'date_order': date_order,
-                        'cliente': line.partner_id.name,
+                        'cliente': line.partner_id.display_name,
                         'stock_name':stock_name,
                         'stock_name_cort':code_name,
                         'nombre_fant': line.partner_id.ref,
