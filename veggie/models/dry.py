@@ -61,7 +61,7 @@ class ReportStockPickingDry(models.AbstractModel):
 
                                 for sorted_produc in categoria_secos:
                                     sorted_produc['data'] = sorted(sorted_produc['data'],
-                                                                   key=lambda k: k['order_product'])
+                                                                   key=lambda k: k['product_name'])
 
                             else:
                                 _logger.debug('no tiene categoria este producto %s' % (

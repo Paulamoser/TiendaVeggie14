@@ -61,7 +61,7 @@ class ReportStockPickingRefrigerated(models.AbstractModel):
                                     categoria_refrigerados, key=lambda k: k['order_category'])
                                 for sorted_produc in categoria_refrigerados:
                                     sorted_produc['data'] = sorted(sorted_produc['data'],
-                                                                   key=lambda k: k['order_product'])
+                                                                   key=lambda k: k['product_name'])
 
                                 del line_data
                         except Exception as e:
