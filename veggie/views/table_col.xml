@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
    <data>
-
         <template id="roadmap_report_table_cols">
-
             <div class="d-flex flex-wrap" style="display: flex; -webkit-flex-wrap: wrap; -ms-flex-wrap:  wrap;  flex-wrap: wrap;align-content: flex-start; flex-direction: column;overflow: visible; padding-left:0px;">
                 <div t-foreach="total_users['congelados_piezas'][indice]" t-as="cogelados" style="font-size:20px !important; solid #000; "><!--min-width: 300px; -->
                     <!-- el que sigue es el div de categoria y sus productos-->
