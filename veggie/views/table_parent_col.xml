@@ -2,24 +2,24 @@
 <odoo>
    <data>
         <template id="roadmap_report_table_parent_cols">
-            <div class="d-flex flex-wrap" style="font-size:18px !important;  display: flex; -webkit-flex-wrap: wrap; -ms-flex-wrap:  wrap;  flex-wrap: wrap;align-content: flex-start; flex-direction: column;overflow: visible; padding-left:0px;min-width: 1000px;">
+            <div class="d-flex flex-wrap" style="display: flex; -webkit-flex-wrap: wrap; -ms-flex-wrap:  wrap;  flex-wrap: wrap;align-content: flex-start; flex-direction: column;overflow: visible; padding-left:0px;min-width: 1000px;">
                 <div  t-foreach="docs['total_parent']['piezas'][indice]" t-as="cogelados" style="font-size:20px !important; solid #000; ">
                     <!-- el que sigue es el div de categoria y sus productos-->
                         <div  class="col-sm-6" col="2" style="width:500px;border-right: 1px solid black; padding-left:0px;">
                                 <group>
                                 <div class="col" style="padding-left: 1px; padding-top:10px; padding-right:1px;nowrap; border-bottom:1px solid" witdh="90%">
-                                        <span t-esc="cogelados['categ']" style="font-size: 20px;font-weight:bold;"/>
-                                        <span style="font-size: 20px;  padding-left: 10px; font-weight:bold;" t-esc="cogelados['total_products']"/>
+                                        <span t-esc="cogelados['categ']" style="font-weight:bold;"/>
+                                        <span style=" padding-left: 10px; font-weight:bold;" t-esc="cogelados['total_products']"/>
                                 </div>
                                 </group>
                                 <group>
                                 <t t-foreach="cogelados['data']" t-as="products" >
                                 <!--recorro productos-->
                                     <div class="col" style="padding-left: 20px; padding-right:2px;">
-                                            <span style="font-size: 20px;" t-esc="products['product_name']"/>
+                                            <span t-esc="products['product_name']"/>
                                     <!--</div>-
                                     <div style="font-size:18px !important;padding-right:2px; text-align:right">-->
-                                            (<span style="font-size: 20px;" t-esc="products['quantity_product']"/>)
+                                            (<span  t-esc="products['quantity_product']"/>)
                                     </div>
                                 </t>
                                 </group>
