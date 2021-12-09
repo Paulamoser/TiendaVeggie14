@@ -50,7 +50,7 @@
                                 <field name="active"/>
                             </group>
                             <group name="domicilio">
-                                <label string="Domicilio" class="oe_edit_only"></label>
+                                <label for="direccion" string="Domicilio" class="oe_edit_only"></label>
                                 <field name="direccion" placeholder="Dirección"/>
                                 <field name="ciudad" placeholder="Ciudad"/>
                             </group>
