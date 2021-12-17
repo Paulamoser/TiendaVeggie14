@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="base.view_partner_form" />
             <field name="arch" type="xml">
                 <xpath expr="//div[@class='o_address_format']//field[@name='street2']" position="after">
-                    <field name="section" placeholder="Barrio"/>
+                    <field name="section" class="o_address_section" placeholder="Barrio"/>
                 </xpath>
                 <xpath expr="//sheet//group/group//field[@name='category_id']" position="after">
                     <field name="discharge_date"/>
