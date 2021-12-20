@@ -547,8 +547,8 @@ class AccountPaymentGroup(models.Model):
         for rec in self:
             lines = rec.move_line_ids.browse()
             # not sure why but self.move_line_ids dont work the same way
-            payment_lines = rec.payment_ids.mapped('move_line_ids')
-            #payment_lines = rec.payment_ids.mapped('invoice_line_ids')
+            #payment_lines = rec.payment_ids.mapped('move_line_ids')
+            payment_lines = rec.payment_ids.mapped('invoice_line_ids')
 
             reconciles = rec.env['account.partial.reconcile'].search([
                 ('credit_move_id', 'in', payment_lines.ids)])
@@ -560,8 +560,8 @@ class AccountPaymentGroup(models.Model):
 
             rec.matched_move_line_ids = lines - payment_lines
 
-    @api.depends('payment_ids.move_line_ids')
-    #@api.depends('payment_ids.invoice_line_ids')
+    # @api.depends('payment_ids.move_line_ids')
+    @api.depends('payment_ids.invoice_line_ids')
     def _compute_move_lines(self):
         for rec in self:
             rec.move_line_ids = rec.payment_ids.mapped('invoice_line_ids')
