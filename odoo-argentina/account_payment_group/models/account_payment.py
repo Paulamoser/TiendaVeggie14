@@ -11,10 +11,10 @@ _logger = logging.getLogger(__name__)
 class AccountPayment(models.Model):
     _inherit = "account.payment"
 
-    move_id = fields.Many2one(
-        comodel_name='account.move',
-        string='Journal Entry', required=True, readonly=False, ondelete='cascade',
-        check_company=True)
+   # move_id = fields.Many2one(
+   #     comodel_name='account.move',
+   #     string='Journal Entry', required=True, readonly=False, ondelete='cascade',
+   #     check_company=True)
 
     payment_group_id = fields.Many2one(
         'account.payment.group',
@@ -391,7 +391,7 @@ class AccountPayment(models.Model):
             payment.payment_group_id.post()
         return payment
 
-    @api.depends('invoice_line_ids', 'payment_type', 'partner_type', 'partner_id')
+    @api.depends('invoice_ids', 'payment_type', 'partner_type', 'partner_id')
     def _compute_destination_account_id(self):
         """
         If we are paying a payment gorup with paylines, we use account
