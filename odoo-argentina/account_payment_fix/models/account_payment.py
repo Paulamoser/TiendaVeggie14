@@ -261,11 +261,16 @@ class AccountPayment(models.Model):
         diferencias de cambio
         """
         if self.journal_id:
-            #
-            #if not self.reconciled_bill_ids:
-            #    self.move_id.journal_id = self.journal_id.id
-            #    self.move_id.name.replace('False', self.move_id.journal_id.code)
-            #    self.move_id._set_next_sequence()
+
+            if not self.reconciled_bill_ids:
+                self.move_id.journal_id = self.journal_id.id
+                self.move_id.name.replace('False', self.move_id.journal_id.code)
+                self.move_id._set_next_sequence()
+
+                moves= self.env['account.move'].search_count[('payment_id','=', 'self.payment_group_id')]
+                #    [('', '=', self.get_patient_barcode), ('state', 'in', ['open', 'paid'])])
+                #    account_move
+                _logger.info('payment_group_ids' + moves)
 
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
