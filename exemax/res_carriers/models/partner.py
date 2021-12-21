@@ -25,6 +25,8 @@ class ResPartner(models.Model):
         ('otra', 'Otra')],"Red social"
     )
     discharge_date = fields.Date(string="Fecha de alta")
+    responsable_discharge = fields.Selection([('csottile', 'csottile'),('cveron', 'cveron'),('fcaviglione', 'fcaviglione'),('yortiz', 'yortiz')], string="Responsable Alta de Cliente")
+    responsable_payments = fields.Selection([('yortiz', 'yortiz'),('cfunes', 'cfunes'),('jrolon', 'jrolon'),('apijuan', 'apijuan')], string="Responsable Cobranzas Cliente")
 
     carrier_id = fields.Many2one('res.carrier',  string="Expreso")
     qm_hour_from_eve = fields.Selection([

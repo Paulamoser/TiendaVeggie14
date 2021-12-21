@@ -1,6 +1,19 @@
 <odoo>
   <data>
 
+  <template
+        id="assets_backend"
+        name="veggie assets"
+        inherit_id="web.assets_backend"
+    >
+        <xpath expr="." position="inside">
+            <link
+                rel="stylesheet"
+                href="/veggie/static/src/css/style.css"
+            />
+        </xpath>
+    </template>
+
   <record model="ir.ui.view" id="stock_picking_veggie">
       <field name="name">stock.picking.form.veggie</field>
       <field name="model">stock.picking</field>

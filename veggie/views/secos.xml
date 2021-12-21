@@ -8,21 +8,17 @@
                <t t-if="docs['total_parent'] != False">
                   <t t-if="docs['total_parent']['secos']">
                      <div class="page">
-                         <div class="row">
-                            <div class="col-6" >
-                                <h3>SECOS</h3>
-                            </div>
-                            <div class="col-6" >
-                                <h4><span t-esc="docs['total_parent']['date_order']"/></h4>
-                            </div>
-                            <br/>
+                        <div class="container">
+                           <div style="float: left !important;">
+                              <h2 t-esc="docs['total_parent']['date_order']"/>
+                           </div>
+                           <div style="left: 35% !important; position: relative !important;">
+                              <h2>Secos  </h2>
+                           </div>
                         </div>
-
-                        <div style="border-color: black;
-                        border-width: 1px;
-                        border-style: solid;
-                        height: 50px;
-                        column-rule-style: solid;
+                        <br/>
+                        <div style="
+                        height: 100px;
                         padding-right: 0;padding-left: 0;"/>
                         <t t-set="cuantos" t-value="len(docs['total_parent']['piezas'])"/>
                         <t  t-foreach="range(cuantos)" t-as="indice">
@@ -37,12 +33,12 @@
                         </t>
                      </div>
                         <div class="footer">
-                       <div class="text-center" style="border-top: 1px black solid;">
+                       <div class="text-center" style="border-top: 1px black solid;">        
                             <div class="text-muted">
                                 Página: <span class="page"/> / <span class="topage"/>
                             </div>
                        </div>
-                      </div>
+                      </div>  
                      <p style="page-break-before:always;"> </p>
                   </t>
                </t>
@@ -64,17 +60,17 @@
                             <div class="col-3">
                                 <span style="font-size: 39px !important; font-weight:bolder;" t-esc="total_users['ruta']"/>
                                 <br>
-
-                                </br>
+                                    
+                                </br> 
                                 <span style="font-size:20px;" t-esc="total_users['date_order']"/>
                             </div>
                             <div class="col-3">
                                 <img style="position:relative; top:-15px;" t-att-src="total_users['qr_prueba']" alt="Qr code" width="250" height="270"/>
                             </div>
                         </div>
-                        <div style="border-color: black;
-                        border-width: 1px;
-                        border-style: solid;
+                        <div style="border-color: black;                 
+                        border-width: 1px;                          
+                        border-style: solid;                         
                         height: 50px;
                         column-rule-style: solid;
                         padding-right: 0;padding-left: 0;"/>
@@ -91,7 +87,7 @@
                         </t>
                     </div>
                     <div class="footer">
-                       <div class="text-center" style="border-top: 1px black solid;">
+                       <div class="text-center" style="border-top: 1px black solid;">        
                             <div class="text-muted">
                                 Página: <span class="page"/> / <span class="topage"/>
                             </div>
