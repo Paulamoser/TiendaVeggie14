@@ -12,6 +12,7 @@
                 <xpath expr="//sheet//group/group//field[@name='category_id']" position="after">
                     <field name="discharge_date"/>
                     <field name="responsable_discharge"/>
+                    <field name="responsable_payments"/>
                 </xpath>
                 <xpath expr="//notebook//page/field[@name='qm_hour_to']" position="after">
                     <separator/>
@@ -20,9 +21,6 @@
                     <strong>Hasta: </strong>
                     <field name="qm_hour_to_eve" />
                 </xpath>
-                <field name="user_id" position="after">
-                    <field name="responsable_payments"/>
-                </field>
                 <data>
                      <notebook>
                         <page string="Entrega" name="delivery">
