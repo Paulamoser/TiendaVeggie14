@@ -11,6 +11,7 @@
                 </xpath>
                 <xpath expr="//sheet//group/group//field[@name='category_id']" position="after">
                     <field name="discharge_date"/>
+                    <field name="responsable_discharge"/>
                 </xpath>
                 <xpath expr="//notebook//page/field[@name='qm_hour_to']" position="after">
                     <separator/>
