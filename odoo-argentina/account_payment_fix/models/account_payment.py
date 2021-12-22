@@ -268,9 +268,9 @@ class AccountPayment(models.Model):
                 self.move_id._set_next_sequence()
 
                 #moves= self.env['account.move'].search_count([('payment_id','=', str(self.payment_group_id))])
-                moves= self.env['account.move'].search([('state','=', 'draft')])
-                _logger.info('payment_group_ids:' + str(moves.id))
-                
+                moves= self.env['account.move'].search([('state','=', 'draft'),('payment_id', '>', '0')])
+                _logger.info('payment_group_ids:' + str(moves.id.payment_id))
+
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
             # Set default payment method
