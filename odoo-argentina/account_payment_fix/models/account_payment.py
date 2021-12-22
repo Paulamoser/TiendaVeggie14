@@ -267,7 +267,7 @@ class AccountPayment(models.Model):
                 self.move_id.name.replace('False', self.move_id.journal_id.code)
                 self.move_id._set_next_sequence()
 
-                recibo= self.env['account.payment.group'].search([('id', '=', self.payment_group_id._origin.id),('state','in','draft')])
+                recibo= self.env['account.payment.group'].search([('id', '=', self.payment_group_id._origin.id),('state','in',['draft'])])
                 countmove=0
                 for move in recibo.payment_ids:
                     countmove += 1
