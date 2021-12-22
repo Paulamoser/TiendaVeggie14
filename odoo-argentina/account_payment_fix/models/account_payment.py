@@ -267,7 +267,7 @@ class AccountPayment(models.Model):
                 self.move_id.name.replace('False', self.move_id.journal_id.code)
                 self.move_id._set_next_sequence()
 
-                moves= self.env['account.payment_group'].search([('_origin.id', '=', self.payment_group_id._origin.id)])
+                moves= self.env['account.payment.group'].search([('_origin.id', '=', self.payment_group_id._origin.id)])
                 countmove=0
                 for move in moves:
                     countmove += 1
