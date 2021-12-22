@@ -267,13 +267,15 @@ class AccountPayment(models.Model):
                 self.move_id.name.replace('False', self.move_id.journal_id.code)
                 self.move_id._set_next_sequence()
 
-                moves= self.env['account.payment'].search_count([('payment_id.payment_group_id', '=', self.payment_group_id._origin.id)])
+                moves= self.env['account.payment_group'].search([('_origin.id', '=', self.payment_group_id._origin.id)])
+                countmove=0
+                for move in moves:
+                    countmove += 1
                     #search_count([('journal_id.id','=', self.journal_id.id)])
                 #moves = self.env['account.move'].search_count(
                 #    [('payment_id.payment_group_id', '=', self.payment_group_id._origin.id)                    )
                 #moves= self.env['account.move'].search([('state','=', 'draft')])
-                _logger.info('payment_group_ids:' + str(self.journal_id.id))
-                _logger.info('payment_group_ids:' + str(moves))
+                _logger.info('payment_group_ids:' + str(countmove))
 
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
