@@ -269,7 +269,7 @@ class AccountPayment(models.Model):
 
                 moves= self.env['account.move'].search_count([('payment_id','=', str(self.payment_group_id))])                #    [('', '=', self.get_patient_barcode), ('state', 'in', ['open', 'paid'])])
                 #    account_move
-                _logger.info('payment_group_ids:' + str(moves))
+                _logger.info('payment_group_ids:' + str(self.payment_group_id))
 
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
