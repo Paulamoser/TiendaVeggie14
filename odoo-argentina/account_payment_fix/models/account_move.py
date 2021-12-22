@@ -1,12 +1,15 @@
-
 from odoo import models, api, fields, _
 from odoo.exceptions import ValidationError
+_logger = logging.getLogger(__name__)
 
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-@api.depends('payment_move_line_ids')
-def _compute_payment_groups(self):
-    for rec in self:
-        rec.payment_group_ids = rec.payment_move_line_ids.mapped(
-            'payment_id.payment_group_id')
+
+    def action_post(self):
+        _logger.info('antes post')
+        res = super(AccountMove, self).action_post()
+        _logger.info('despues post')
+        self.pay_now()
+        _logger.info('despues pay ')
+        return res
