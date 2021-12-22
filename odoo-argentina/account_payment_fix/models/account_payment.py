@@ -269,7 +269,7 @@ class AccountPayment(models.Model):
 
                 recibo= self.env['account.payment.group'].search([('id', '=', self.payment_group_id._origin.id),('state','in',['draft'])])
                 countmove=0
-                for move in recibo.payment_ids:
+                for move in recibo.to_pay_move_line_ids:
                     countmove += 1
                     #search_count([('journal_id.id','=', self.journal_id.id)])
                 #moves = self.env['account.move'].search_count(
