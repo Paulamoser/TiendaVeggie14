@@ -267,10 +267,10 @@ class AccountPayment(models.Model):
                 self.move_id.name.replace('False', self.move_id.journal_id.code)
                 self.move_id._set_next_sequence()
 
-                moves= self.env['account.move'].search_count([('payment_id','=', str(self.payment_group_id))])                #    [('', '=', self.get_patient_barcode), ('state', 'in', ['open', 'paid'])])
-                #    account_move
-                _logger.info('payment_group_ids:' + str(self.payment_group_id))
-
+                #moves= self.env['account.move'].search_count([('payment_id','=', str(self.payment_group_id))])
+                moves= self.env['account.move'].search([('state','=', 'draft')])
+                _logger.info('payment_group_ids:' + str(moves.id))
+                
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
             # Set default payment method
