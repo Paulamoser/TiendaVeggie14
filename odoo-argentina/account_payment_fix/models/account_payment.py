@@ -266,12 +266,13 @@ class AccountPayment(models.Model):
                 self.move_id.journal_id = self.journal_id.id
                 self.move_id.name.replace('False', self.move_id.journal_id.code)
                 self.move_id._set_next_sequence()
+                recibo = self.env['account.payment.group'].search(
+                [('id', '=', self.payment_group_id._origin.id)])
+                cuantos=0
+                for linea in recibo.payments_ids:
+                    cuantos +=1
 
-            moves = self.env['account.move'].search_count(
-                [('payment_id.payment_group_id', '=', self.payment_group_id._origin.id),
-                 ('journal_id', '=', self.journal_id.id)])
-
-            _logger.info('payment_group_ids:' + str(moves))
+            _logger.info('payment_group_ids:' + str(cuantos))
 
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
@@ -324,20 +325,4 @@ class AccountPayment(models.Model):
                     partner.property_account_payable_id.id)
         return res
 
-    def _prepare_payment_moves(self):
-        _logger.info('journal antes:' + str(self.move_id.name))
-        res = super(AccountPayment, self)._prepare_payment_moves()
-        for i,rec in enumerate(self):
-            _logger.info('journal despues:' + str(self.move_id.name))
-            if rec.currency_id.id != rec.company_id.currency_id.id and rec.payment_type == 'inbound':
-                amount_debit = res[i]['line_ids'][0][2]['debit']
-                amount_credit = res[i]['line_ids'][0][2]['credit']
-                if amount_credit > 0 and rec.signed_amount_company_currency != amount_credit:
-                    #raise ValidationError('estamos aca %s %s'%(amount_credit,res[0]['line_ids'][0][2]))
-                    res[i]['line_ids'][0][2]['credit'] = rec.signed_amount_company_currency
-                amount_debit = res[i]['line_ids'][1][2]['debit']
-                amount_credit = res[i]['line_ids'][1][2]['credit']
-                if amount_debit > 0 and rec.signed_amount_company_currency != amount_debit:
-                    #raise ValidationError('estamos aca %s %s'%(amount_credit,res[0]['line_ids'][0][2]))
-                    res[i]['line_ids'][1][2]['debit'] = rec.signed_amount_company_currency
-        return res
+
