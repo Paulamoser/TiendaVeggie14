@@ -271,7 +271,7 @@ class AccountPayment(models.Model):
                 cuantos=0
                 for linea in recibo.payment_ids:
                     cuantos +=1
-                sql="SELECT count(*) FROM account_payment where payment_group_id=" + str(self.payment_group_id.id)
+                sql="SELECT count(*) FROM account_payment where payment_group_id=" + str(self.payment_group_id._origin.id)
                 self._cr.execute(sql)
                 cuantos_sql = self._cr.fetchone()
 
