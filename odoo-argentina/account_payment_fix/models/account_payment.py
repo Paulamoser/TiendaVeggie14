@@ -327,7 +327,10 @@ class AccountPayment(models.Model):
     def action_post(self):
         _logger.info('post')
         for rec in self:
-            rec.name=''
-            rec.move_id.name=''
+            if rec.journal_id:
+                if not rec.reconciled_bill_ids:
+                    rec.move_id.journal_id = self.journal_id.id
+                    rec.move_id.name.replace('False', self.move_id.journal_id.code)
+                    rec.move_id._set_next_sequence()
         vals = super(AccountPayment, self).action_post
         _logger.info('post2')
