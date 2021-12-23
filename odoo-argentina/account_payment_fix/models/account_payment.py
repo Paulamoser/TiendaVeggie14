@@ -266,13 +266,12 @@ class AccountPayment(models.Model):
                 self.move_id.journal_id = self.journal_id.id
                 self.move_id.name.replace('False', self.move_id.journal_id.code)
                 self.move_id._set_next_sequence()
-                recibo = self.env['account.payment.group'].search(
-                [('id', '=', self.payment_group_id._origin.id)])
+
                 cuantos=0
-                for linea in recibo.payment_ids:
+                for linea in self.payment_group_id._origin.payment_ids:
                     cuantos +=1
 
-                _logger.info('payment_group_ids:' + str(cuantos))
+                _logger.info('lineas :' + str(cuantos))
 
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
