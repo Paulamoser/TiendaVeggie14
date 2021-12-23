@@ -262,16 +262,11 @@ class AccountPayment(models.Model):
         """
         if self.journal_id:
 
-            if not self.reconciled_bill_ids:
-                self.move_id.journal_id = self.journal_id.id
-                self.move_id.name.replace('False', self.move_id.journal_id.code)
-                self.move_id._set_next_sequence()
-
-                cuantos=0
-                for linea in self.payment_group_id._origin.payment_ids:
-                    cuantos +=1
-
-                _logger.info('lineas :' + str(cuantos))
+            #la numeración la dejo para cuando hace la valicadión 
+            #if not self.reconciled_bill_ids:
+            #    self.move_id.journal_id = self.journal_id.id
+            #    self.move_id.name.replace('False', self.move_id.journal_id.code)
+            #    self.move_id._set_next_sequence()
 
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
@@ -325,12 +320,11 @@ class AccountPayment(models.Model):
         return res
 
     def action_post(self):
-        _logger.info('post')
         for rec in self:
             if rec.journal_id:
                 if not rec.reconciled_bill_ids:
                     rec.move_id.journal_id = rec.journal_id.id
                     rec.move_id.name.replace('False', rec.move_id.journal_id.code)
                     rec.move_id._set_next_sequence()
+                    rec.name=rec.move_id.name
         vals = super(AccountPayment, self).action_post
-        _logger.info('post2')
