@@ -327,8 +327,7 @@ class AccountPayment(models.Model):
     def action_post(self):
         _logger.info('post')
         for rec in self:
-            if rec.payment_ids:
-                for payment in rec.payment_ids:
-                    payment.name=''
+            rec.name=''
+            rec.move_id.name=''
         vals = super(AccountPayment, self).action_post
         _logger.info('post2')
