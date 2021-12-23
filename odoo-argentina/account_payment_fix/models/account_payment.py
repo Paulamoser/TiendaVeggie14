@@ -325,8 +325,10 @@ class AccountPayment(models.Model):
         return res
 
     def post(self):
+        _logger.info('post')
         for rec in self:
             if rec.payment_ids:
                 for payment in rec.payment_ids:
                     payment.name=''
         vals = super(AccountPayment, self).post
+        _logger.info('post2')
