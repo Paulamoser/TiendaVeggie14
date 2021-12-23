@@ -324,11 +324,11 @@ class AccountPayment(models.Model):
                     partner.property_account_payable_id.id)
         return res
 
-    def confirm(self):
+    def action_post(self):
         _logger.info('post')
         for rec in self:
             if rec.payment_ids:
                 for payment in rec.payment_ids:
                     payment.name=''
-        vals = super(AccountPayment, self).post
+        vals = super(AccountPayment, self).action_post
         _logger.info('post2')
