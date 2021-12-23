@@ -269,7 +269,7 @@ class AccountPayment(models.Model):
                 recibo = self.env['account.payment.group'].search(
                 [('id', '=', self.payment_group_id._origin.id)])
                 cuantos=0
-                for linea in recibo.payments_ids:
+                for linea in recibo.payment_ids:
                     cuantos +=1
 
             _logger.info('payment_group_ids:' + str(cuantos))
