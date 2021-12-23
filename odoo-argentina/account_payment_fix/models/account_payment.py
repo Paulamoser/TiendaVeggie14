@@ -324,7 +324,7 @@ class AccountPayment(models.Model):
                     partner.property_account_payable_id.id)
         return res
 
-    def post(self):
+    def confirm(self):
         _logger.info('post')
         for rec in self:
             if rec.payment_ids:
