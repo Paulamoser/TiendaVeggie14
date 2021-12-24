@@ -323,8 +323,10 @@ class AccountPayment(models.Model):
         for rec in self:
             if rec.journal_id:
                 if not rec.reconciled_bill_ids:
+                    rec.move_id.journal_id = rec.journal_id.id
                     rec.move_id._set_next_sequence()
                     rec.name=rec.move_id.name
                     rec.move_id.action_post()
             super(AccountPayment, rec).action_post()
+
     #tendria que pedir el último y comparar, si es igual hago set_next y asi solo reemplazaria duplicaod
