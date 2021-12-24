@@ -262,11 +262,11 @@ class AccountPayment(models.Model):
         """
         if self.journal_id:
 
-            #Esta numeración es incorrecta y la rehago en el post, la dejo porque visualmente queda feo un FALSE en el name
+            #La numeración se recrea en la validación ya que puede ser erronea si hay mas de una fila por journla
             if not self.reconciled_bill_ids:
                 self.move_id.journal_id = self.journal_id.id
                 self.move_id.name.replace('False', self.move_id.journal_id.code)
-                self.move_id._set_next_sequence()
+                #self.move_id._set_next_sequence()
 
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
@@ -326,6 +326,5 @@ class AccountPayment(models.Model):
                     rec.move_id._set_next_sequence()
                     rec.name=rec.move_id.name
                     rec.move_id.action_post()
-            super(AccountPayment, rec).action_post
-       # super(AccountPayment, self).action_post
+            super(AccountPayment, rec).action_post()
 
