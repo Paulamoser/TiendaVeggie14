@@ -323,8 +323,7 @@ class AccountPayment(models.Model):
         for rec in self:
             if rec.journal_id:
                 if not rec.reconciled_bill_ids:
-                    #rec.move_id.journal_id = rec.journal_id.id
-                    #rec.move_id.name.replace('False', rec.move_id.journal_id.code)
                     rec.move_id._set_next_sequence()
                     rec.name=rec.move_id.name
-        vals = super(AccountPayment, self).action_post
+        super(AccountPayment, rec).action_post
+
