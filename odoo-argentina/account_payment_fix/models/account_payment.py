@@ -266,8 +266,11 @@ class AccountPayment(models.Model):
             if not self.reconciled_bill_ids:
                 self.move_id.journal_id = self.journal_id.id
                 _logger.info('move name 1:' + (self.move_id.name))
+                _logger.info(' name 1:' + (self.move_id.name))
+                self.name.replace('False', self.move_id.journal_id.code)
                 self.move_id.name.replace('False', self.move_id.journal_id.code)
                 _logger.info('move name 2:' + (self.move_id.name))
+                _logger.info(' name 2:' + (self.move_id.name))
                 self.move_id._set_next_sequence()
                 _logger.info('move name 3:' + (self.move_id.name))
                 self.name =self.move_id.name
