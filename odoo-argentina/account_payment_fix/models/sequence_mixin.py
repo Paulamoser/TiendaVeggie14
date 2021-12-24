@@ -6,14 +6,14 @@ _logger = logging.getLogger(__name__)
 class SequenceMixin(models.AbstractModel):
     _inherit = 'sequence.mixin'
 
-    def _get_last_sequence(self):
+    def _get_sequence_temp(self):
         """get the las  sequence.
         """
         self.ensure_one()
-        last_sequence = self._get_last_sequence_temp()
+        last_sequence = self._get_last_sequence()
         new = not last_sequence
         if new:
-            last_sequence = self._get_last_sequence_temp(relaxed=True) or self._get_starting_sequence()
+            last_sequence = self._get_last_sequencep(relaxed=True) or self._get_starting_sequence()
 
         format, format_values = self._get_sequence_format_param(last_sequence)
         if new:
