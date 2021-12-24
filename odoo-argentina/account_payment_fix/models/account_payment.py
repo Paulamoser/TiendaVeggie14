@@ -327,3 +327,4 @@ class AccountPayment(models.Model):
                     rec.name=rec.move_id.name
                     rec.move_id.action_post()
             super(AccountPayment, rec).action_post()
+    #tendria que pedir el último y comparar, si es igual hago set_next y asi solo reemplazaria duplicaod
