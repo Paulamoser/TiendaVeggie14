@@ -325,6 +325,7 @@ class AccountPayment(models.Model):
                 if not rec.reconciled_bill_ids:
                     rec.move_id._set_next_sequence()
                     rec.name=rec.move_id.name
+                    rec.move_id.action_post()
             super(AccountPayment, rec).action_post
        # super(AccountPayment, self).action_post
 
