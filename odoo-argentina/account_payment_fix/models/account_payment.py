@@ -265,8 +265,9 @@ class AccountPayment(models.Model):
             #La numeración se recrea en la validación ya que puede ser erronea si hay mas de una fila por journla
             if not self.reconciled_bill_ids:
                 self.move_id.journal_id = self.journal_id.id
-                self.move_id.name.replace('False', self.move_id.journal_id.code)
-                #self.move_id._set_next_sequence()
+                self.move_id._compute_name()
+             #   self.move_id.name.replace('False', self.move_id.journal_id.code)
+             #   self.move_id._set_next_sequence()
 
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
