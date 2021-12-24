@@ -267,8 +267,8 @@ class AccountPayment(models.Model):
                 self.move_id.journal_id = self.journal_id.id
                 _logger.info('move name 1:' + (self.move_id.name))
                 _logger.info(' name 1:' + (self.move_id.name))
-                self.name.replace('False', self.move_id.journal_id.code)
-                self.move_id.name.replace('False', self.move_id.journal_id.code)
+                self.name.replace('False', self.journal_id.code)
+                #self.move_id.name.replace('False', self.move_id.journal_id.code)
                 _logger.info('move name 2:' + (self.move_id.name))
                 _logger.info(' name 2:' + (self.move_id.name))
                 self.move_id._set_next_sequence()
