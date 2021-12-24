@@ -266,7 +266,7 @@ class AccountPayment(models.Model):
             if not self.reconciled_bill_ids:
                 self.move_id.journal_id = self.journal_id.id
                 self.move_id.name.replace('False', self.move_id.journal_id.code)
-                self.move_id._get_sequence_temp()
+                self.move_id._set_next_sequence()
 
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
@@ -327,4 +327,3 @@ class AccountPayment(models.Model):
                     rec.name=rec.move_id.name
                     rec.move_id.action_post()
             super(AccountPayment, rec).action_post()
-
