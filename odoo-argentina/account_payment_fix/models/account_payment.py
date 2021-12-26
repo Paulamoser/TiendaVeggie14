@@ -266,8 +266,7 @@ class AccountPayment(models.Model):
             if not self.reconciled_bill_ids:
                 self.move_id.journal_id = self.journal_id.id
                 self.name.replace('False', self.journal_id.code)
-#                self.move_id._set_next_sequence()
-                self.move_id._get_last_sequence()
+                self.move_id._set_next_sequence()
                 self.name =self.move_id.name
 
 
@@ -338,7 +337,7 @@ class AccountPayment(models.Model):
                     _logger.info('nro move :' + str(nro_move))
                     last_secuence_number= int(last_sequence[-4:])
                     _logger.info('las seq nro :' + str(last_secuence_number))
-                    if last_secuence_number> nro_move:
+                    if last_secuence_number>= nro_move:
                         rec.move_id._set_next_sequence()
                         _logger.info('nuevo :' + rec.move_id.name)
                     rec.name=rec.move_id.name
