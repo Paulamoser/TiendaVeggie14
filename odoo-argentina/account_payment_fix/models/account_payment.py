@@ -324,6 +324,7 @@ class AccountPayment(models.Model):
     def action_post(self):
         #rehago la numeración acá porque get_last_secuence trae el último grabado y siempre trae el mismo si hay mas de un
         #movimiento para un journal
+        self.ensure_one()
         for rec in self:
             if rec.journal_id:
                 if not rec.reconciled_bill_ids:
@@ -333,8 +334,6 @@ class AccountPayment(models.Model):
                     new = not last_sequence
                     if new:
                         rec.move_id._set_next_sequence()
-                        _logger.info('new secuence' + str(rec.move_id.journal_id))
-                        _logger.info('new secuence' + str(rec.move_id.name))
                     else:
                         nro_move=int(rec.move_id.name[-4:])
                         last_secuence_number= int(last_sequence[-4:])
