@@ -332,8 +332,9 @@ class AccountPayment(models.Model):
                     _logger.info('last secuence' + str(last_sequence))
                     new = not last_sequence
                     if new:
-                        last_sequence = rec.move_id._set_next_sequence()
-                        _logger.info('new secuence' + str(last_sequence))
+                        rec.move_id._set_next_sequence()
+                        _logger.info('new secuence' + str(rec.move_id.journal_id))
+                        _logger.info('new secuence' + str(rec.move_id.name))
                     else:
                         nro_move=int(rec.move_id.name[-4:])
                         last_secuence_number= int(last_sequence[-4:])
