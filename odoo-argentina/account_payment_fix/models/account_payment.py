@@ -332,14 +332,9 @@ class AccountPayment(models.Model):
                     new = not last_sequence
                     if new:
                         last_sequence = rec.move_id._get_last_sequence(relaxed=True) or self.move_id._get_starting_sequence()
-                    _logger.info('ultima seq :' + str(last_sequence))
                     nro_move=int(rec.move_id.name[-4:])
-                    _logger.info('nro move :' + str(nro_move))
                     last_secuence_number= int(last_sequence[-4:])
-                    _logger.info('las seq nro :' + str(last_secuence_number))
                     if last_secuence_number>= nro_move:
                         rec.move_id._set_next_sequence()
-                        _logger.info('nuevo :' + rec.move_id.name)
                     rec.name=rec.move_id.name
-                    #rec.move_id.action_post()
             super(AccountPayment, rec).action_post()
