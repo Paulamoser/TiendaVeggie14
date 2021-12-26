@@ -267,12 +267,6 @@ class AccountPayment(models.Model):
                 self.move_id.journal_id = self.journal_id.id
                 self.name.replace('False', self.journal_id.code)
                 #self.move_id.name.replace('False', self.move_id.journal_id.code)
-
-                last_sequence = self.move_id._get_last_sequence()
-                new = not last_sequence
-                if new:
-                    last_sequence = self.move_id._get_last_sequence(relaxed=True) or self.move_id._get_starting_sequence()
-                _logger.info('ultima seq :' + str(last_sequence))
                 self.move_id._set_next_sequence()
                 self.name =self.move_id.name
 
@@ -329,11 +323,23 @@ class AccountPayment(models.Model):
         return res
 
     def action_post(self):
+        #rehago la numeración acá porque get_last_secuence trae el último grabado y siempre trae el mismo si hay mas de un
+        #movimiento para un journal
         for rec in self:
             if rec.journal_id:
                 if not rec.reconciled_bill_ids:
                     rec.move_id.journal_id = rec.journal_id.id
-                    rec.move_id._set_next_sequence()
+                    last_sequence = rec.move_id._get_last_sequence()
+                    new = not last_sequence
+                    if new:
+                        last_sequence = rec.move_id._get_last_sequence(relaxed=True) or self.move_id._get_starting_sequence()
+                    _logger.info('ultima seq :' + str(last_sequence))
+                    nro_move=int(rec.move_id.name[-4:])
+                    _logger.info('nro move :' + str(nro_move))
+                    last_secuence_number= int(last_sequence[-4:])
+                    _logger.info('las seq nro :' + str(last_secuence_number))
+                    if last_secuence_number>= nro_move:
+                        rec.move_id._set_next_sequence()
                     rec.name=rec.move_id.name
                     rec.move_id.action_post()
             super(AccountPayment, rec).action_post()
