@@ -265,14 +265,15 @@ class AccountPayment(models.Model):
             #La numeración se recrea en la validación ya que puede ser erronea si hay mas de una fila por journla
             if not self.reconciled_bill_ids:
                 self.move_id.journal_id = self.journal_id.id
-                _logger.info('move name 1:' + (self.move_id.name))
-                _logger.info(' name 1:' + (self.move_id.name))
                 self.name.replace('False', self.journal_id.code)
                 #self.move_id.name.replace('False', self.move_id.journal_id.code)
-                _logger.info('move name 2:' + (self.move_id.name))
-                _logger.info(' name 2:' + (self.move_id.name))
+
+                last_sequence = self._get_last_sequence()
+                new = not last_sequence
+                if new:
+                    last_sequence = self._get_last_sequence(relaxed=True) or self._get_starting_sequence()
+                _logger.info('ultima seq :' + str(last_sequence))
                 self.move_id._set_next_sequence()
-                _logger.info('move name 3:' + (self.move_id.name))
                 self.name =self.move_id.name
 
 
