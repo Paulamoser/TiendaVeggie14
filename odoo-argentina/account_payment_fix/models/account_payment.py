@@ -331,7 +331,7 @@ class AccountPayment(models.Model):
                     last_sequence = rec.move_id._get_last_sequence()
                     new = not last_sequence
                     if new:
-                        last_sequence = rec.move_id._get_last_sequence(relaxed=True) or self.move_id._get_starting_sequence()
+                        last_sequence = rec.move_id._get_last_sequence(relaxed=True) or rec.move_id._get_starting_sequence()
                     nro_move=int(rec.move_id.name[-4:])
                     last_secuence_number= int(last_sequence[-4:])
                     if last_secuence_number>= nro_move:
