@@ -266,8 +266,8 @@ class AccountPayment(models.Model):
             if not self.reconciled_bill_ids:
                 self.move_id.journal_id = self.journal_id.id
                 self.name.replace('False', self.journal_id.code)
-                #self.move_id.name.replace('False', self.move_id.journal_id.code)
-                self.move_id._set_next_sequence()
+#                self.move_id._set_next_sequence()
+                self.move_id_get_last_sequence
                 self.name =self.move_id.name
 
 
