@@ -340,8 +340,9 @@ class AccountPayment(models.Model):
                     _logger.info('las seq nro :' + str(last_secuence_number))
                     if last_secuence_number>= nro_move:
                         rec.move_id._set_next_sequence()
+                        _logger.info('nuevo :' + rec.move_id.name)
                     rec.name=rec.move_id.name
-                    rec.move_id.action_post()
+                    #rec.move_id.action_post()
             super(AccountPayment, rec).action_post()
 
     #tendria que pedir el último y comparar, si es igual hago set_next y asi solo reemplazaria duplicaod
