@@ -268,10 +268,10 @@ class AccountPayment(models.Model):
                 self.name.replace('False', self.journal_id.code)
                 #self.move_id.name.replace('False', self.move_id.journal_id.code)
 
-                last_sequence = self._get_last_sequence()
+                last_sequence = self.move_id._get_last_sequence()
                 new = not last_sequence
                 if new:
-                    last_sequence = self._get_last_sequence(relaxed=True) or self._get_starting_sequence()
+                    last_sequence = self.move_id._get_last_sequence(relaxed=True) or self.move_id._get_starting_sequence()
                 _logger.info('ultima seq :' + str(last_sequence))
                 self.move_id._set_next_sequence()
                 self.name =self.move_id.name
