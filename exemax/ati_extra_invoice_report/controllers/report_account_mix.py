@@ -29,7 +29,6 @@ class SaleExcelReportController(http.Controller):
         title_style = workbook.add_format({'font_name': 'Times', 'font_size': 14, 'bold': True, 'align': 'center','bg_color': 'yellow', 'left': 1, 'bottom':1, 'right':1, 'top':1})
         header_style = workbook.add_format({'font_name': 'Times', 'bold': True, 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'center'})
         text_style = workbook.add_format({'font_name': 'Times', 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'left'})
-        text_product = workbook.add_format({'font_name': 'Times', 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'right'})
         number_style = workbook.add_format({'font_name': 'Times', 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'right'})
         date_style = workbook.add_format({'num_format': 'dd/mm/yy','font_name': 'Times', 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'right'})
         currency_style = workbook.add_format({'num_format':'$#,##0.00','font_name': 'Times', 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'right'})
@@ -129,13 +128,13 @@ class SaleExcelReportController(http.Controller):
                 sheet.write(row, 6, line.quantity, number_style)
 
                 # Definicion de producto
-                sheet.write(row, 7, line.product_id.type, number_style)
-                sheet.write(row, 8, line.product_id.name, text_product)
+                sheet.write(row, 7, line.product_id.type, text_style)
+                sheet.write(row, 8, line.product_id.name, text_style)
                 #Se buscan los datos necesarios para formarl el External ID de product.template
                 model_data = request.env['ir.model.data'].search(([('model', '=', 'product.template'),('res_id','=',line.product_id.product_tmpl_id.id)]), limit=1)
                 sheet.write(row, 9, "%s.%s" % (model_data.module, model_data.name), text_style)
-                sheet.write(row, 10, line.product_id.uom_id.name, number_style)
-                sheet.write(row, 11, invoice.name, text_style)# Reemplazar con proveedor / marca
+                sheet.write(row, 10, line.product_id.uom_id.name, text_style)
+                sheet.write(row, 11, line.product_id.product_brand_id.name, text_style)# Reemplazar con proveedor / marca
 
                 # Definicion del cliente
                 sheet.write(row, 12, invoice.partner_id.name, text_style)
