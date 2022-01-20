@@ -81,7 +81,7 @@ class SaleExcelReportController(http.Controller):
         sheet.write(1, 5, 'Precio unitario', header_style)
         sheet.write(1, 6, 'Cantidad', header_style)
         sheet.write(1, 7, 'Tipo', header_style)
-        sheet.write(1, 8, 'Producto', text_product)
+        sheet.write(1, 8, 'Producto', header_style)
         sheet.write(1, 9, 'ID Producto', header_style)
         sheet.write(1, 10, 'Presentacion producto', header_style)
         sheet.write(1, 11, 'Proveedor', header_style)
@@ -130,7 +130,7 @@ class SaleExcelReportController(http.Controller):
 
                 # Definicion de producto
                 sheet.write(row, 7, line.product_id.type, number_style)
-                sheet.write(row, 8, line.product_id.name, number_style)
+                sheet.write(row, 8, line.product_id.name, text_product)
                 #Se buscan los datos necesarios para formarl el External ID de product.template
                 model_data = request.env['ir.model.data'].search(([('model', '=', 'product.template'),('res_id','=',line.product_id.product_tmpl_id.id)]), limit=1)
                 sheet.write(row, 9, "%s.%s" % (model_data.module, model_data.name), text_style)
