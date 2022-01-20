@@ -57,9 +57,15 @@ class SaleExcelReportController(http.Controller):
         sheet.set_column('K:K', 21)
         sheet.set_column('L:L', 16)
         sheet.set_column('M:M', 19)
-        sheet.set_column('N:V', 15)
+        sheet.set_column('N:Q', 15)
+        sheet.set_column('R:R', 40)
+        sheet.set_column('S:S', 10)
+        sheet.set_column('T:T', 25)
         sheet.set_column('W:W', 25)
-        sheet.set_column('X:AG', 15)
+        sheet.set_column('X:AD', 15)
+        sheet.set_column('AE:AE', 40)
+        sheet.set_column('AF:AF', 20)
+        sheet.set_column('AG:AG', 25)
 
         # Titulos de reporte
         sheet.merge_range('A1:G1', 'Documento de venta', title_style)
@@ -75,7 +81,7 @@ class SaleExcelReportController(http.Controller):
         sheet.write(1, 5, 'Precio unitario', header_style)
         sheet.write(1, 6, 'Cantidad', header_style)
         sheet.write(1, 7, 'Tipo', header_style)
-        sheet.write(1, 8, 'Producto', header_style)
+        sheet.write(1, 8, 'Producto', text_product)
         sheet.write(1, 9, 'ID Producto', header_style)
         sheet.write(1, 10, 'Presentacion producto', header_style)
         sheet.write(1, 11, 'Proveedor', header_style)
@@ -136,7 +142,7 @@ class SaleExcelReportController(http.Controller):
                 model_data = request.env['ir.model.data'].search(([('model', '=', 'res.partner'),('res_id','=',invoice.partner_id.id)]), limit=1)
                 sheet.write(row, 13, "%s.%s" % (model_data.module, model_data.name), text_style)
                 sheet.write(row, 14, invoice.partner_id.comment, text_style)
-                sheet.write(row, 15, invoice.partner_id.create_date, date_style)
+                sheet.write(row, 15, invoice.partner_id.discharge_date, date_style)
                 sheet.write(row, 16, invoice.partner_id.internal_reference, text_style) #Nombre Fantasia
                 sheet.write(row, 17, invoice.partner_id.street, text_style)
                 sheet.write(row, 18, invoice.partner_id.zip, text_style)
@@ -153,7 +159,7 @@ class SaleExcelReportController(http.Controller):
                 sheet.write(row, 29, invoice.partner_id.phone, text_style)
                 sheet.write(row, 30, invoice.partner_id.email, text_style)
                 sheet.write(row, 31, invoice.partner_id.net_captor, text_style) #Red Social
-                sheet.write(row, 32, invoice.partner_id.ref, text_style) #Red Social
+                sheet.write(row, 32, invoice.partner_id.ref, text_style) #Nombre de Contacto
  
                 row += 1
                 number += 1
