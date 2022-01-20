@@ -29,6 +29,7 @@ class SaleExcelReportController(http.Controller):
         title_style = workbook.add_format({'font_name': 'Times', 'font_size': 14, 'bold': True, 'align': 'center','bg_color': 'yellow', 'left': 1, 'bottom':1, 'right':1, 'top':1})
         header_style = workbook.add_format({'font_name': 'Times', 'bold': True, 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'center'})
         text_style = workbook.add_format({'font_name': 'Times', 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'left'})
+        text_product = workbook.add_format({'font_name': 'Times', 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'right'})
         number_style = workbook.add_format({'font_name': 'Times', 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'right'})
         date_style = workbook.add_format({'num_format': 'dd/mm/yy','font_name': 'Times', 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'right'})
         currency_style = workbook.add_format({'num_format':'$#,##0.00','font_name': 'Times', 'left': 1, 'bottom':1, 'right':1, 'top':1, 'align': 'right'})
@@ -51,7 +52,7 @@ class SaleExcelReportController(http.Controller):
         sheet.set_column('F:F', 15)
         sheet.set_column('G:G', 10)
         sheet.set_column('H:H', 12)
-        sheet.set_column('I:I', 20)
+        sheet.set_column('I:I', 50)
         sheet.set_column('J:J', 15)
         sheet.set_column('K:K', 21)
         sheet.set_column('L:L', 16)
@@ -136,8 +137,7 @@ class SaleExcelReportController(http.Controller):
                 sheet.write(row, 13, "%s.%s" % (model_data.module, model_data.name), text_style)
                 sheet.write(row, 14, invoice.partner_id.comment, text_style)
                 sheet.write(row, 15, invoice.partner_id.create_date, date_style)
-                #sheet.write(row, 16, invoice.partner_id.internal_reference, text_style) #Nombre Fantasia
-                sheet.write(row, 16, invoice.partner_id.name, text_style)
+                sheet.write(row, 16, invoice.partner_id.internal_reference, text_style) #Nombre Fantasia
                 sheet.write(row, 17, invoice.partner_id.street, text_style)
                 sheet.write(row, 18, invoice.partner_id.zip, text_style)
                 sheet.write(row, 19, invoice.partner_id.city, text_style)
@@ -146,16 +146,13 @@ class SaleExcelReportController(http.Controller):
                 sheet.write(row, 22, invoice.partner_id.l10n_ar_afip_responsibility_type_id.name, text_style)
                 sheet.write(row, 23, invoice.partner_id.property_payment_term_id.name, text_style) #Forma de pago
                 sheet.write(row, 24, invoice.partner_id.team_id.name, text_style)
-                #sheet.write(row, 25, invoice.partner_id.delivery_day, text_style) #Dia Entrega
-                sheet.write(row, 25, invoice.partner_id.name, text_style) #Dia Entrega
-                #sheet.write(row, 26, invoice.partner_id.carrier_id.name, text_style) #Expreso
-                sheet.write(row, 26, invoice.partner_id.name, text_style) #Expreso
+                sheet.write(row, 25, invoice.partner_id.delivery_day, text_style) #Dia Entrega
+                sheet.write(row, 26, invoice.partner_id.carrier_id.name, text_style) #Expreso
                 sheet.write(row, 27, invoice.partner_id.property_product_pricelist.name, text_style)
                 sheet.write(row, 28, invoice.partner_id.mobile, text_style)
                 sheet.write(row, 29, invoice.partner_id.phone, text_style)
                 sheet.write(row, 30, invoice.partner_id.email, text_style)
-                #sheet.write(row, 31, invoice.partner_id.net_captor, text_style) #Red Social
-                sheet.write(row, 31, invoice.partner_id.name, text_style) #Red Social
+                sheet.write(row, 31, invoice.partner_id.net_captor, text_style) #Red Social
                 sheet.write(row, 32, invoice.partner_id.ref, text_style) #Red Social
  
                 row += 1
