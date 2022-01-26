@@ -2,7 +2,6 @@
 <odoo>
 <data>
 <template id="report_fe_invoice_document">
-
         <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
         <!-- Multicompany -->
         <t t-if="not o and doc">
