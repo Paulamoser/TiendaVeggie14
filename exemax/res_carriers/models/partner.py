@@ -24,6 +24,7 @@ class ResPartner(models.Model):
         ('twiter', 'Twiter'),
         ('otra', 'Otra')],"Red social"
     )
+    net_name = fields.Char('Nombre de Usuario', help="Nombre del usuario en la red social")
     discharge_date = fields.Date(string="Fecha de alta")
     responsable_discharge = fields.Selection([('csottile', 'csottile'),('cveron', 'cveron'),('fcaviglione', 'fcaviglione'),('yortiz', 'yortiz')], string="Responsable Alta de Cliente")
     responsable_payments = fields.Selection([('yortiz', 'yortiz'),('cfunes', 'cfunes'),('jrolon', 'jrolon'),('apijuan', 'apijuan')], string="Responsable Cobranzas Cliente")

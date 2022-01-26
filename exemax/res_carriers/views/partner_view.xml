@@ -36,6 +36,7 @@
                         <page string="Red Social" name="socialnet">
                             <group>
                                 <field name="net_captor" />
+                                <field name="net_name" />
                             </group>
 
                         </page>
