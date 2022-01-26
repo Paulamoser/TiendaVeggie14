@@ -42,7 +42,7 @@
 			  <span t-field="o.l10n_latam_document_type_id.name"></span>
                   </h6>
                   <span t-if="o.state == 'posted' or o.state == 'draft'">
-                          Fecha: <span t-field="o.invoice_date"/><br/>
+                          Fecha: <span t-field="o.invoice_date" t-options="{'format': 'dd/MM/yyyy'}"/><br/>
                   </span>
                   <span t-if="o.state == 'posted' or o.state == 'draft'">
                             <span t-field="o.display_name"/>
@@ -68,10 +68,10 @@
                   <div class="col-4" t-if="o.move_type == 'out_invoice' and (o.state == 'posted' or o.state == 'paid')">
                     <strong>Fecha Vto:</strong>
                     <span t-if="o.invoice_date_due">
-                      <span t-field="o.invoice_date_due"/>
+                      <span t-field="o.invoice_date_due" t-options="{'format': 'dd/MM/yyyy'}"/>
                     </span>
                     <span t-if="not o.invoice_date_due">
-                      <span t-field="o.invoice_date"/>
+                      <span t-field="o.invoice_date" t-options="{'format': 'dd/MM/yyyy'}"/>
                     </span>
                   </div>
               </div>
@@ -283,7 +283,7 @@
               <div class="col-6 p-2" t-if="o.afip_cae">
                 <p/>
                 <p><strong> CAE: </strong><span t-field="o.afip_cae"/></p>
-                <p><strong> Fecha Vencimiento CAE: </strong><span t-field="o.afip_cae_due"/></p>
+                <p><strong> Fecha Vencimiento CAE: </strong><span t-field="o.afip_cae_due" t-options="{'format': 'dd/MM/yyyy'}/></p>
               </div> <!-- COL-6 -->
             </div> <!-- ROW -->
           </div> <!-- FOOTER -->
