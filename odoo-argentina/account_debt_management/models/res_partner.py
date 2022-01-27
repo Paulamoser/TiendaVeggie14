@@ -167,8 +167,7 @@ class ResPartner(models.Model):
                                 '\n', ' ').replace('\r', ''),
                             inv_line.quantity,
                             inv_line.uom_id.name)))
-            #document_number = record.document_number
-            document_number = '0'
+            document_number = record.document_number
             date_maturity = record.date_maturity
             date = record.date
             currency = record.currency_id
