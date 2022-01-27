@@ -167,7 +167,7 @@ class ResPartner(models.Model):
                                 '\n', ' ').replace('\r', ''),
                             inv_line.quantity,
                             inv_line.uom_id.name)))
-            raise ValidationError(record.document_number)
+            raise ValidationError(record)
             document_number = record.document_number
             date_maturity = record.date_maturity
             date = record.date
