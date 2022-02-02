@@ -9,6 +9,9 @@
                 <xpath expr="//div[@class='o_address_format']//field[@name='street2']" position="after">
                     <field name="section" class="o_address_section" placeholder="Barrio"/>
                 </xpath>
+                                <xpath expr="//sheet//group/field[@name='type']" position="after">
+                    <field name="delivery_address" />
+                </xpath>
                 <xpath expr="//sheet//group/group//field[@name='category_id']" position="after">
                     <field name="discharge_date"/>
                     <field name="responsable_discharge"/>

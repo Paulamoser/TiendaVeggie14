@@ -81,4 +81,4 @@ class ResPartner(models.Model):
         ('22:00', '22:00'),
         ('23:00', '23:00'),
     ], 'Hour To')
-
+    delivery_address= fields.Many2one('res.partner',  string="Dirección de Entrega", store=True, domain="[('parent_id', '=', id),('type','=','delivery')]")
