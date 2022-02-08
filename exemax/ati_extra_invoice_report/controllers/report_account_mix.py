@@ -110,7 +110,7 @@ class SaleExcelReportController(http.Controller):
         number = 1
 
         #Busca todas las facturas
-        invoices = request.env['account.move'].search([('move_type','=','out_invoice'), ('invoice_date','>=', wizard.start_date), ('invoice_date','<=', wizard.end_date)])
+        invoices = request.env['account.move'].search([('move_type','in',['out_invoice','out_refund']), ('invoice_date','>=', wizard.start_date), ('invoice_date','<=', wizard.end_date)])
 
         for invoice in invoices:
  
