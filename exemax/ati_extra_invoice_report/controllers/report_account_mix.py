@@ -51,20 +51,21 @@ class SaleExcelReportController(http.Controller):
         sheet.set_column('F:F', 15)
         sheet.set_column('G:G', 10)
         sheet.set_column('H:H', 12)
-        sheet.set_column('I:I', 50)
-        sheet.set_column('J:J', 15)
-        sheet.set_column('K:K', 21)
-        sheet.set_column('L:L', 16)
-        sheet.set_column('M:M', 19)
-        sheet.set_column('N:Q', 15)
-        sheet.set_column('R:R', 40)
-        sheet.set_column('S:S', 10)
-        sheet.set_column('T:T', 25)
+        sheet.set_column('I:I', 12)
+        sheet.set_column('J:J', 50)
+        sheet.set_column('K:K', 15)
+        sheet.set_column('L:L', 21)
+        sheet.set_column('M:M', 16)
+        sheet.set_column('N:Q', 19)
+        sheet.set_column('R:R', 15)
+        sheet.set_column('S:S', 40)
+        sheet.set_column('T:T', 10)
         sheet.set_column('W:W', 25)
-        sheet.set_column('X:AD', 15)
-        sheet.set_column('AE:AE', 40)
-        sheet.set_column('AF:AF', 20)
-        sheet.set_column('AG:AG', 25)
+        sheet.set_column('X:AD', 25)
+        sheet.set_column('AE:AE', 15)
+        sheet.set_column('AF:AF', 40)
+        sheet.set_column('AG:AG', 20)
+        sheet.set_column('AH:AH', 25)
 
         # Titulos de reporte
         sheet.merge_range('A1:G1', 'Documento de venta', title_style)
@@ -80,37 +81,38 @@ class SaleExcelReportController(http.Controller):
         sheet.write(1, 5, 'Precio unitario', header_style)
         sheet.write(1, 6, 'Cantidad', header_style)
         sheet.write(1, 7, 'Tipo', header_style)
-        sheet.write(1, 8, 'Producto', header_style)
-        sheet.write(1, 9, 'ID Producto', header_style)
-        sheet.write(1, 10, 'Presentacion producto', header_style)
-        sheet.write(1, 11, 'Proveedor', header_style)
-        sheet.write(1, 12, 'Razon Social', header_style)
-        sheet.write(1, 13, 'RS ID Odoo', header_style)
-        sheet.write(1, 14, 'Codigo Interno', header_style)
-        sheet.write(1, 15, 'Fecha de alta', header_style)
-        sheet.write(1, 16, 'Nombre fantasia', header_style)
-        sheet.write(1, 17, 'Direccion', header_style)
-        sheet.write(1, 18, 'Codigo Postal', header_style)
-        sheet.write(1, 19, 'Ciudad / Barrio', header_style)
-        sheet.write(1, 20, 'Provincia', header_style)
-        sheet.write(1, 21, 'Cuit', header_style)
-        sheet.write(1, 22, 'Responsabilidad AFIP', header_style)
-        sheet.write(1, 23, 'Forma pago', header_style)
-        sheet.write(1, 24, 'Canal', header_style)
-        sheet.write(1, 25, 'Dia de entrega', header_style)
-        sheet.write(1, 26, 'Expreso', header_style)
-        sheet.write(1, 27, 'Tarifa', header_style)
-        sheet.write(1, 28, 'Movil', header_style)
-        sheet.write(1, 29, 'Telefono', header_style)
-        sheet.write(1, 30, 'Correo', header_style)
-        sheet.write(1, 31, 'Instagram', header_style)
-        sheet.write(1, 32, 'Nombre de contacto', header_style)
+        sheet.write(1, 8, 'Tipo', header_style)
+        sheet.write(1, 9, 'Producto', header_style)
+        sheet.write(1, 10, 'ID Producto', header_style)
+        sheet.write(1, 11, 'Presentacion producto', header_style)
+        sheet.write(1, 12, 'Proveedor', header_style)
+        sheet.write(1, 13, 'Razon Social', header_style)
+        sheet.write(1, 14, 'RS ID Odoo', header_style)
+        sheet.write(1, 15, 'Codigo Interno', header_style)
+        sheet.write(1, 16, 'Fecha de alta', header_style)
+        sheet.write(1, 17, 'Nombre fantasia', header_style)
+        sheet.write(1, 18, 'Direccion', header_style)
+        sheet.write(1, 19, 'Codigo Postal', header_style)
+        sheet.write(1, 20, 'Ciudad / Barrio', header_style)
+        sheet.write(1, 21, 'Provincia', header_style)
+        sheet.write(1, 22, 'Cuit', header_style)
+        sheet.write(1, 23, 'Responsabilidad AFIP', header_style)
+        sheet.write(1, 24, 'Forma pago', header_style)
+        sheet.write(1, 25, 'Canal', header_style)
+        sheet.write(1, 26, 'Dia de entrega', header_style)
+        sheet.write(1, 27, 'Expreso', header_style)
+        sheet.write(1, 28, 'Tarifa', header_style)
+        sheet.write(1, 29, 'Movil', header_style)
+        sheet.write(1, 30, 'Telefono', header_style)
+        sheet.write(1, 31, 'Correo', header_style)
+        sheet.write(1, 32, 'Instagram', header_style)
+        sheet.write(1, 33, 'Nombre de contacto', header_style)
 
         row = 2
         number = 1
 
         #Busca todas las facturas
-        invoices = request.env['account.move'].search([('move_type','=','out_invoice'), ('invoice_date','>=', wizard.start_date), ('invoice_date','<=', wizard.end_date)])
+        invoices = request.env['account.move'].search([('move_type','in',['out_invoice','out_refund']), ('invoice_date','>=', wizard.start_date), ('invoice_date','<=', wizard.end_date)])
 
         for invoice in invoices:
  
@@ -128,37 +130,46 @@ class SaleExcelReportController(http.Controller):
                 sheet.write(row, 6, line.quantity, number_style)
 
                 # Definicion de producto
-                sheet.write(row, 7, line.product_id.type, text_style)
-                sheet.write(row, 8, line.product_id.name, text_style)
+                #congelado / refrigerado / Seco
+                if 'Refrigerados' in line.product_id.categ_id.display_name:
+                    sheet.write(row, 7, 'Refrigerados', number_style)
+                elif 'Congelados' in line.product_id.categ_id.display_name:
+                    sheet.write(row, 7, 'Congelados', number_style)
+                elif 'Secos' in line.product_id.categ_id.display_name:
+                    sheet.write(row, 7, 'Secos', number_style)
+                else:
+                    sheet.write(row, 7, 'Otros', number_style)
+                sheet.write(row, 8, line.product_id.type, text_style)
+                sheet.write(row, 9, line.product_id.name, text_style)
                 #Se buscan los datos necesarios para formarl el External ID de product.template
                 model_data = request.env['ir.model.data'].search(([('model', '=', 'product.template'),('res_id','=',line.product_id.product_tmpl_id.id)]), limit=1)
-                sheet.write(row, 9, "%s.%s" % (model_data.module, model_data.name), text_style)
-                sheet.write(row, 10, line.product_id.uom_id.name, text_style)
-                sheet.write(row, 11, line.product_id.product_brand_id.name, text_style)# Reemplazar con proveedor / marca
+                sheet.write(row, 10, "%s.%s" % (model_data.module, model_data.name), text_style)
+                sheet.write(row, 11, line.product_id.uom_id.name, text_style)
+                sheet.write(row, 12, line.product_id.product_brand_id.name, text_style)# Reemplazar con proveedor / marca
 
                 # Definicion del cliente
-                sheet.write(row, 12, invoice.partner_id.name, text_style)
+                sheet.write(row, 13, invoice.partner_id.name, text_style)
                 model_data = request.env['ir.model.data'].search(([('model', '=', 'res.partner'),('res_id','=',invoice.partner_id.id)]), limit=1)
-                sheet.write(row, 13, "%s.%s" % (model_data.module, model_data.name), text_style)
-                sheet.write(row, 14, invoice.partner_id.comment, text_style)
-                sheet.write(row, 15, invoice.partner_id.discharge_date, date_style)
-                sheet.write(row, 16, invoice.partner_id.internal_reference, text_style) #Nombre Fantasia
-                sheet.write(row, 17, invoice.partner_id.street, text_style)
-                sheet.write(row, 18, invoice.partner_id.zip, text_style)
-                sheet.write(row, 19, invoice.partner_id.city, text_style)
-                sheet.write(row, 20, invoice.partner_id.state_id.name, text_style)
-                sheet.write(row, 21, invoice.partner_id.vat, text_style)
-                sheet.write(row, 22, invoice.partner_id.l10n_ar_afip_responsibility_type_id.name, text_style)
-                sheet.write(row, 23, invoice.partner_id.property_payment_term_id.name, text_style) #Forma de pago
-                sheet.write(row, 24, invoice.partner_id.team_id.name, text_style)
-                sheet.write(row, 25, invoice.partner_id.delivery_day, text_style) #Dia Entrega
-                sheet.write(row, 26, invoice.partner_id.carrier_id.name, text_style) #Expreso
-                sheet.write(row, 27, invoice.partner_id.property_product_pricelist.name, text_style)
-                sheet.write(row, 28, invoice.partner_id.mobile, text_style)
-                sheet.write(row, 29, invoice.partner_id.phone, text_style)
-                sheet.write(row, 30, invoice.partner_id.email, text_style)
-                sheet.write(row, 31, invoice.partner_id.net_captor, text_style) #Red Social
-                sheet.write(row, 32, invoice.partner_id.ref, text_style) #Nombre de Contacto
+                sheet.write(row, 14, "%s.%s" % (model_data.module, model_data.name), text_style)
+                sheet.write(row, 15, invoice.partner_id.comment, text_style)
+                sheet.write(row, 16, invoice.partner_id.discharge_date, date_style)
+                sheet.write(row, 17, invoice.partner_id.internal_reference, text_style) #Nombre Fantasia
+                sheet.write(row, 18, invoice.partner_id.street, text_style)
+                sheet.write(row, 19, invoice.partner_id.zip, text_style)
+                sheet.write(row, 20, invoice.partner_id.city, text_style)
+                sheet.write(row, 21, invoice.partner_id.state_id.name, text_style)
+                sheet.write(row, 22, invoice.partner_id.vat, text_style)
+                sheet.write(row, 23, invoice.partner_id.l10n_ar_afip_responsibility_type_id.name, text_style)
+                sheet.write(row, 24, invoice.partner_id.property_payment_term_id.name, text_style) #Forma de pago
+                sheet.write(row, 25, invoice.partner_id.team_id.name, text_style)
+                sheet.write(row, 26, invoice.partner_id.delivery_day, text_style) #Dia Entrega
+                sheet.write(row, 27, invoice.partner_id.carrier_id.name, text_style) #Expreso
+                sheet.write(row, 28, invoice.partner_id.property_product_pricelist.name, text_style)
+                sheet.write(row, 29, invoice.partner_id.mobile, text_style)
+                sheet.write(row, 30, invoice.partner_id.phone, text_style)
+                sheet.write(row, 31, invoice.partner_id.email, text_style)
+                sheet.write(row, 32, invoice.partner_id.net_captor, text_style) #Red Social
+                sheet.write(row, 33, invoice.partner_id.ref, text_style) #Nombre de Contacto
  
                 row += 1
                 number += 1
