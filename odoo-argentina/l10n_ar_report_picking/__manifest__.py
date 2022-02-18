@@ -13,7 +13,7 @@
     'license': 'AGPL-3',
     'data': [
         'report_stock_picking.xml',
-        'afip_view.xml'
+        # 'afip_view.xml'
     ],
     'demo': []
 }
