@@ -7,7 +7,7 @@
     'depends': [
         'stock',
         'l10n_ar',
-	'l10n_ar_afipws_fe'
+	    #'l10n_ar_afipws_fe'
     ],
     'installable': True,
     'license': 'AGPL-3',
