@@ -88,6 +88,22 @@
     </t>
 </template>
 
+<record id="paperformat" model="report.paperformat">
+      <field name="name">Modelo A4</field>
+      <field name="default" eval="False" />
+      <field name="format">A4</field>
+      <field name="page_height">0</field>
+      <field name="page_width">0</field>
+      <field name="orientation">Portrait</field>
+      <field name="margin_top">10</field>
+      <field name="margin_bottom">10</field>
+      <field name="margin_left">7</field>
+      <field name="margin_right">7</field>
+      <field name="header_line" eval="False" />
+      <field name="header_spacing">35</field>
+      <field name="dpi">95</field>
+    </record>
+
 <!-- QWeb Reports -->
 <report
   id="l10n_stock_picking_report"
@@ -95,6 +111,7 @@
   string="Remito Preimpreso"
   print_report_name = "((object.name or 'Remito Preimpreso'))"
   report_type="qweb-pdf"
+  paperformat="l10n_ar_report_picking.paperformat"
   name="l10n_ar_report_picking.report_stock_picking"
   file="l10n_ar_report_picking.report_stock_picking"
 />
