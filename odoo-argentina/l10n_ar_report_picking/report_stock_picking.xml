@@ -36,13 +36,14 @@
 
               </div-->
               <div style="margin-left:132px;margin-top:50px;">
-                <t t-if="o.carrier_id">
+                <!--t t-if="o.carrier_id">
 
-                  <span t-esc="o.carrier_id.name" /> <!-- Transportista-->
+                  <span t-esc="o.carrier_id.name" />
                 </t>
                 <t t-else="">
                   <br/>
-                </t>
+                </t-->
+                <br/>
               </div>
               <t style="margin-top:50px;" t-foreach="o.move_lines" t-as="line">
                 <div  class="row" style="font-size:10px;">
