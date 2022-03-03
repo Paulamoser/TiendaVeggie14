@@ -51,7 +51,7 @@
                     <t t-esc="int(line.quantity_done)" />
                   </div>
                   <div class="col-4">
-                    <t t-esc="line.name" />
+                    <t t-esc="line.product_id.name" />
                   </div>
                   <div class="col-3">
                     <t t-if="line.lot_ids">
