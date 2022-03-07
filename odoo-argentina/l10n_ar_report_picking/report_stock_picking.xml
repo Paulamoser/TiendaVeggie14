@@ -47,13 +47,13 @@
               </div>
               <t style="margin-top:50px;" t-foreach="o.move_lines" t-as="line">
                 <div  class="row" style="font-size:10px;">
-                  <div style="margin-left:15px;" class="col-2">
+                  <div style="margin-left:20px;" class="col-2">
                     <t t-esc="int(line.quantity_done)" />
                   </div>
-                  <div class="col-4">
+                  <div class="col-8">
                     <t t-esc="line.product_id.name" />
                   </div>
-                  <div class="col-3">
+                  <div class="col-1">
                     <t t-if="line.lot_ids">
                       <t t-esc="line.lot_ids[0].name" />
                     </t>
@@ -61,7 +61,7 @@
                       <t t-esc="'    '" />
                     </t>
                   </div>
-                  <div class="col-3">
+                  <div class="col-1">
                     <t t-if="line.lot_ids">
                       <t t-esc="line.lot_ids[0].dispatch_number" />
                     </t>
