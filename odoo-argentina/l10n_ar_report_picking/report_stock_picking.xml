@@ -3,7 +3,6 @@
 <data>
 <template id="report_stock_re_document">
   <t t-call="web.html_container">
-        <t t-call="web.internal_layout">
 
           <!--ARTICLE -->
           <t t-foreach="docs" t-as="o">
@@ -11,21 +10,21 @@
               <div class="header">
               <div class="container">
               <div style="padding-left:650px;padding-top:55px;">
-                <span t-esc="str(o.scheduled_date)[:10]" /> <!-- Fecha-->
+                <span t-esc="str(o.scheduled_date)[:10]"/> <!-- Fecha-->
               </div>
               <div style="margin-left:120px;padding-top:100px;">
-                <span t-esc="o.partner_id.name + '  -  '  + o.partner_id.street+ ', ' + o.partner_id.city+ ', '  + o.partner_id.state_id.name  +', ' + o.partner_id.state_id.country_id.code" /> <!-- Señores-->
+                <span t-esc="o.partner_id.name + '  -  '  + o.partner_id.street+ ', ' + o.partner_id.city+ ', '  + o.partner_id.state_id.name  +', ' + o.partner_id.state_id.country_id.code"/> <!-- Señores-->
               </div>
               <div style="margin-left:100px;margin-top:60px;">
-                <span t-esc="o.partner_id.l10n_ar_afip_responsibility_type_id.name" /> <!-- IVA-->
+                <span t-esc="o.partner_id.l10n_ar_afip_responsibility_type_id.name"/> <!-- IVA-->
 
-                <span style="margin-left:400px;" t-esc="o.partner_id.vat" /> <!-- CUIT-->
+                <span style="margin-left:400px;" t-esc="o.partner_id.vat"/> <!-- CUIT-->
 
               </div>
               <div style="margin-left:170px;margin-top:25px;">
                 <t t-if="o.sale_id">
-                  <span t-esc="o.sale_id.payment_term_id.name" /> <!-- Condicion Venta-->
-                  <Strong style="margin-left:100px">OV:</Strong><span  t-esc="o.sale_id.name" />
+                  <span t-esc="o.sale_id.payment_term_id.name"/> <!-- Condicion Venta-->
+                  <Strong style="margin-left:100px">OV:</Strong><span t-esc="o.sale_id.name"/>
                 </t>
                 <t t-else="">
                   <br/>
@@ -36,43 +35,46 @@
               </div>
 
             </div>
-            </div> <!-- END HEADER -->
+            </div>
 
+            <div class="article">
             <div class="page" style="font-size:12px">
+              <div class="oe_structure"/>
               <div class="container">
               <t style="margin-top:50px;" t-foreach="o.move_lines" t-as="line">
-                <div  class="row" style="font-size:10px;">
+                <div class="row" style="font-size:10px;">
                   <div style="margin-left:20px;" class="col-2">
-                    <t t-esc="int(line.quantity_done)" />
+                    <t t-esc="int(line.quantity_done)"/>
                   </div>
                   <div class="col-8">
-                    <t t-esc="line.product_id.name" />
+                    <t t-esc="line.product_id.name"/>
                   </div>
                   <div class="col-1">
                     <t t-if="line.lot_ids">
-                      <t t-esc="line.lot_ids[0].name" />
+                      <t t-esc="line.lot_ids[0].name"/>
                     </t>
                     <t t-else="">
-                      <t t-esc="'    '" />
+                      <t t-esc="'    '"/>
                     </t>
                   </div>
                   <div class="col-1">
                     <t t-if="line.lot_ids">
-                      <t t-esc="line.lot_ids[0].dispatch_number" />
+                      <t t-esc="line.lot_ids[0].dispatch_number"/>
                     </t>
                     <t t-else="">
-                      <t t-esc="'         '" />
+                      <t t-esc="'         '"/>
                     </t>
                   </div>
                 </div>
               </t>
               </div>
             </div>
+            </div>
 
 
           </t>
         </t>
-      </t>
+</t>
 </template>
 
 <template id="report_stock_picking">
@@ -90,12 +92,12 @@
       <field name="page_height">0</field>
       <field name="page_width">0</field>
       <field name="orientation">Portrait</field>
-      <field name="margin_top">10</field>
-      <field name="margin_bottom">65</field>
+      <field name="margin_top">100</field>
+      <field name="margin_bottom">69</field>
       <field name="margin_left">7</field>
       <field name="margin_right">7</field>
       <field name="header_line" eval="False" />
-      <field name="header_spacing">35</field>
+      <field name="header_spacing">90</field>
       <field name="dpi">95</field>
     </record>
 
