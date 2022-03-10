@@ -7,9 +7,9 @@
 
           <!--ARTICLE -->
           <t t-foreach="docs" t-as="o">
-            <div class="container">
               <!--HEADER-->
-              <!-- <div class="header" style="margin-bottom: 0px !important;"> -->
+              <div class="header">
+              <div class="container">
               <div style="padding-left:650px;padding-top:55px;">
                 <span t-esc="str(o.scheduled_date)[:10]" /> <!-- Fecha-->
               </div>
@@ -31,20 +31,15 @@
                   <br/>
                 </t>
               </div>
-              <!--div style="margin-left:151px;margin-top:9px;">
-                <span t-esc="o.scheduled_date" />
-
-              </div-->
               <div style="margin-left:132px;margin-top:50px;">
-                <!--t t-if="o.carrier_id">
-
-                  <span t-esc="o.carrier_id.name" />
-                </t>
-                <t t-else="">
-                  <br/>
-                </t-->
                 <br/>
               </div>
+
+            </div>
+            </div> <!-- END HEADER -->
+
+            <div class="page" style="font-size:12px">
+              <div class="container">
               <t style="margin-top:50px;" t-foreach="o.move_lines" t-as="line">
                 <div  class="row" style="font-size:10px;">
                   <div style="margin-left:20px;" class="col-2">
@@ -71,11 +66,11 @@
                   </div>
                 </div>
               </t>
+              </div>
             </div>
 
 
           </t>
-          <!--END HEADER-->
         </t>
       </t>
 </template>
@@ -96,7 +91,7 @@
       <field name="page_width">0</field>
       <field name="orientation">Portrait</field>
       <field name="margin_top">10</field>
-      <field name="margin_bottom">10</field>
+      <field name="margin_bottom">65</field>
       <field name="margin_left">7</field>
       <field name="margin_right">7</field>
       <field name="header_line" eval="False" />
