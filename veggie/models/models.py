@@ -245,3 +245,10 @@ class AccountMove(models.Model):
 
     state_id = fields.Char(string='Provincia', store=True, related='partner_id.state_id.name')
     city = fields.Char(string='Ciudad', store=True, related='partner_id.city')
+
+class PurchaseOrder(models.Model):
+    _inherit = "purchase.order"
+
+    def action_clear(self):
+        for rec in self:
+            rec.write({'order_line': [(5, 0, 0)]})
