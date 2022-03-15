@@ -36,6 +36,10 @@ class SaleAdvancePaymentInv(models.Model):
 
     invoicing = fields.Boolean(default=False, string="Factura", index=True)
 
+    def action_clear(self):
+        for rec in self:
+            rec.write({'order_line': [(5, 0, 0)]})
+
     def get_deuda_total(self, partner):
         orders = self.search([
                 ('partner_id', '=', partner.id),
