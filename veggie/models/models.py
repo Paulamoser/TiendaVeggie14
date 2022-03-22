@@ -235,6 +235,12 @@ class ProductProduct(models.Model):
     
     order_report = fields.Integer('Orden en el reporte', store=True)
 
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
+
+    product_liqui = fields.Boolean('¿Es Liquidación?')
+    product_new = fields.Boolean('¿Es Nuevo Ingreso?')
+
 class AccountJournal(models.Model):
     _inherit ='account.journal'
 
