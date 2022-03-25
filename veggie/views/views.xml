@@ -72,7 +72,7 @@
       <field name="arch" type="xml">
         <field name="email_cc" position="after">
             <field name="resolution_type" />
-        <field/>
+        </field>
       </field>
   </record>
   </data>
