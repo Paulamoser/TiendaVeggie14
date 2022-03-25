@@ -258,3 +258,9 @@ class PurchaseOrder(models.Model):
     def action_clear(self):
         for rec in self:
             rec.write({'order_line': [(5, 0, 0)]})
+
+
+class HelpdeskTicket(models.Model):
+    _inherit = 'helpdesk.ticket'
+
+    resolution_type = fields.Selection([ ('nc', 'Nota de Crédito'),('rm', 'Recambio de Mercadería'),('prov', 'Comunicado al Proveedor') ],'Tipo de Resolución')
