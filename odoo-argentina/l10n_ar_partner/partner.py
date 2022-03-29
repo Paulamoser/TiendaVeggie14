@@ -9,6 +9,21 @@ class ResPartner(models.Model):
 
     internal_reference = fields.Char('Nombre de Fantasía')
 
+    def update_name(self):
+        result = ''
+        for record in self:
+            if record.internal_reference:
+                if record.parent_id:
+                    result = record.id, record.parent_id.name + ', ' + record.internal_reference + ' - [' + record.name + ']'
+                else:
+                    result = record.id, record.internal_reference + ' - [' + record.name + ']'
+            else:
+                if record.parent_id:
+                    result = record.id, str(record.parent_id.name) + ', ' + str(record.name)
+                else:    
+                    result = record.id, record.name
+            record.display_name = result
+
     def name_get(self):
         result = []
         for record in self:
@@ -22,6 +37,7 @@ class ResPartner(models.Model):
                     result.append((record.id, str(record.parent_id.name) + ', ' + str(record.name)))
                 else:    
                     result.append((record.id, record.name))
+            record.display_name = result
         return result
 
     """def update_from_padron(self):
