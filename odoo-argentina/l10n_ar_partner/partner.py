@@ -37,7 +37,6 @@ class ResPartner(models.Model):
                     result.append((record.id, str(record.parent_id.name) + ', ' + str(record.name)))
                 else:    
                     result.append((record.id, record.name))
-            record.display_name = result
         return result
 
     """def update_from_padron(self):
