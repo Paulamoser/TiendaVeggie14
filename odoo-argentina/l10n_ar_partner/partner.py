@@ -14,14 +14,14 @@ class ResPartner(models.Model):
         for record in self:
             if record.internal_reference:
                 if record.parent_id:
-                    result = record.id, record.parent_id.name + ', ' + record.internal_reference + ' - [' + record.name + ']'
+                    result = record.parent_id.name + ', ' + record.internal_reference + ' - [' + record.name + ']'
                 else:
-                    result = record.id, record.internal_reference + ' - [' + record.name + ']'
+                    result = record.internal_reference + ' - [' + record.name + ']'
             else:
                 if record.parent_id:
-                    result = record.id, str(record.parent_id.name) + ', ' + str(record.name)
+                    result = str(record.parent_id.name) + ', ' + str(record.name)
                 else:    
-                    result = record.id, record.name
+                    result = record.name
             record.display_name = result
 
     def name_get(self):
