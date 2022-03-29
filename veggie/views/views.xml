@@ -75,14 +75,14 @@
             <field name="resolution_type" />
         </field>
 
-        <field name="email_cc" position="after">
+        <!--field name="email_cc" position="after">
             <field name="order_delivery_date" />
             <field name="business_name" />
             <field name="business" />
             <field name="address" />
             <field name="invoice_number" />
             <field name="claim" />
-        </field>
+        </field-->
         
       </field>
   </record>
