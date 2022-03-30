@@ -15,7 +15,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base', 'stock', 'sale', 'purchase', 'account', 'helpdesk'],
+    'depends': ['base', 'stock', 'sale', 'purchase', 'account', 'helpdesk', 'website_form', 'website_helpdesk'],
 
     'data': [
         'views/views.xml',

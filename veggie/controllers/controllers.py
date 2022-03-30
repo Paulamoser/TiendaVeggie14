@@ -1,20 +1,21 @@
 # -*- coding: utf-8 -*-
+
 from odoo import http
+from odoo.http import request
+from odoo.addons.website_form.controllers.main import WebsiteForm
 
-# class .(http.Controller):
-#     @http.route('/././', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
+class WebsiteForm(WebsiteForm):
 
-#     @http.route('/././objects/', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('..listing', {
-#             'root': '/./.',
-#             'objects': http.request.env['...'].search([]),
-#         })
+    def _handle_website_form(self, model_name, **kwargs):
+        email = request.params.get('partner_email')
+        if email:
+            partner = request.env['res.partner'].sudo().search([('email', '=', email)], limit=1)
+            if not partner:
+                partner = request.env['res.partner'].sudo().create({
+                    'email': email,
+                    'name': request.params.get('partner_name', False)
+                })
+            request.params['partner_id'] = partner.id
+            request.params['business_name'] = request.params.get('business_name', False)
 
-#     @http.route('/././objects/<model("..."):obj>/', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('..object', {
-#             'object': obj
-#         })
+        return super(WebsiteForm, self)._handle_website_form(model_name, **kwargs)
