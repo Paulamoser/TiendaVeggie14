@@ -27,5 +27,8 @@ class WebsiteForm(WebsiteForm):
                 })
             request.params['partner_id'] = partner.id
             request.params['business_name'] = request.params.get('business_name')
+            request.params['address'] = request.params.get('address')
+            request.params['resolution_type'] = request.params.get('resolution_type')
+            request.params['business'] = request.params.get('business')
 
         return super(WebsiteForm, self)._handle_website_form(model_name, **kwargs)
