@@ -28,6 +28,7 @@
         'views/mixtos.xml',
         'views/invoices.xml',
         'views/product.xml',
+        'data/data.xml'
     ],
     'demo': [],
 }

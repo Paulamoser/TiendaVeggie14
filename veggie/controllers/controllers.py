@@ -4,6 +4,13 @@ from odoo import http
 from odoo.http import request
 from odoo.addons.website_form.controllers.main import WebsiteForm
 import logging
+import base64
+import json
+import pytz
+
+from datetime import datetime
+from psycopg2 import IntegrityError
+from werkzeug.exceptions import BadRequest
 
 _logger = logging.getLogger(__name__)
 
@@ -20,8 +27,5 @@ class WebsiteForm(WebsiteForm):
                 })
             request.params['partner_id'] = partner.id
             request.params['business_name'] = request.params.get('business_name')
-
-            _logger.info('>>>>>>>>')
-            _logger.info(request.params['business_name'])
 
         return super(WebsiteForm, self)._handle_website_form(model_name, **kwargs)
