@@ -16,6 +16,7 @@
             'invoice_number',
             'business',
             'resolution_type',
+            'claim',
             'name',
             'description',
             'team_id',

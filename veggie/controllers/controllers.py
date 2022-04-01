@@ -30,5 +30,6 @@ class WebsiteForm(WebsiteForm):
             request.params['address'] = request.params.get('address')
             request.params['resolution_type'] = request.params.get('resolution_type')
             request.params['business'] = request.params.get('business')
+            request.params['claim'] = request.params.get('claim')
 
         return super(WebsiteForm, self)._handle_website_form(model_name, **kwargs)
