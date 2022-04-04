@@ -67,6 +67,7 @@
                   </div>
                 </div>
               </t>
+              <p t-if="o.sale_id">Valor Declarado: <span t-field="o.sale_id.amount_total" /></p>
               </div>
             </div>
             </div>
