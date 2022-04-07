@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="purchase_planner.form">
+      <field name="name">purchase_planner form</field>
+      <field name="model">purchase_planner.purchase_planner</field>
+      <field name="arch" type="xml">
+        <group>
+          <field name="fecha" readonly="1"/>
+          <field name="fecha" readonly="1"/>
+          <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'supplier'}" />
+        </group>
+        <notebook>
+           <page string="Product Lines" name="product_lines">
+             <field
+                     name="purchase_planner_line"
+                     widget="section_and_note_one2many"
+                                mode="tree,kanban"
+             >
+               <form>
+                 <field name="product_id" readonly="True"/>
+                 <field name="product_name" readonly="True"/>
+                 <field name="today_stock_am " readonly="True"/>
+                 <field name="today_in " readonly="True"/>
+                 <field name="today_out " readonly="True"/>
+                 <field name="today_stock_pm " readonly="True"/>
+                 <field name="today_purchase " readonly="True"/>
+               </form>
+             </field>
+           </page>
+        </notebook>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="purchase_planner.action_window">
+      <field name="name">purchase_planner window</field>
+      <field name="res_model">purchase_planner.purchase_planner</field>
+      <field name="view_mode">form</field>
+      <!--tree-->
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="purchase_planner.action_server">
+      <field name="name">purchase_planner server</field>
+      <field name="model_id" ref="model_purchase_planner_purchase_planner"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+    <menuitem name="purchase_planner" id="purchase_planner.menu_root"/>
+
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="purchase_planner.menu_1" parent="purchase_planner.menu_root"/>
+    <menuitem name="Menu 2" id="purchase_planner.menu_2" parent="purchase_planner.menu_root"/>
+-->
+
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="purchase_planner.menu_1_list" parent="purchase_planner.menu_1"
+              action="purchase_planner.action_window"/>
+    <menuitem name="Server to list" id="purchase_planner" parent="purchase_planner.menu_2"
+              action="purchase_planner.action_server"/>
+-->
+  </data>
+</odoo>
