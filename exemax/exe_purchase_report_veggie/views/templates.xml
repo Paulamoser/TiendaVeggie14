@@ -5,7 +5,7 @@
             <t t-call="web.external_layout">
                 <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
                 <div class="row mr-0 ml-0" style="border-bottom:1px solid #666;">
-                    <div class="col-6">
+                    <div class="col-6 mr-0 ml-0">
                         <t>
                             <strong>Dirección de Envío:</strong><br />
                             Parque Industrial DECA<br />
@@ -13,7 +13,7 @@
                             Unidad Funcional 19
                         </t>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 mr-0 ml-0">
                         <t>
                           <div t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
                             <p t-if="o.partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></p>
@@ -81,7 +81,7 @@
                                             <span t-field="line.product_id"/>
                                         </td>
                                         <td class="text-right">
-                                            <span t-field="line.product_qty"/>
+                                            <span t-field="line.product_qty" t-options='{"widget": "float", "precision": 0}'/>
                                         </td>
                                         <td class="text-right">
                                           <span t-field="line.product_uom.name" groups="uom.group_uom"/>
