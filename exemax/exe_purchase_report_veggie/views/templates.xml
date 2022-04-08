@@ -10,7 +10,7 @@
                 </t>
                 <t t-if="o.dest_address_id">
                     <t t-set="information_block">
-                        <strong>Shipping address:</strong>
+                        <strong>Dirección de Entrega:</strong>
                         <div t-if="o.dest_address_id">
                             <div t-field="o.dest_address_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}" name="purchase_shipping_address"/>
                         </div>
@@ -20,15 +20,15 @@
                 <div class="page">
                     <div class="oe_structure"/>
 
-                    <h2 t-if="o.state == 'draft'">Request for Quotation #<span t-field="o.name"/></h2>
-                    <h2 t-if="o.state in ['sent', 'to approve']">Purchase Order #<span t-field="o.name"/></h2>
-                    <h2 t-if="o.state in ['purchase', 'done']">Purchase Order #<span t-field="o.name"/></h2>
-                    <h2 t-if="o.state == 'cancel'">Cancelled Purchase Order #<span t-field="o.name"/></h2>
+                    <h2 t-if="o.state == 'draft'">Pedido de Compra #<span t-field="o.name"/></h2>
+                    <h2 t-if="o.state in ['sent', 'to approve']">Pedido de Compra #<span t-field="o.name"/></h2>
+                    <h2 t-if="o.state in ['purchase', 'done']">Pedido de Compra #<span t-field="o.name"/></h2>
+                    <h2 t-if="o.state == 'cancel'">Pedido de Compra Cancelado #<span t-field="o.name"/></h2>
 
                       <div id="informations" class="row mt32 mb32">
                         <div id="informations" class="row mt32 mb32">
                           <div t-if="o.user_id" class="col-3 bm-2">
-                              <strong>Purchase Representative:</strong>
+                              <strong>Representante de Compra:</strong>
                               <p t-field="o.user_id" class="m-0"/>
                           </div>
                           <div t-if="o.partner_ref" class="col-3 bm-2">
@@ -36,12 +36,12 @@
                               <p t-field="o.partner_ref" class="m-0"/>
                           </div>
                           <div t-if="o.date_order" class="col-3 bm-2">
-                              <strong>Order Date:</strong>
+                              <strong>Fecha de Pedido:</strong>
                               <p t-field="o.date_order" class="m-0" t-options='{"widget": "date", "format": "dd/MM/yyyy"}'/>
                               <p t-field="o.date_order" class="m-0" t-options='{"widget": "date", "format": "cccc"}'/>
                           </div>
                           <div t-if="o.date_planned" class="col-3 bm-2">
-                              <strong>Planned Date:</strong>
+                              <strong>Fecha de Entrega:</strong>
                               <p t-field="o.date_planned" class="m-0" t-options='{"widget": "date", "format": "dd/MM/yyyy"}'/>
                               <p t-field="o.date_planned" class="m-0" t-options='{"widget": "date", "format": "cccc"}'/>
                           </div>
