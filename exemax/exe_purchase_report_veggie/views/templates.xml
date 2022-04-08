@@ -24,6 +24,10 @@
                     <h2 t-if="o.state in ['sent', 'to approve']">Pedido de Compra #<span t-field="o.name"/></h2>
                     <h2 t-if="o.state in ['purchase', 'done']">Pedido de Compra #<span t-field="o.name"/></h2>
                     <h2 t-if="o.state == 'cancel'">Pedido de Compra Cancelado #<span t-field="o.name"/></h2>
+                    
+                    <div class="row" t-if="o.notes">
+                        <b>Observaciones:</b> <p t-field="o.notes"/>
+                    </div>
 
                       <div id="informations" class="row mt32 mb32">
                         <div id="informations" class="row mt32 mb32">
@@ -136,7 +140,6 @@
                         </div>
                     </div>
 
-                    <p t-field="o.notes"/>
                     <div class="oe_structure"/>
                 </div>
             </t>
