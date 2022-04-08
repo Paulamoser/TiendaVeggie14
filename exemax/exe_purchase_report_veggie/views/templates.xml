@@ -13,8 +13,8 @@
                             Unidad Funcional 19
                         </t>
                     </div>
-                    <div class="col-6">
-                        <t t-set="address">
+                    <div class="col-5">
+                        <t>
                           <div t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
                             <p t-if="o.partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></p>
                         </t>
