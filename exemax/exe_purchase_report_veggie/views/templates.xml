@@ -38,10 +38,12 @@
                           <div t-if="o.date_order" class="col-3 bm-2">
                               <strong>Order Date:</strong>
                               <p t-field="o.date_order" class="m-0" t-options='{"widget": "date", "format": "dd/MM/yyyy"}'/>
+                              <p t-field="o.date_order" class="m-0" t-options='{"widget": "date", "format": "cccc"}'/>
                           </div>
                           <div t-if="o.date_planned" class="col-3 bm-2">
                               <strong>Planned Date:</strong>
                               <p t-field="o.date_planned" class="m-0" t-options='{"widget": "date", "format": "dd/MM/yyyy"}'/>
+                              <p t-field="o.date_planned" class="m-0" t-options='{"widget": "date", "format": "cccc"}'/>
                           </div>
                           <div t-if="o.date_planned" class="col-3 bm-2">
                               <strong>Horario de entrega:</strong>
