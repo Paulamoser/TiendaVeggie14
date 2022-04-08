@@ -4,7 +4,7 @@
             <t t-name="purchase.report_purchaseorder_document">
             <t t-call="web.external_layout">
                 <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
-                <div class="row" style="border-bottom:1px solid #666;">
+                <div class="row mr-0 ml-0" style="border-bottom:1px solid #666;">
                     <div class="col-6">
                         <t>
                             <strong>Dirección de Envío:</strong><br />
@@ -13,7 +13,7 @@
                             Unidad Funcional 19
                         </t>
                     </div>
-                    <div class="col-5">
+                    <div class="col-6">
                         <t>
                           <div t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
                             <p t-if="o.partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></p>
@@ -28,11 +28,11 @@
                     <h2 t-if="o.state in ['purchase', 'done']">Pedido de Compra #<span t-field="o.name"/></h2>
                     <h2 t-if="o.state == 'cancel'">Pedido de Compra Cancelado #<span t-field="o.name"/></h2>
                     
-                    <div class="row" t-if="o.notes">
+                    <div class="row mr-0 ml-0" t-if="o.notes">
                         <b>Observaciones:</b> <p t-field="o.notes"/>
                     </div>
 
-                      <div id="informations" class="row mt32 mb32">
+                      <div id="informations" class="row mt32 mb32 mr-0 ml-0">
                         <div id="informations" class="row mt32 mb32">
                           <div t-if="o.user_id" class="col-3 bm-2">
                               <strong>Representante de Compra:</strong>
@@ -65,7 +65,7 @@
                                 <th name="th_description"><strong>Descripción</strong></th>
                                 <th name="th_quantity"><strong>Cant</strong></th>
                                 <th name="th_quantity_uom" class="text-right"><strong>Presentación</strong></th>
-                                <th name="th_price_unit_notax" class="text-center"><strong>Precio s/IVA</strong></th>
+                                <th name="th_price_unit_notax" class="text-right"><strong>Precio s/IVA</strong></th>
                                 <th name="th_amount" class="text-right"><strong>Total s/IVA</strong></th>
                             </tr>
                         </thead>
@@ -128,7 +128,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td name="td_taxes_label">Taxes</td>
+                                    <td name="td_taxes_label">Impuestos</td>
                                     <td class="text-right">
                                         <span t-field="o.amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                     </td>
