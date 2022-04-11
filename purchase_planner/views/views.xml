@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- explicit list view definition -->
-    <record model="ir.ui.view" id="purchase_planner.form">
-      <field name="name">purchase_planner form</field>
+    <data>
+    <record model="ir.ui.view" id="purchase_planner_form">
+      <field name="name">purchase.planner.form</field>
       <field name="model">purchase_planner.purchase_planner</field>
       <field name="arch" type="xml">
         <group>
@@ -39,37 +39,7 @@
       <!--tree-->
     </record>
 
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="purchase_planner.action_server">
-      <field name="name">purchase_planner server</field>
-      <field name="model_id" ref="model_purchase_planner_purchase_planner"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
-
-    <!-- Top menu item -->
     <menuitem name="purchase_planner" id="purchase_planner.menu_root"/>
+</data>
 
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="purchase_planner.menu_1" parent="purchase_planner.menu_root"/>
-    <menuitem name="Menu 2" id="purchase_planner.menu_2" parent="purchase_planner.menu_root"/>
--->
-
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="purchase_planner.menu_1_list" parent="purchase_planner.menu_1"
-              action="purchase_planner.action_window"/>
-    <menuitem name="Server to list" id="purchase_planner" parent="purchase_planner.menu_2"
-              action="purchase_planner.action_server"/>
--->
 </odoo>
