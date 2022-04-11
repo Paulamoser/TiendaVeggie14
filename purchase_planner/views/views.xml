@@ -1,12 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
     <!-- explicit list view definition -->
     <record model="ir.ui.view" id="purchase_planner.form">
       <field name="name">purchase_planner form</field>
       <field name="model">purchase_planner.purchase_planner</field>
       <field name="arch" type="xml">
         <group>
-          <field name="fecha" readonly="1"/>
           <field name="fecha" readonly="1"/>
           <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'supplier'}" />
         </group>
@@ -73,5 +72,4 @@
     <menuitem name="Server to list" id="purchase_planner" parent="purchase_planner.menu_2"
               action="purchase_planner.action_server"/>
 -->
-  </data>
 </odoo>
