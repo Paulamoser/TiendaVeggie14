@@ -13,7 +13,7 @@ class Statistics_sell (models.Model):
     quantity = fields.Integer()
 
     @api.model
-    def get_sales_product(self, date_orders):
+    def _get_sales_product(self, date_orders):
             ret_list = []
             req = (
                 "SELECT  prod.id as product_id, sum(line.product_uom_qty)as quantity , CAST(sale.date_order as date) as date_order  ,"
