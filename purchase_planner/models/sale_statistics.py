@@ -11,6 +11,7 @@ class Statistics_sell (models.Model):
     name_day = fields.Char(string='Dia de la semana')
     week_name = fields.Char(string='Semana')
     quantity = fields.Integer()
+    year_order = fields.Integer(string='Año del pedido')
 
     @api.model
     def _get_sales_product(self):
@@ -19,7 +20,7 @@ class Statistics_sell (models.Model):
                 "SELECT  prod.id as product_id, sum(line.product_uom_qty)as quantity , CAST(sale.date_order as date) as date_order  ,"
                 " to_char(CAST(sale.date_order as date), 'dy') as name_day," +
                 " to_char(CAST(sale.date_order as date), 'MON') ||  CAST((extract('day' from date_trunc('week', CAST(sale.date_order as date)) -   date_trunc('week', date_trunc('month', CAST(sale.date_order as date)))) / 7 + 1) as char) ||'_'|| to_char(current_date, 'yy') as week_name ," +
-                " extract(week from CAST(sale.date_order as date)) as nro_week " +
+                " extract(week from CAST(sale.date_order as date)) as nro_week , extract('year' from sale.date_order) as anio" +
                 " FROM  product_template as prod inner join product_brand on prod.product_brand_id=  product_brand.id inner " +
                 " join res_partner on res_partner.id= product_brand.partner_id " +
                 " LEFT JOIN (sale_order_line as line  inner join sale_order as sale on  line.order_id = sale.id) on prod.id=line.product_id " )
@@ -36,6 +37,7 @@ class Statistics_sell (models.Model):
                     'date_order': rec['date_order'],
                     'name_day': rec['name_day'],
                     'week_name': rec['week_name'],
-                    'quantity': rec['quantity']
+                    'quantity': rec['quantity'],
+                    'year_order': rec['anio']
                 })
 
