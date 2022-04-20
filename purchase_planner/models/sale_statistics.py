@@ -1,13 +1,13 @@
 from odoo import models, fields, api,tools, _
 from odoo.exceptions import ValidationError
 
-class Statistics_sell (models.Models):
+class Statistics_sell (models.Model):
     _name = "statistics.sell"
     _description = "Estadísticas de venta por producto"
 
     product_id = fields.Many2one()
     nro_week = fields.Integer(string='Nro de Semana')
-    date_order = fields.Date(string='Fecha',_defaults= {  'record_date': fields.date.context_today,})
+    date_order = fields.Date(string='Fecha')
     name_day = fields.Char(string='Dia de la semana')
     week_name = fields.Char(string='Semana')
     quantity = fields.Integer()
