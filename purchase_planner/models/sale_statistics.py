@@ -55,7 +55,7 @@ class ReportStatisticsSale(models.Model):
     def init(self):
         tools.drop_view_if_exists(self._cr, 'report_statistics_sale')
         query = """
-        CREATE or REPLACE VIEW report_stock_quantity AS (
+        CREATE or REPLACE VIEW report_statistics_sale AS (
         SELECT  week_name, product_id, prod.default_code, res_partner.name as name_partner, sum(quantity)as quantity
         FROM statistics_sell as ventas inner join product_template as prod on ventas.product_id= prod.id
         inner join product_brand on prod.product_brand_id=  product_brand.id inner 
