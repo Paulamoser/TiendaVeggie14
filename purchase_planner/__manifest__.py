@@ -3,8 +3,7 @@
     'name': "purchase_planner",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Planificador de compras Veggie en base a estadisticas de venta""",
 
     'description': """
         Long description of module's purpose
@@ -20,13 +19,14 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','sale'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        #'security/ir.model.access.csv',
         #'views/views.xml',
-        #'views/templates.xml',
+        #'views/templates.xml'
+        views/statistics_sales.xml,
     ],
     # only loaded in demonstration mode
     'demo': [

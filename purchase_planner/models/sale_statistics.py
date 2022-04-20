@@ -41,3 +41,27 @@ class Statistics_sell (models.Model):
                     'year_order': rec['anio']
                 })
 
+class ReportStatisticsSale(models.Model):
+    _name = 'report.statistics.sale'
+    _auto = False
+    _description = 'Statistics Sales Report'
+
+    week_name= fields.Char(string ="semana")
+    product_id= fields.Integer(string="Producto")
+    default_code = fields.Char(string="Referencia interna")
+    name_partner = fields.Char(string="Proveedor")
+    quantity = fields.Char(string="Cantidad Vendido")
+
+    def init(self):
+        tools.drop_view_if_exists(self._cr, 'report_statistics_sale')
+        query = """
+        CREATE or REPLACE VIEW report_stock_quantity AS (
+        SELECT  week_name, product_id, prod.default_code, res_partner.name as name_partner, sum(quantity)as quantity
+        FROM statistics_sell as ventas inner join product_template as prod on ventas.product_id= prod.id
+        inner join product_brand on prod.product_brand_id=  product_brand.id inner 
+        join res_partner on res_partner.id= product_brand.partner_id 
+        WHERE nro_week>= 5 and year_order=2022
+        GROUP BY product_id, nro_week , year_order , week_name,prod.default_code,  res_partner.name
+        ORDER BY nro_week;"""
+
+        self.env.cr.execute(query)
