@@ -62,6 +62,6 @@ class ReportStatisticsSale(models.Model):
         join res_partner on res_partner.id= product_brand.partner_id 
         WHERE nro_week>= 5 and year_order=2022
         GROUP BY product_id, nro_week , year_order , week_name,prod.default_code,  res_partner.name
-        ORDER BY nro_week;"""
+        ORDER BY nro_week );"""
 
         self.env.cr.execute(query)
