@@ -51,17 +51,17 @@ class ReportStatisticsSale(models.Model):
     default_code = fields.Char(string="Referencia interna")
     name_partner = fields.Char(string="Proveedor")
     quantity = fields.Char(string="Cantidad Vendido")
-
+    nro_week = fields.Integer(string="Nro de semana")
     def init(self):
         tools.drop_view_if_exists(self._cr, 'report_statistics_sale')
         query = """
         CREATE or REPLACE VIEW report_statistics_sale AS (
-        SELECT  week_name, product_id, prod.default_code, res_partner.name as name_partner, sum(quantity)as quantity
+        SELECT  week_name, product_id, prod.default_code, res_partner.name as name_partner, sum(quantity)as quantity, nro_week
         FROM statistics_sell as ventas inner join product_template as prod on ventas.product_id= prod.id
         inner join product_brand on prod.product_brand_id=  product_brand.id inner 
         join res_partner on res_partner.id= product_brand.partner_id 
         WHERE nro_week>= 5 and year_order=2022
-        GROUP BY product_id, nro_week , year_order , week_name,prod.default_code,  res_partner.name
+        GROUP BY product_id, nro_week , year_order , week_name,prod.default_code,  res_partner.name, nro_week
         ORDER BY nro_week );"""
 
         self.env.cr.execute(query)

@@ -13,9 +13,9 @@
                 adjust_name="adjust_grid"
                 hide_line_total="1"
                 hide_column_total="1">
-                <field name="referencia_interna" type="row"/>
+                <field name="default_code" type="row"/>
                <!-- <field name="state" type="row"/>-->
-                <field name="week_name" type="col">
+                <field name="nro_week" type="col">
                     <range name="week" string="Week" span="week" step="day"/>
                     <range name="month" string="Month" span="month" step="day"/>
                 </field>
@@ -24,7 +24,7 @@
         </field>
     </record>
     <record id="action_statistics_sales" model="ir.actions.act_window">
-        <field name="name">Estadisticas de Ventas</field>
+        <field name="name">Informe Estadisticas de Ventas</field>
         <field name="res_model">report.statistics.sale</field>
         <field name="view_mode">grid</field>
         <field name="context">{}</field>
