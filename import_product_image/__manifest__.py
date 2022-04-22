@@ -10,7 +10,7 @@
     "license": "AGPL-3",
     "version": "1",
     "depends": [
-        "product",
+        "product","sale"
     ],
     "data": [
         'views/import_product_image_view.xml'
