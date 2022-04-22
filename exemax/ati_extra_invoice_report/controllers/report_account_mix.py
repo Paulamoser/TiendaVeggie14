@@ -126,7 +126,10 @@ class SaleExcelReportController(http.Controller):
                 sheet.write(row, 2, datetime.strptime(str(invoice.invoice_date), "%Y-%m-%d").strftime('%Y'), text_style)
                 sheet.write(row, 3, invoice.l10n_latam_document_type_id.name, text_style)
                 sheet.write(row, 4, invoice.name, text_style)
-                sheet.write(row, 5, line.price_unit, currency_style)
+                if invoice.move_type == 'out_invoice':
+                    sheet.write(row, 5, line.price_unit, currency_style)
+                else:
+                    sheet.write(row, 5, line.price_unit * -1, currency_style)
                 sheet.write(row, 6, line.quantity, number_style)
 
                 # Definicion de producto

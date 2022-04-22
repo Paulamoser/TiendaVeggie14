@@ -1,0 +1,25 @@
+<odoo>
+        <data>
+            <record id="account_payment_group_form" model="ir.ui.view">    
+                <field name="name">account.payment.group.form.inherit</field>    
+                <field name="model">account.payment.group</field>    
+                <field name="inherit_id" ref="account_payment_group.view_account_payment_group_form"/>    
+                <field name="arch" type="xml">        
+                    <xpath expr="//field[@name='payment_date']" position="after">            
+                            <field name="cm_supplier_due_date"/>
+                    </xpath>   
+                </field>
+            </record>
+            <record id="account_payment_group_tree" model="ir.ui.view">    
+                <field name="name">account.payment.group.tree.inherit</field>    
+                <field name="model">account.payment.group</field>    
+                <field name="inherit_id" ref="account_payment_group.view_account_payment_group_tree"/>    
+                <field name="arch" type="xml">        
+                    <xpath expr="//field[@name='display_name']" position="before">            
+                            <field name="cm_supplier_due_date"/>
+                    </xpath>   
+                </field>
+            </record>
+
+        </data>
+</odoo>

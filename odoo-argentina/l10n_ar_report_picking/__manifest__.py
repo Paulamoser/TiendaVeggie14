@@ -6,14 +6,14 @@
     'category': 'Accounting/Localizations',
     'depends': [
         'stock',
-        'l10n_ar',
-	'l10n_ar_afipws_fe'
+        #'l10n_ar',
+	    #'l10n_ar_afipws_fe'
     ],
     'installable': True,
     'license': 'AGPL-3',
     'data': [
         'report_stock_picking.xml',
-        'afip_view.xml'
+        # 'afip_view.xml'
     ],
     'demo': []
 }

@@ -15,7 +15,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base', 'stock', 'sale'],
+    'depends': ['base', 'stock', 'sale', 'purchase', 'account', 'helpdesk', 'website_form', 'website_helpdesk'],
 
     'data': [
         'views/views.xml',
@@ -28,6 +28,7 @@
         'views/mixtos.xml',
         'views/invoices.xml',
         'views/product.xml',
+        'data/data.xml'
     ],
     'demo': [],
 }
