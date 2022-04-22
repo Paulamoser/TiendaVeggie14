@@ -15,7 +15,7 @@ class AccountDebtLine(models.Model):
             'user_id',
         ],
         'account.move': [
-            'l10n_latam_document_type_id', 'document_number',
+            'l10n_latam_document_type_id', 'l10n_latam_document_number',
         ],
         'account.move.line': [
             'account_id', 'debit', 'credit', 'date_maturity', 'partner_id',
@@ -294,7 +294,7 @@ class AccountDebtLine(models.Model):
                 max(am.date) as date,
                 %s
                 am.l10n_latam_document_type_id as document_type_id,
-                -- c.document_number as document_number,
+                -- c.l10n_latam_document_number as document_number,
                 am.name as document_number,
                 am.move_type as type,
                 full_reconcile_id,

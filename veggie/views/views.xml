@@ -54,6 +54,17 @@
       </field>
   </record>
 
+  <record model="ir.ui.view" id="purchase_order_form">
+      <field name="name">purchase.order.form</field>
+      <field name="model">purchase.order</field>
+      <field name="inherit_id" ref="purchase.purchase_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//header" position="inside">
+            <button name="action_clear" states="draft" string="Limpiar Líneas" type="object"/>
+        </xpath>
+      </field>
+  </record>
+
   <record model="ir.ui.view" id="account_journal_form">
       <field name="name">account.journal.form</field>
       <field name="model">account.journal</field>
@@ -62,6 +73,26 @@
         <xpath expr="//field[@name='company_id']" position="after">
             <field name="invoicing" />
         </xpath>
+      </field>
+  </record>
+
+  <record model="ir.ui.view" id="helpdesk_ticket_form">
+      <field name="name">helpdesk.ticket.form</field>
+      <field name="model">helpdesk.ticket</field>
+      <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+      <field name="arch" type="xml">
+        <field name="tag_ids" position="after">
+            <field name="resolution_type" />
+        </field>
+
+        <field name="email_cc" position="after">
+            <field name="order_delivery_date" />
+            <field name="business_name" />
+            <field name="business" />
+            <field name="address" />
+            <field name="invoice_number" />
+            <field name="claim" />
+        </field>
       </field>
   </record>
   </data>

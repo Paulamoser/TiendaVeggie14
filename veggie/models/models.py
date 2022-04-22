@@ -36,6 +36,10 @@ class SaleAdvancePaymentInv(models.Model):
 
     invoicing = fields.Boolean(default=False, string="Factura", index=True)
 
+    def action_clear(self):
+        for rec in self:
+            rec.write({'order_line': [(5, 0, 0)]})
+
     def get_deuda_total(self, partner):
         orders = self.search([
                 ('partner_id', '=', partner.id),
@@ -231,6 +235,12 @@ class ProductProduct(models.Model):
     
     order_report = fields.Integer('Orden en el reporte', store=True)
 
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
+
+    product_liqui = fields.Boolean('¿Es Liquidación?')
+    product_new = fields.Boolean('¿Es Nuevo Ingreso?')
+
 class AccountJournal(models.Model):
     _inherit ='account.journal'
 
@@ -241,3 +251,22 @@ class AccountMove(models.Model):
 
     state_id = fields.Char(string='Provincia', store=True, related='partner_id.state_id.name')
     city = fields.Char(string='Ciudad', store=True, related='partner_id.city')
+
+class PurchaseOrder(models.Model):
+    _inherit = "purchase.order"
+
+    def action_clear(self):
+        for rec in self:
+            rec.write({'order_line': [(5, 0, 0)]})
+
+
+class HelpdeskTicket(models.Model):
+    _inherit = 'helpdesk.ticket'
+
+    resolution_type = fields.Selection([ ('nc', 'Nota de Crédito'),('rm', 'Recambio de Mercadería'),('prov', 'Comunicado al Proveedor') ],'Tipo de Resolución')
+    order_delivery_date = fields.Date(required=True, default=fields.Date.context_today)
+    business_name = fields.Char(string="Nombre del Comercio")
+    business = fields.Selection([ ('diet', 'Dietética'),('expr', 'Dietética con envío en Expreso')],'Tipo de Comercio')
+    address = fields.Text(string='Dirección (Calle, Altura y Localidad)')
+    invoice_number = fields.Char(string="Número de Factura")
+    claim = fields.Selection([ ('fc', 'Factura'),('falt', 'Faltante'),('prob', 'Problema con producto'), ('otr', 'Otros (Colocar detalle en la descripción)')],'Reclamo')

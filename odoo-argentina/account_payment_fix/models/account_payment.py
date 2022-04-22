@@ -123,6 +123,7 @@ class AccountPayment(models.Model):
     )
     journal_ids = fields.Many2many(
         'account.journal',
+        string='Journals',
         compute='_compute_journals'
     )
     # journal_at_least_type = fields.Char(
