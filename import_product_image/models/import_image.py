@@ -47,12 +47,15 @@ class ProductImageImportWizard(models.TransientModel):
                 row = sh.row(rx)
                 product = row[0].value
                 image_path = row[1].value
-                image_base64 = self.fetch_image_from_url(image_path)
-                product_obj = self.env['product.template'].search([('default_code', '=', product)])
-                vals = {
+                try:
+                    image_base64 = self.fetch_image_from_url(image_path)
+                    product_obj = self.env['product.template'].search([('default_code', '=', product)])
+                    vals = {
                            'image_1920': image_base64,
                         }
-                if product_obj.id:
+                    if product_obj.id:
                             product_obj.write(vals)
-                else:
+                    else:
                             raise Warning("No se encontró el producto con referencia interna %s" % product)
+                except:
+                    pass
