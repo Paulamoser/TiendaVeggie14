@@ -5,7 +5,7 @@ class Statistics_sale (models.Model):
     _name = "statistics.sale"
     _description = "Estadísticas de venta por producto"
 
-    product_id = fields.Many2one()
+    product_id = fields.Many2one('product.template')
     nro_week = fields.Integer(string='Nro de Semana')
     date_order = fields.Date(string='Fecha')
     name_day = fields.Char(string='Dia de la semana')
