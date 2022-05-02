@@ -1,8 +1,8 @@
 from odoo import models, fields, api,tools, _
 from odoo.exceptions import ValidationError
 
-class Statistics_sell (models.Model):
-    _name = "statistics.sell"
+class Statistics_sale (models.Model):
+    _name = "statistics.sale"
     _description = "Estadísticas de venta por producto"
 
     product_id = fields.Many2one()
@@ -46,22 +46,45 @@ class ReportStatisticsSale(models.Model):
     _auto = False
     _description = 'Statistics Sales Report'
 
-    week_name= fields.Char(string ="semana")
-    product_id= fields.Integer(string="Producto")
-    default_code = fields.Char(string="Referencia interna")
-    name_partner = fields.Char(string="Proveedor")
-    quantity = fields.Char(string="Cantidad Vendido")
-    nro_week = fields.Integer(string="Nro de semana")
-    def init(self):
-        tools.drop_view_if_exists(self._cr, 'report_statistics_sale')
-        query = """
-        CREATE or REPLACE VIEW report_statistics_sale AS (
-        SELECT  week_name, product_id, prod.default_code, res_partner.name as name_partner, sum(quantity)as quantity, nro_week
-        FROM statistics_sell as ventas inner join product_template as prod on ventas.product_id= prod.id
-        inner join product_brand on prod.product_brand_id=  product_brand.id inner 
-        join res_partner on res_partner.id= product_brand.partner_id 
-        WHERE nro_week>= 5 and year_order=2022
-        GROUP BY product_id, nro_week , year_order , week_name,prod.default_code,  res_partner.name, nro_week
-        ORDER BY nro_week );"""
+    default_code = fields.Char()
+    qt_T5 = fields.Integer(string="week - 5")
+    qt_T4 = fields.Integer(string="week - 4")
+    qt_T3 = fields.Integer(string="week - 3")
+    qt_T2 = fields.Integer(string="week - 2")
+    qt_T1 = fields.Integer(string="week - 1")
 
-        self.env.cr.execute(query)
+    def init(self):
+        proveedores= self.env['product_brand'].search([()])
+        self._cr.execute(
+            """  SELECT (extract(week FROM current_date));""")
+        actual_week=  self._cr.fetchall()
+        for provee in proveedores:
+            productos = self.env['product_template'].search([('product_brand','=', provee.id)])
+
+            for prod in productos:
+                for i in range(5):
+                    self._cr.execute(
+                        """  SELECT sum(quantity)as quantity 
+                        FROM  statistics_sell as ventas 
+                        WHERE nro_week= """ + actual_week -i +
+                        """ and  product_id=""" + prod.id
+                        )
+                    if (i==5):
+                        qt_T5=self._cr.fetchall()
+                    if (i == 4):
+                        qt_T4 = self._cr.fetchall()
+                    if (i==3):
+                        qt_T3 = self._cr.fetchall()
+                    if (i==2):
+                        qt_T2=self._cr.fetchall()
+                    if (i==1):
+                        qt_T1=self._cr.fetchall()
+
+                self.env['report_statistics_sale'].create({
+                        'product_id': prod.default_code,
+                        'qt_T5': qt_T5,
+                        'qt_T4': qt_T4,
+                        'qt_T3': qt_T3,
+                        'qt_T2': qt_T2,
+                        'qt_T1': qt_T1,
+                    })

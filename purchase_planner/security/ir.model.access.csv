@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_purchase_planner_statistics_sell,purchase_planner.statistics_sell,model_purchase_planner_statistics_sell,,1,1,1,1
+access_sale_statistics_statistics_sale,sale_statistics.statistics_sale,model_sale_statistics_statistics_sale,,1,1,1,1
