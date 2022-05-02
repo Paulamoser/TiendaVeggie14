@@ -54,7 +54,7 @@ class ReportStatisticsSale(models.Model):
     qt_T1 = fields.Integer(string="week - 1")
 
     def init(self):
-        proveedores= self.env['product_brand'].browse()
+        proveedores= self.env['product_brand']
         self._cr.execute(
             """  SELECT (extract(week FROM current_date));""")
         actual_week=  self._cr.fetchall()
