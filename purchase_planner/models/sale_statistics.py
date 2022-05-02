@@ -31,7 +31,7 @@ class Statistics_sale (models.Model):
 
             self.env.cr.execute(req + req_where + req_grouporder)
             for rec in self.env.cr.dictfetchall():
-                self.env['statistics.sell'].create({
+                self.env['statistics.sale'].create({
                     'product_id': rec['product_id'],
                     'nro_week': rec['nro_week'],
                     'date_order': rec['date_order'],
@@ -65,7 +65,7 @@ class ReportStatisticsSale(models.Model):
                 for i in range(5):
                     self._cr.execute(
                         """  SELECT sum(quantity)as quantity 
-                        FROM  statistics_sell as ventas 
+                        FROM  statistics_sale as ventas 
                         WHERE nro_week= """ + actual_week -i +
                         """ and  product_id=""" + prod.id
                         )
