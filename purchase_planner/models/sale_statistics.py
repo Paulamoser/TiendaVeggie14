@@ -53,6 +53,7 @@ class ReportStatisticsSale(models.Model):
     qt_T2 = fields.Integer(string="week - 2")
     qt_T1 = fields.Integer(string="week - 1")
 
+    @api.model
     def _get_datos_provee(self):
         #proveedores= self.env['product_brand'].browse([])
         self._cr.execute(
