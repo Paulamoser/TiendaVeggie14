@@ -97,7 +97,7 @@ class ReportStatisticsSale(models.Model):
                 )
                 self._cr.execute(
                     """  UPDATE  report_statistics_sale
-                    SET qt_T5""" + str(qt_T5) + """, qt_T4=""" +  str(qt_T4) +
+                    SET qt_T5=""" + str(qt_T5) + """, qt_T4=""" +  str(qt_T4) +
                         """, qt_T3=""" + str(qt_T3) + """, qt_T2= """ + str(qt_T2) +
                     """, qt_T1=""" + str(qt_T1) +
                     """ WHERE  product_id=""" + str(prod[0]) + """ and nro_week= """ + str(int(actual_week[0]) -i)
