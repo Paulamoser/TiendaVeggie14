@@ -41,3 +41,57 @@ class Statistics_sales (models.Model):
                     'year_order': rec['anio']
                 })
 
+class ReportStatisticsSale(models.Model):
+    _name = 'report.statistics.sale'
+    _auto = false
+    _description = 'Statistics Sales Report'
+
+    proveedor_name = fields.Char()
+    default_code = fields.Char()
+    qt_T5 = fields.Integer(string="week - 5")
+    qt_T4 = fields.Integer(string="week - 4")
+    qt_T3 = fields.Integer(string="week - 3")
+    qt_T2 = fields.Integer(string="week - 2")
+    qt_T1 = fields.Integer(string="week - 1")
+
+    @api.model
+    def _get_datos_provee(self):
+        #proveedores= self.env['product_brand'].browse([])
+        self._cr.execute(
+            """  SELECT (extract(week FROM current_date));""")
+        actual_week = self._cr.fetchall()
+        self._cr.execute(
+         """  SELECT pt.id, default_code, p.name from product_brand as pb INNER JOIN res_partner as p on  p.id=pb.partner_id  
+        INNER JOIN product_template  as pt ON pt.product_brand_id=pb.id 
+        order by partner_id;
+        """)
+        productos = self._cr.fetchall()
+
+        for prod in productos:
+                for i in range(5):
+                    self._cr.execute(
+                        """  SELECT sum(quantity)as quantity 
+                        FROM  statistics_sale as ventas 
+                        WHERE nro_week= """ + actual_week -i +
+                        """ and  product_id=""" + prod[0]
+                        )
+                    if (i==5):
+                        qt_T5=self._cr.fetchall()
+                    if (i == 4):
+                        qt_T4 = self._cr.fetchall()
+                    if (i==3):
+                        qt_T3 = self._cr.fetchall()
+                    if (i==2):
+                        qt_T2=self._cr.fetchall()
+                    if (i==1):
+                        qt_T1=self._cr.fetchall()
+
+                self.env['report_statistics_sale'].create({
+                        'product_id': prod[1],
+                        'proveedor_name': prod[2],
+                        'qt_T5': qt_T5,
+                        'qt_T4': qt_T4,
+                        'qt_T3': qt_T3,
+                        'qt_T2': qt_T2,
+                        'qt_T1': qt_T1,
+                    })
