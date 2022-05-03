@@ -31,7 +31,7 @@ class Statistics_sales (models.Model):
 
             self.env.cr.execute(req + req_where + req_grouporder)
             for rec in self.env.cr.dictfetchall():
-                self.env['statistics.sale'].create({
+                self.env['statistics.sales'].create({
                     'product_id': rec['product_id'],
                     'nro_week': rec['nro_week'],
                     'date_order': rec['date_order'],
