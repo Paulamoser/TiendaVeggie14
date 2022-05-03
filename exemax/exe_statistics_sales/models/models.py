@@ -72,6 +72,11 @@ class ReportStatisticsSale(models.Model):
         self._cr.execute("""  SELECT product_id from   report_statistics_sale""")
         productos = self._cr.fetchall()
         for prod in productos:
+                qt_T5=0
+                qt_T4=0
+                qt_T3=0
+                qt_T2=0
+                qt_T1=0
                 for i in range(5):
                     self._cr.execute(
                         """  SELECT sum(quantity)as quantity 
