@@ -84,22 +84,17 @@ class ReportStatisticsSale(models.Model):
                         WHERE nro_week= """ + str(int(actual_week[0]) -i) +
                         """ and  product_id=""" + str(prod[0])
                         )
+                    cant=self._cr.fetchall()
                     if (i==5):
-                        qt_T5=self._cr.fetchall()
+                        qt_T5=cant[0]
                     if (i == 4):
-                        qt_T4 = self._cr.fetchall()
+                        qt_T4 = cant[0]
                     if (i==3):
-                        qt_T3 = self._cr.fetchall()
+                        qt_T3 = cant[0]
                     if (i==2):
-                        qt_T2=self._cr.fetchall()
+                        qt_T2=cant[0]
                     if (i==1):
-                        qt_T1=self._cr.fetchall()
-                self._cr.execute(
-                    """  SELECT sum(quantity)as quantity 
-                    FROM  statistics_sales as ventas 
-                    WHERE nro_week= """ + str(int(actual_week[0]) - i) +
-                    """ and  product_id=""" + str(prod[0])
-                )
+                        qt_T1=cant[0]
                 self._cr.execute(
                     """  UPDATE  report_statistics_sale
                     SET qt_T5=""" + str(qt_T5) + """, qt_T4=""" +  str(qt_T4) +
