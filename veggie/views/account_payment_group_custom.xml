@@ -1,0 +1,116 @@
+<odoo>
+    <data>
+      <template id="exe_payment_group_custom" inherit_id="account_payment_group.report_payment_group_document">
+        <div class="col-5 text-left" position="replace">
+          <div class="col-5 text-left" name="company_address" style="padding-left: 80px !important;">
+            <h5>
+           RECIBO <span t-esc="o.document_number" />
+           </h5>
+          <span t-if="o.state == 'confirmed' or o.state == 'posted' or o.state == 'draft'">
+              Fecha: <span t-field="o.payment_date"/><br/>
+          </span>
+          <span t-if="o.state == 'confirmed' or o.state == 'posted' or o.state == 'draft'">
+              <!--<span t-field="o.display_name"/>-->
+          </span>
+          </div>
+        </div>
+        <table class="table" position="after">
+          <t t-set="ch" t-value="0" />
+        <t t-foreach="o.payment_ids" t-as="p">
+          <t t-foreach="p.check_ids" t-as="c">
+          <t t-set="ch" t-value="1" />
+          </t>
+      </t>
+    
+    <h5 t-if="ch == 1">Cheques</h5>
+    
+    <table class="table" t-if="ch == 1">
+      <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+      <thead>
+          <tr style="border-black">
+              <th name="th_description" class="text-left" style="width:50%;padding:5px">Banco</th>
+              <th name="th_quantity" class="text-right" style="width:20%; padding:5px">Fecha de Cobro</th>
+              <th name="th_priceunit" class="text-right" style="width:15%;padding:5px">Número</th>
+              <th name="th_amount" class="text-right" style="width:15%;padding:5px">Monto</th>
+          </tr>
+      </thead>
+      <tbody class="invoice_tbody">
+        <t t-foreach="o.payment_ids" t-as="p">
+          <t t-foreach="p.check_ids" t-as="c">
+            <tr style="font-size:12px">
+              <td name="td_back" style="padding:0.25rem">
+                  <span t-field="c.bank_id.name"/>
+              </td>
+              <td name="td_date" style="padding:0.25rem;text-align:right;">
+                  <span t-field="c.payment_date"/>
+              </td>
+              <td name="td_name" style="padding:0.25rem;text-align:right;">
+                  <span t-field="c.number"/>
+              </td>
+              <td name="td_amount" style="padding:0.25rem;text-align:right;">
+                  <span t-field="c.amount"/>
+              </td>
+            </tr>
+          </t>
+        </t>
+      </tbody>
+    </table>
+
+  <br/>
+
+  <h5>Facturas Relacionadas</h5>
+  <table class="table">
+          <thead>
+              <tr>
+                  <th style="width:50%;padding:5px">Factura</th>
+                  <th style="width:50%;padding:5px">Monto</th>
+          <th></th>
+              </tr>
+          </thead>
+          <tbody class="invoice_tbody">
+              <tr t-foreach="o.matched_move_line_ids" t-as="f" style="font-size:12px">
+                <td style="padding:0.50rem"><span t-if="f.move_id" t-field="f.move_id"/></td>
+                <td style="padding:0.50rem"><span t-if="f.balance" t-field="f.balance"/></td>
+          <td></td>
+              </tr>
+          </tbody>
+      <tfoot>
+            <tr>
+              <td><strong>Total</strong></td>
+              <td class="text-left">
+          <t t-set="total" t-value="0"/>
+          <t t-foreach="o.matched_move_line_ids" t-as="l">
+            <t t-set="total" t-value="total + l.balance"/>
+          </t>
+                  <span t-esc="total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+  <br/>
+  <h6>
+    Diferencia de Pago/Saldo:
+      <t t-set="debt" t-value="0"/>
+      <t t-foreach="o.matched_move_line_ids" t-as="d">
+        <t t-set="debt" t-value="debt + d.balance"/>
+      </t>
+      <t t-if="o.partner_type == 'customer'">
+        <span t-esc="o.payments_amount -  debt" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+      </t>
+      <t t-if="o.partner_type == 'supplier'">
+        <span t-esc=" debt + o.payments_amount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
+      </t>
+  </h6> 
+
+
+  <br/><br/><br/><br/><br/>
+  <h6 class="text-left">Recibí Conforme</h6>
+
+</table>
+
+
+      </template>
+
+
+    </data>
+  </odoo>

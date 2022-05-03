@@ -28,7 +28,8 @@
         'views/mixtos.xml',
         'views/invoices.xml',
         'views/product.xml',
-        'data/data.xml'
+        'data/data.xml',
+        'views/account_payment_group_custom.xml'
     ],
     'demo': [],
 }
