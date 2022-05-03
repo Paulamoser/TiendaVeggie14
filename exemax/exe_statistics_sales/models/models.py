@@ -71,7 +71,7 @@ class ReportStatisticsSale(models.Model):
                     self._cr.execute(
                         """  SELECT sum(quantity)as quantity 
                         FROM  statistics_sale as ventas 
-                        WHERE nro_week= """ + str(actual_week -i) +
+                        WHERE nro_week= """ + str(actual_week[0] -i) +
                         """ and  product_id=""" + prod[0]
                         )
                     if (i==5):
