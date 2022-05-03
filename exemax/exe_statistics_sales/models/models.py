@@ -57,8 +57,8 @@ class ReportStatisticsSale(models.Model):
     def init(self):
         #proveedores= self.env['product_brand'].browse([])
         self._cr.execute(
-            """  SELECT (extract(week FROM current_date));""")
-        actual_week = self._cr.fetchall()
+            """  SELECT (extract(week FROM current_date)) ;""")
+        actual_week = self._cr.fetchone()
         self._cr.execute(
          """  SELECT pt.id, default_code, p.name from product_brand as pb INNER JOIN res_partner as p on  p.id=pb.partner_id  
         INNER JOIN product_template  as pt ON pt.product_brand_id=pb.id 
@@ -71,7 +71,7 @@ class ReportStatisticsSale(models.Model):
                     self._cr.execute(
                         """  SELECT sum(quantity)as quantity 
                         FROM  statistics_sale as ventas 
-                        WHERE nro_week= """ + str(int(actual_week[0]) -i) +
+                        WHERE nro_week= """ + str(int(actual_week) -i) +
                         """ and  product_id=""" + prod[0]
                         )
                     if (i==5):
