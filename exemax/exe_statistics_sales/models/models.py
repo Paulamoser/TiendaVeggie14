@@ -72,7 +72,7 @@ class ReportStatisticsSale(models.Model):
                         """  SELECT sum(quantity)as quantity 
                         FROM  statistics_sale as ventas 
                         WHERE nro_week= """ + str(int(actual_week[0]) -i) +
-                        """ and  product_id=""" + prod[0]
+                        """ and  product_id=""" + str(prod[0])
                         )
                     if (i==5):
                         qt_T5=self._cr.fetchall()
