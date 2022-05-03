@@ -46,7 +46,8 @@ class ReportStatisticsSale(models.Model):
     _auto = False
     _description = 'Statistics Sales Report'
 
-    proveedor_name = fields.Char()
+    product_id = fields.Integer()
+    partner_name = fields.Char()
     default_code = fields.Char()
     qt_T5 = fields.Integer(string="week - 5")
     qt_T4 = fields.Integer(string="week - 4")
@@ -56,16 +57,20 @@ class ReportStatisticsSale(models.Model):
 
     def init(self):
         #proveedores= self.env['product_brand'].browse([])
+        tools.drop_view_if_exists(self._cr, self._table)
         self._cr.execute(
             """  SELECT (extract(week FROM current_date)) ;""")
         actual_week = self._cr.fetchone()
-        self._cr.execute(
-         """  SELECT pt.id, default_code, p.name from product_brand as pb INNER JOIN res_partner as p on  p.id=pb.partner_id  
+        query=  """  SELECT pt.id as product_id, default_code, p.name as partner_name, 0 as qt_T5, 0 as qt_T4, 0 as qt_T3,
+           0 as qt_T2 , 0 as qt_T1 from product_brand as pb INNER JOIN res_partner as p on  p.id=pb.partner_id  
         INNER JOIN product_template  as pt ON pt.product_brand_id=pb.id 
         order by partner_id;
-        """)
-        productos = self._cr.fetchall()
+        """
+        self._cr.execute("""CREATE or REPLACE VIEW %s as (%s
+                )""" % (self._table, query))
 
+        self._cr.execute("""  SELECT product_id from   report_statistics_sale""")
+        productos = self._cr.fetchall()
         for prod in productos:
                 for i in range(5):
                     self._cr.execute(
@@ -84,13 +89,16 @@ class ReportStatisticsSale(models.Model):
                         qt_T2=self._cr.fetchall()
                     if (i==1):
                         qt_T1=self._cr.fetchall()
-
-                self.env['report_statistics_sale'].create({
-                        'product_id': prod[1],
-                        'proveedor_name': prod[2],
-                        'qt_T5': qt_T5,
-                        'qt_T4': qt_T4,
-                        'qt_T3': qt_T3,
-                        'qt_T2': qt_T2,
-                        'qt_T1': qt_T1,
-                    })
+                self._cr.execute(
+                    """  SELECT sum(quantity)as quantity 
+                    FROM  statistics_sales as ventas 
+                    WHERE nro_week= """ + str(int(actual_week[0]) - i) +
+                    """ and  product_id=""" + str(prod[0])
+                )
+                self._cr.execute(
+                    """  UPDATE  report_statistics_sale
+                    SET qt_T5""" + str(qt_T5) + """, qt_T4=""" +  str(qt_T4) +
+                        """, qt_T3=""" + str(qt_T3) + """, qt_T2= """ + str(qt_T2) +
+                    """, qt_T1=""" + str(qt_T1) +
+                    """ WHERE  product_id=""" + str(prod[0]) + """ and nro_week= """ + str(int(actual_week[0]) -i)
+                )
