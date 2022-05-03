@@ -1,6 +1,7 @@
 from odoo import models, fields, api,tools, _
 from odoo.exceptions import ValidationError
-
+import logging
+_logger = logging.getLogger(__name__)
 class Statistics_sales (models.Model):
     _name = "statistics.sales"
     _description = "Estadísticas de venta por producto"
