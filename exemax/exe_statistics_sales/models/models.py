@@ -70,7 +70,7 @@ class ReportStatisticsSale(models.Model):
                 for i in range(5):
                     self._cr.execute(
                         """  SELECT sum(quantity)as quantity 
-                        FROM  statistics_sale as ventas 
+                        FROM  statistics_sales as ventas 
                         WHERE nro_week= """ + str(int(actual_week[0]) -i) +
                         """ and  product_id=""" + str(prod[0])
                         )
