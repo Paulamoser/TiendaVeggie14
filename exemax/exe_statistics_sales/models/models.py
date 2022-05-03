@@ -64,7 +64,7 @@ class ReportStatisticsSale(models.Model):
         query=  """  SELECT pt.id as product_id, default_code, p.name as partner_name, 0 as qt_T5, 0 as qt_T4, 0 as qt_T3,
            0 as qt_T2 , 0 as qt_T1 from product_brand as pb INNER JOIN res_partner as p on  p.id=pb.partner_id  
         INNER JOIN product_template  as pt ON pt.product_brand_id=pb.id 
-        order by partner_id;
+        order by partner_id
         """
         self._cr.execute("""CREATE or REPLACE VIEW %s as (%s
                 )""" % (self._table, query))
