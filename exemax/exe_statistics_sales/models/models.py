@@ -43,7 +43,7 @@ class Statistics_sales (models.Model):
 
 class ReportStatisticsSale(models.Model):
     _name = 'report.statistics.sale'
-    _auto = false
+    _auto = False
     _description = 'Statistics Sales Report'
 
     proveedor_name = fields.Char()
@@ -54,8 +54,7 @@ class ReportStatisticsSale(models.Model):
     qt_T2 = fields.Integer(string="week - 2")
     qt_T1 = fields.Integer(string="week - 1")
 
-    @api.model
-    def _get_datos_provee(self):
+    def init(self):
         #proveedores= self.env['product_brand'].browse([])
         self._cr.execute(
             """  SELECT (extract(week FROM current_date));""")
