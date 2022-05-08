@@ -260,13 +260,13 @@ class PurchaseOrder(models.Model):
             rec.write({'order_line': [(5, 0, 0)]})
 
 
-class HelpdeskTicket(models.Model):
-    _inherit = 'helpdesk.ticket'
+#class HelpdeskTicket(models.Model):
+#    _inherit = 'helpdesk.ticket'
 
-    resolution_type = fields.Selection([ ('nc', 'Nota de Crédito'),('rm', 'Recambio de Mercadería'),('prov', 'Comunicado al Proveedor') ],'Tipo de Resolución')
-    order_delivery_date = fields.Date(required=True, default=fields.Date.context_today)
-    business_name = fields.Char(string="Nombre del Comercio")
-    business = fields.Selection([ ('diet', 'Dietética'),('expr', 'Dietética con envío en Expreso')],'Tipo de Comercio')
-    address = fields.Text(string='Dirección (Calle, Altura y Localidad)')
-    invoice_number = fields.Char(string="Número de Factura")
-    claim = fields.Selection([ ('fc', 'Factura'),('falt', 'Faltante'),('prob', 'Problema con producto'), ('otr', 'Otros (Colocar detalle en la descripción)')],'Reclamo')
+#    resolution_type = fields.Selection([ ('nc', 'Nota de Crédito'),('rm', 'Recambio de Mercadería'),('prov', 'Comunicado al Proveedor') ],'Tipo de Resolución')
+#    order_delivery_date = fields.Date(required=True, default=fields.Date.context_today)
+#    business_name = fields.Char(string="Nombre del Comercio")
+#    business = fields.Selection([ ('diet', 'Dietética'),('expr', 'Dietética con envío en Expreso')],'Tipo de Comercio')
+#    address = fields.Text(string='Dirección (Calle, Altura y Localidad)')
+#    invoice_number = fields.Char(string="Número de Factura")
+#    claim = fields.Selection([ ('fc', 'Factura'),('falt', 'Faltante'),('prob', 'Problema con producto'), ('otr', 'Otros (Colocar detalle en la descripción)')],'Reclamo')

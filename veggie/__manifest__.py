@@ -9,13 +9,13 @@
         Modificaciones a Tienda Veggie - Odoo
     """,
 
-    'author': "Codize",
+    'author': "Exemax, Codize",
     'website': "https://www.codize.ar",
 
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base', 'stock', 'sale', 'purchase', 'account', 'helpdesk', 'website_form', 'website_helpdesk'],
+    'depends': ['base', 'stock', 'sale', 'purchase', 'account', 'website_form'],
 
     'data': [
         'views/views.xml',

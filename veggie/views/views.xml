@@ -76,7 +76,7 @@
       </field>
   </record>
 
-  <record model="ir.ui.view" id="helpdesk_ticket_form">
+  <!--record model="ir.ui.view" id="helpdesk_ticket_form">
       <field name="name">helpdesk.ticket.form</field>
       <field name="model">helpdesk.ticket</field>
       <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
@@ -94,6 +94,6 @@
             <field name="claim" />
         </field>
       </field>
-  </record>
+  </record-->
   </data>
 </odoo>
