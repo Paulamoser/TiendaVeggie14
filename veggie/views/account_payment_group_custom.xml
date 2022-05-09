@@ -63,7 +63,7 @@
           <thead>
               <tr>
                   <th style="width:50%;padding:5px">Factura</th>
-                  <th style="width:50%;padding:5px">Monto</th>
+                  <th style="width:50%;padding:5px">Monto ("No incluyen pagos parciales")</th>
           <th></th>
               </tr>
           </thead>
@@ -78,11 +78,7 @@
             <tr>
               <td><strong>Total</strong></td>
               <td class="text-left">
-          <t t-set="total" t-value="0"/>
-          <t t-foreach="o.matched_move_line_ids" t-as="l">
-            <t t-set="total" t-value="total + l.balance"/>
-          </t>
-                  <span t-esc="total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                <span t-field="o.matched_amount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
               </td>
             </tr>
           </tfoot>
@@ -90,16 +86,7 @@
   <br/>
   <h6>
     Diferencia de Pago/Saldo:
-      <t t-set="debt" t-value="0"/>
-      <t t-foreach="o.matched_move_line_ids" t-as="d">
-        <t t-set="debt" t-value="debt + d.balance"/>
-      </t>
-      <t t-if="o.partner_type == 'customer'">
-        <span t-esc="o.payments_amount -  debt" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
-      </t>
-      <t t-if="o.partner_type == 'supplier'">
-        <span t-esc=" debt + o.payments_amount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" />
-      </t>
+      <span t-esc="o.unmatched_amount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}" /> 
   </h6> 
 
 
