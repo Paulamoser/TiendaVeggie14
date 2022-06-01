@@ -51,9 +51,9 @@ class ProductImageImportWizard(models.TransientModel):
                     image_base64 = self.fetch_image_from_url(image_path)
                 else:
                     try:
-                        with open(image_path, 'rb') as image:
+                        open(image_path, 'rb') 
                             #image_base64 = image.read().encode("base64")
-                            image_base64 = base64.b64encode(image.read())
+                         #  image_base64 = base64.b64encode(image.read())
                     except IOError:
                         raise Warning(
                             "Could not find the image '%s' - please make sure it is accessible to this script" %
