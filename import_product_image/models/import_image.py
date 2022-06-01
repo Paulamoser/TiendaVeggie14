@@ -49,15 +49,6 @@ class ProductImageImportWizard(models.TransientModel):
                 image_path = row[1].value
                 if "http://" in image_path or "https://" in image_path:
                     image_base64 = self.fetch_image_from_url(image_path)
-                else:
-                    try:
-                        open(image_path, 'rb')
-                            #image_base64 = image.read().encode("base64")
-                         #  image_base64 = base64.b64encode(image.read())
-                    except IOError:
-                        raise Warning(
-                            "Could not find the image '%s' - please make sure it is accessible to this script" %
-                            image_path +')')
                 if image_base64:
                     product_obj = self.env['product.template'].search([('default_code', '=', product)])
                     vals = {
