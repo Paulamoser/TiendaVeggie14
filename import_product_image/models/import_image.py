@@ -27,7 +27,7 @@ class ProductImageImportWizard(models.TransientModel):
         try:
             data = base64.b64encode(requests.get(url).content).replace(b"\n", b"")
         except Exception as e:
-            raise UserError('Ocurrio un error codificanado la imagen \n%s.' % url)
+            raise UserError('Ocurrio un error codificando la imagen \n%s.' % url)
 
         return data
 
@@ -47,12 +47,23 @@ class ProductImageImportWizard(models.TransientModel):
                 row = sh.row(rx)
                 product = row[0].value
                 image_path = row[1].value
-                image_base64 = self.fetch_image_from_url(image_path)
-                product_obj = self.env['product.template'].search([('default_code', '=', product)])
-                vals = {
-                           'image_1920': image_base64,
-                        }
-                if product_obj.id:
-                        product_obj.write(vals)
+                if "http://" in image_path or "https://" in image_path:
+                    image_base64 = self.fetch_image_from_url(image_path)
                 else:
-                        raise Warning("No se encontró el producto con referencia interna %s" % product)
+                    try:
+                        with open(image_path, 'rb') as image:
+                            #image_base64 = image.read().encode("base64")
+                            image_base64 = base64.b64encode(image.read())
+                    except IOError:
+                        raise Warning(
+                            "Could not find the image '%s' - please make sure it is accessible to this script" %
+                            product)
+                if image_base64:
+                    product_obj = self.env['product.template'].search([('default_code', '=', product)])
+                    vals = {
+                               'image_1920': image_base64,
+                            }
+                    if product_obj.id:
+                            product_obj.write(vals)
+                    else:
+                            raise Warning("No se encontró el producto con referencia interna %s" % product)
