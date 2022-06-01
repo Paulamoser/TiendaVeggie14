@@ -57,7 +57,7 @@ class ProductImageImportWizard(models.TransientModel):
                     except IOError:
                         raise Warning(
                             "Could not find the image '%s' - please make sure it is accessible to this script" %
-                            product)
+                            product + '(' + image_path +')')
                 if image_base64:
                     product_obj = self.env['product.template'].search([('default_code', '=', product)])
                     vals = {
@@ -66,4 +66,4 @@ class ProductImageImportWizard(models.TransientModel):
                     if product_obj.id:
                             product_obj.write(vals)
                     else:
-                            raise Warning("No se encontró el producto con referencia interna %s" % product)
+                            raise Warning("No se encontró el producto con referencia interna %s" % product + '(' + image_path +')')
