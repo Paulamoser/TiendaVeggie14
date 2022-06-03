@@ -2,6 +2,7 @@ import csv
 import requests
 import base64
 import xlrd
+import gc
 import sys
 from odoo import models, fields, api
 from odoo.exceptions import Warning, UserError
@@ -58,3 +59,7 @@ class ProductImageImportWizard(models.TransientModel):
                             product_obj.write(vals)
                     else:
                             raise Warning("No se encontró el producto con referencia interna %s" % product + '(' + image_path +')')
+        book.release_resources()
+        del book
+        del image_base64
+        gc.collect()
