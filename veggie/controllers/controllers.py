@@ -36,11 +36,27 @@ class WebsiteForm(WebsiteForm):
 
     @http.route(['/get_products/ingresos'], type='json', auth="public", website=True)
     def get_products_ingresos(self):
-        _logger.info('>>>>>')
         products = http.request.env['product.template'].sudo().search([('website_published','=',True),('product_new','=',True)], limit=6, order='website_sequence asc')
         pricelist = http.request.env['product.pricelist'].sudo().search([('id','=',1)], limit=1)
         p = []
-        _logger.info(products)
+
+        for product in products:
+            combination = product._get_first_possible_combination()
+            combination_info = product._get_combination_info(combination=combination, only_template=True, add_qty=1, pricelist=pricelist)
+            news = {
+                "name": product.name,
+                "id": product.id,
+                "list_price": product.list_price,
+                "combination": combination_info
+            }
+            p.append(news)
+        return p
+
+    @http.route(['/get_products/liquidacion'], type='json', auth="public", website=True)
+    def get_products_liq(self):
+        products = http.request.env['product.template'].sudo().search([('website_published','=',True),('product_liqui','=',True)], limit=6, order='website_sequence asc')
+        pricelist = http.request.env['product.pricelist'].sudo().search([('id','=',1)], limit=1)
+        p = []
 
         for product in products:
             combination = product._get_first_possible_combination()
