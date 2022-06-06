@@ -6,10 +6,12 @@ odoo.define('veggie.snippet_product', ['web.ajax'], function (require) {
     $(document).ready(function () {
         console.log('Veggie Website ON');
         var container_ingresos = document.getElementById("veggie_ingresos");
+        console.log(container_ingresos);
 
         if (container_ingresos) {
             container_ingresos.innerHTML = "";
             ajax.jsonRpc('/get_products/ingresos','call', {}).then(function(data) {
+                console.log(data);
                 container_ingresos.innerHTML = "";
                 for (var i = 0; i < data.length; i++) {
                     container_ingresos.innerHTML += '\

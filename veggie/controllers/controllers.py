@@ -16,7 +16,7 @@ _logger = logging.getLogger(__name__)
 
 class WebsiteForm(WebsiteForm):
 
-    def _handle_website_form(self, model_name, **kwargs):
+    """def _handle_website_form(self, model_name, **kwargs):
         email = request.params.get('partner_email')
         if email:
             partner = request.env['res.partner'].sudo().search([('email', '=', email)], limit=1)
@@ -32,13 +32,15 @@ class WebsiteForm(WebsiteForm):
             request.params['business'] = request.params.get('business')
             request.params['claim'] = request.params.get('claim')
 
-        return super(WebsiteForm, self)._handle_website_form(model_name, **kwargs)
+        return super(WebsiteForm, self)._handle_website_form(model_name, **kwargs)"""
 
     @http.route(['/get_products/ingresos'], type='json', auth="public", website=True)
     def get_products_ingresos(self):
+        _logger.info('>>>>>')
         products = http.request.env['product.template'].sudo().search([('website_published','=',True),('product_new','=',True)], limit=6, order='website_sequence asc')
         pricelist = http.request.env['product.pricelist'].sudo().search([('id','=',1)], limit=1)
         p = []
+        _logger.info(products)
 
         for product in products:
             combination = product._get_first_possible_combination()
