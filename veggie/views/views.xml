@@ -14,6 +14,12 @@
         </xpath>
     </template>
 
+  <template id="assets_frontend" inherit_id="website.assets_frontend" name="Veggie Website">
+      <xpath expr="." position="inside">
+        <script type="text/javascript" src="/veggie/static/src/js/products.js"></script>
+      </xpath>
+    </template>
+
   <record model="ir.ui.view" id="stock_picking_veggie">
       <field name="name">stock.picking.form.veggie</field>
       <field name="model">stock.picking</field>
