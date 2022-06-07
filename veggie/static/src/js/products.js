@@ -17,7 +17,7 @@ odoo.define('veggie.snippet_product', ['web.ajax'], function (require) {
                     if (i === 0) {
                         container_ingresos_2.innerHTML += '\
                                             <div class="col-12 mb-3 p_ingreso" style="color:#222;">\
-                                                <a href="/shop/product/' + data[i].id +'" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto">\
+                                                <a href="/shop/product/' + data[i].id +'" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto" style="color:#222;">\
                                                     <img class="img-fluid" src="/web/image/product.template/'+data[i].id+'/image_256" loading="lazy" width="256" height="256" />\
                                                     <h6 class="mt-3 text-center pb-1 mb-1">' + data[i].name + '</h6>\
                                                     <h6 class="text-center pb-1 mb-1">$ ' + Math.round(data[i].combination.price) + '</h6>\
@@ -37,7 +37,7 @@ odoo.define('veggie.snippet_product', ['web.ajax'], function (require) {
                     if (i !== 0) {
                         container_ingresos.innerHTML += '\
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-4 mb-3 p_ingreso" style="color:#222;">\
-                                                <a href="/shop/product/' + data[i].id +'" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto">\
+                                                <a href="/shop/product/' + data[i].id +'" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto" style="color:#222;">\
                                                     <img class="img-fluid" src="/web/image/product.template/'+data[i].id+'/image_256" loading="lazy" width="256" height="256" />\
                                                     <h6 class="mt-3 text-center pb-1 mb-1">' + data[i].name + '</h6>\
                                                     <h6 class="text-center pb-1 mb-1">$ ' + Math.round(data[i].combination.price) + '</h6>\
