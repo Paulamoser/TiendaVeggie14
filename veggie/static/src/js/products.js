@@ -56,7 +56,7 @@ odoo.define('veggie.snippet_product', ['web.ajax'], function (require) {
                 container_destacados.innerHTML = "";
                 for (var i = 0; i < data.length; i++) {
                     container_destacados.innerHTML += '\
-                                            <div class="col-6 col-sm-6 col-md-8 col-lg-8 mb-3">\
+                                            <div class="col-6 col-sm-6 col-md-8 col-lg-8 mb-3"></div>\
                                             <div class="col-6 col-sm-6 col-md-4 col-lg-4 mb-3 p_featured">\
                                                 <a href="/shop/product/' + data[i].id +'" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto">\
                                                     <img class="img-fluid" src="/web/image/product.template/'+data[i].id+'/image_256" loading="lazy" width="256" height="256" />\
