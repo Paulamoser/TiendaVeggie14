@@ -3,7 +3,10 @@
     border:25px solid #f1db68;
     max-width: 400px;
 }
-.p_featured a, .p_ingreso a {
+.p_featured a {
     color:#222;
     text-align: center;
+}
+.p_ingreso {
+    color:#222;
 }
