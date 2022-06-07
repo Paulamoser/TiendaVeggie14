@@ -71,7 +71,7 @@ class WebsiteForm(WebsiteForm):
         return p
 
     @http.route(['/get_products/featured'], type='json', auth="public", website=True)
-    def get_products_liq(self):
+    def get_products_feature(self):
         products = http.request.env['product.template'].sudo().search([('website_published','=',True),('product_featured','=',True)], limit=6, order='website_sequence asc')
         pricelist = http.request.env['product.pricelist'].sudo().search([('id','=',1)], limit=1)
         p = []
