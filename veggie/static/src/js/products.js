@@ -49,7 +49,7 @@ odoo.define('veggie.snippet_product', ['web.ajax'], function (require) {
 
         var container_destacados = document.getElementById("veggie_destacados");
 
-        if (ccontainer_destacados) {
+        if (container_destacados) {
             container_destacados.innerHTML = "";
             ajax.jsonRpc('/get_products/featured','call', {}).then(function(data) {
                 console.log(data);
