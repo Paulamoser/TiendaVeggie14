@@ -241,6 +241,7 @@ class ProductTemplate(models.Model):
 
     product_liqui = fields.Boolean('¿Es Liquidación?')
     product_new = fields.Boolean('¿Es Nuevo Ingreso?')
+    product_featured = fields.Boolean('¿Es Destacado?')
 
 class AccountJournal(models.Model):
     _inherit ='account.journal'
