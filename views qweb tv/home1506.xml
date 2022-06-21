@@ -1,0 +1,362 @@
+<t name="Homepage" t-name="website.homepage1">
+  <t t-call="website.layout">
+    <t t-set="pageName" t-value="'homepage'"/>
+    <div id="wrap" class="oe_structure oe_empty" style="margin-bottom:0px;overflow:hidden;">
+      <section class="s_carousel_wrapper te_slider_full_screen_1" data-vxml="001" data-snippet="slider_style_1" data-name="Full screen 1" style="">
+        <div id="myCarousel1654892587282" class="s_carousel s_carousel_default carousel slide d-flex oe_img_bg" data-interval="10000" style="background-color: rgb(255, 255, 255) !important; background-image: url(&quot;/web/image/43837-b2b42721/BACK.png&quot;);" data-original-id="43583" data-original-src="/web/image/43583-bb37fd4c/BACK.png" data-mimetype="image/png" data-resize-width="1920">
+          <ol class="carousel-indicators o_we_no_overlay">
+            <li data-target="#myCarousel1654892587282" data-slide-to="0" class="active"/>
+            <li data-target="#myCarousel1654892587282" data-slide-to="1"/>
+            <li data-target="#myCarousel1654892587282" data-slide-to="2"/>
+          </ol>
+          <div class="carousel-inner te_arrow_small">
+            <div class="carousel-item oe_custom_bg pt96 pb96 o_colored_level oe_img_bg active" style="background-image: url(&quot;/web/image/43835-da178a69/Banner_home1.png&quot;);" data-name="Slide" data-original-id="43742" data-original-src="/web/image/43742-f91e5207/Banner_home1.png" data-mimetype="image/png" data-resize-width="1890">
+              <div class="container">
+
+              </div>
+            </div>
+            <div class="carousel-item oe_custom_bg pt96 pb96 o_colored_level oe_img_bg" style="background-image: url(&quot;/web/image/43836-b5428300/Home_Banner2.png&quot;);" data-name="Slide" data-original-id="43745" data-original-src="/web/image/43745-e4ed8fab/Home_Banner2.png" data-mimetype="image/png" data-resize-width="1920">
+              <div class="container">
+
+              </div>
+            </div>
+            <div class="carousel-item oe_custom_bg o_colored_level pb256 pt256 oe_img_bg" style="background-image: url(&quot;/web/image/43618-3fb18915/2.png&quot;);" data-name="Slide" data-original-id="43608" data-original-src="/web/image/43608-1a0e6fb0/2.png" data-mimetype="image/png" data-resize-width="1920">
+              <div class="container">
+
+              </div>
+            </div>
+            <div class="carousel-control-prev o_we_no_overlay" data-target="#myCarousel1654892587282" data-slide="prev" role="img" aria-label="Previous" title="Previous">
+              <span class="sr-only">evious</span>
+            </div>
+            <div class="carousel-control-next o_we_no_overlay" data-target="#myCarousel1654892587282" data-slide="next" role="img" aria-label="Next" title="Next">
+              <span class="carousel-control-next-icon"/>
+              <span class="sr-only o_default_snippet_text">Next</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="s_picture pt32 pb32 o_colored_level undefined o_cc o_cc1" data-snippet="s_picture" data-name="Picture">
+        <div>
+          <div class="row s_nb_column_fixed">
+            <div class="col-lg-12 o_colored_level">
+              <h2 class="te_text_small_title" style="text-align:center;font-size: 24px;">
+                <span style="margin:0 auto 10px auto;width:50px;display:block;border-top:2px solid #00f987;"/>
+                <b>
+                   DESTACADOS DE LA SEMANA
+                </b>
+                <span style="margin:10px auto 0 auto;width:50px;display:block;border-bottom:2px solid #00f987;"/>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section data-vcss="001" class="o_colored_level oe_img_bg o_half_screen_height" data-name="Banner With Product Slider" style="margin-left:4.2vw; margin-right:12vw; background-image: url(&quot;/web/image/43748-cdb26fbe/banner_destacados.png&quot;);" data-original-id="18056" data-original-src="/web/image/18056-45e3fc6c/destacados.png" data-mimetype="image/png" data-resize-width="1395">
+        <div>
+          <div id="veggie_destacados" class="row s_nb_column_fixed s_col_no_bgcolor">
+            <div class="d-none d-sm-block col-sm-6 col-md-8 col-lg-8 mb-3"/>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-3 p_featured">
+              <a href="/shop/product/1374" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto">
+                <img class="img-fluid" src="/web/image/product.template/1374/image_256" loading="lazy" width="256" height="256"/>
+                <h6 class="mt-3 text-center pb-1 mb-1">Agua de Fruta - Manzana y Limon 354 cc</h6>
+                <h6 class="text-center pb-1 mb-1">$ 2187</h6>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="s_picture pt32 o_colored_level undefined o_cc o_cc1 pb72" data-snippet="s_picture" data-name="Picture">
+        <div class="container">
+          <div class="row s_nb_column_fixed">
+            <div class="col-lg-12 o_colored_level">
+              <h2 class="te_text_small_title" style="text-align:center;font-size: 24px;">
+                <span style="margin:0 auto 10px auto;width:50px;display:block;border-top:2px solid #00f987;"/>
+                <b>
+                   NUEVOS INGRESOS
+                </b>
+                <span style="margin:10px auto 0 auto;width:50px;display:block;border-bottom:2px solid #00f987;"/>
+              </h2>
+            </div>
+          </div>
+          <div class="row">
+            <div id="veggie_ingresos_2" class="row col-12 col-md-4">
+              <div class="col-12 mb-3 p_ingreso" style="color:#222; padding-top:60px">
+                <a href="/shop/product/2003" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto" style="color:#222;">
+                  <img class="img-fluid" src="/web/image/product.template/2003/image_256" loading="lazy" width="350" height="350"/>
+                  <h6 class="mt-3 text-center pb-1 mb-1">Yogurt Helado Chocolate y Avellanas</h6>
+                  <h6 class="text-center pb-1 mb-1">$ 188</h6>
+                </a>
+              </div>
+            </div>
+            <div id="veggie_ingresos" class="row col-12 col-md-8">
+              <div class="col-6 col-sm-6 col-md-4 col-lg-4 mb-3 p_ingreso" style="color:#222;">
+                <a href="/shop/product/2008" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto" style="color:#222;">
+                  <img class="img-fluid" src="/web/image/product.template/2008/image_256" loading="lazy" width="256" height="256"/>
+                  <h6 class="mt-3 text-center pb-1 mb-1">Yogurt Helado Maracuya</h6>
+                  <h6 class="text-center pb-1 mb-1">$ 188</h6>
+                </a>
+              </div>
+              <div class="col-6 col-sm-6 col-md-4 col-lg-4 mb-3 p_ingreso" style="color:#222;">
+                <a href="/shop/product/1990" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto" style="color:#222;">
+                  <img class="img-fluid" src="/web/image/product.template/1990/image_256" loading="lazy" width="256" height="256"/>
+                  <h6 class="mt-3 text-center pb-1 mb-1">Yogur de coco IOGO Durazno sin azucar agregada 160g</h6>
+                  <h6 class="text-center pb-1 mb-1">$ 143</h6>
+                </a>
+              </div>
+              <div class="col-6 col-sm-6 col-md-4 col-lg-4 mb-3 p_ingreso" style="color:#222;">
+                <a href="/shop/product/1991" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto" style="color:#222;">
+                  <img class="img-fluid" src="/web/image/product.template/1991/image_256" loading="lazy" width="256" height="256"/>
+                  <h6 class="mt-3 text-center pb-1 mb-1">Yogur de coco IOGO Frutilla 160g</h6>
+                  <h6 class="text-center pb-1 mb-1">$ 143</h6>
+                </a>
+              </div>
+              <div class="col-6 col-sm-6 col-md-4 col-lg-4 mb-3 p_ingreso" style="color:#222;">
+                <a href="/shop/product/2006" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto" style="color:#222;">
+                  <img class="img-fluid" src="/web/image/product.template/2006/image_256" loading="lazy" width="256" height="256"/>
+                  <h6 class="mt-3 text-center pb-1 mb-1">Yogurt Helado Frutos del Bosque</h6>
+                  <h6 class="text-center pb-1 mb-1">$ 188</h6>
+                </a>
+              </div>
+              <div class="col-6 col-sm-6 col-md-4 col-lg-4 mb-3 p_ingreso" style="color:#222;">
+                <a href="/shop/product/2009" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto" style="color:#222;">
+                  <img class="img-fluid" src="/web/image/product.template/2009/image_256" loading="lazy" width="256" height="256"/>
+                  <h6 class="mt-3 text-center pb-1 mb-1">Yogurt Helado Maracuya 320g</h6>
+                  <h6 class="text-center pb-1 mb-1">$ 358</h6>
+                </a>
+              </div>
+              <div class="col-6 col-sm-6 col-md-4 col-lg-4 mb-3 p_ingreso" style="color:#222;">
+                <a href="/shop/product/2011" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto" style="color:#222;">
+                  <img class="img-fluid" src="/web/image/product.template/2011/image_256" loading="lazy" width="256" height="256"/>
+                  <h6 class="mt-3 text-center pb-1 mb-1">Yogurt Helados Griego 320g</h6>
+                  <h6 class="text-center pb-1 mb-1">$ 358</h6>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="s_picture pt32 o_colored_level undefined o_cc o_cc1 pb72" data-snippet="s_picture" data-name="Picture">
+        <div class="container">
+          <div class="row s_nb_column_fixed">
+            <div class="col-lg-12 o_colored_level">
+              <h2 class="te_text_small_title" style="text-align:center;font-size: 24px;">
+                <span style="margin:0 auto 10px auto;width:50px;display:block;border-top:2px solid #00f987;"/>
+                <b>
+                   LIQUIDACIÓN
+                </b>
+                <span style="margin:10px auto 0 auto;width:50px;display:block;border-bottom:2px solid #00f987;"/>
+              </h2>
+            </div>
+          </div>
+          <div id="veggie_liquidacion" class="row">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2 mb-3">
+              <a href="/shop/product/1997" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto">
+                <img class="img-fluid" src="/web/image/product.template/1997/image_256" loading="lazy" width="256" height="256"/>
+                <h6 class="mt-3 text-left pb-1 mb-1">Yogur de coco IOGO Vainilla con capuchon granola</h6>
+                <h6 class="text-left pb-1 mb-1">$ 185</h6>
+                <small class="text-primary text-left float-left">Comprar ahora</small>
+              </a>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2 mb-3">
+              <a href="/shop/product/2033" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto">
+                <img class="img-fluid" src="/web/image/product.template/2033/image_256" loading="lazy" width="256" height="256"/>
+                <h6 class="mt-3 text-left pb-1 mb-1">Ñoquis de Papa 300g</h6>
+                <h6 class="text-left pb-1 mb-1">$ 295</h6>
+                <small class="text-primary text-left float-left">Comprar ahora</small>
+              </a>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2 mb-3">
+              <a href="/shop/product/2031" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto">
+                <img class="img-fluid" src="/web/image/product.template/2031/image_256" loading="lazy" width="256" height="256"/>
+                <h6 class="mt-3 text-left pb-1 mb-1">Ñoquis de Espinaca 300g</h6>
+                <h6 class="text-left pb-1 mb-1">$ 301</h6>
+                <small class="text-primary text-left float-left">Comprar ahora</small>
+              </a>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2 mb-3">
+              <a href="/shop/product/1359" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto">
+                <img class="img-fluid" src="/web/image/product.template/1359/image_256" loading="lazy" width="256" height="256"/>
+                <h6 class="mt-3 text-left pb-1 mb-1">Aceite de Coco Virgen en aerosol 150 g.</h6>
+                <h6 class="text-left pb-1 mb-1">$ 676</h6>
+                <small class="text-primary text-left float-left">Comprar ahora</small>
+              </a>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2 mb-3">
+              <a href="/shop/product/1358" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto">
+                <img class="img-fluid" src="/web/image/product.template/1358/image_256" loading="lazy" width="256" height="256"/>
+                <h6 class="mt-3 text-left pb-1 mb-1">Aceite de Coco Neutro en aerosol 150 g.</h6>
+                <h6 class="text-left pb-1 mb-1">$ 489</h6>
+                <small class="text-primary text-left float-left">Comprar ahora</small>
+              </a>
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-2 mb-3">
+              <a href="/shop/product/1924" class="d-block col-12 col-lg-10 text-center pt-3 pl-3 pr-3 m-auto">
+                <img class="img-fluid" src="/web/image/product.template/1924/image_256" loading="lazy" width="256" height="256"/>
+                <h6 class="mt-3 text-left pb-1 mb-1">Queso untable de castañas de caju - Ciboulette 180g</h6>
+                <h6 class="text-left pb-1 mb-1">$ 285</h6>
+                <small class="text-primary text-left float-left">Comprar ahora</small>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="s_picture o_colored_level undefined o_cc o_cc1 s_parallax_no_overflow_hidden oe_img_bg pt40 pb56" data-vcss="001" data-name="Form" style="margin: 0px; padding: 0px; background-image: url(&quot;/web/image/19739-c8e0fe01/fondo_contactoHome.jpg&quot;);" data-original-id="19735" data-original-src="/web/image/19735-e04b31cd/fondo_contactoHome.jpg" data-mimetype="image/jpeg" data-resize-width="1920">
+        <div class="container" style="margin-top:0px">
+          <div class="col-4 pt-2" style="  font-size:12px; color:white; padding-left:30px; padding-right:30px;">
+            <form action="/website_form/" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-success-mode="redirect" data-success-page="/contactus-thank-you" data-model_name="mail.mail">
+              <div class="s_website_form_rows row s_col_no_bgcolor">
+                <span style="font-size:14px; font-weight:bold;padding-bottom:25px;">Dejanos tus datos y nos pondremos en contacto con vos!</span>
+              </div>
+              <div class="s_website_form_rows row s_col_no_bgcolor">
+                <div class="form-group s_website_form_field s_website_form_model_required" data-type="char" data-name="Field" style="margin-top:2px">
+                  <div class="row s_col_no_resize s_col_no_bgcolor">
+                    <label class="col-form-label col-sm-auto s_website_form_label" style="width: 100% !important;">
+                      <span class="s_website_form_label_content">Nombre Completo</span>
+                    </label>
+                    <div class="col-sm">
+                      <input type="text" name="Your Name" style="padding: 1px;margin: 0px; width:100%; background-color:rgba(0, 0, 0, 0);border:none; border-bottom:1px solid #fff;" required="1" id="qwf0hb6l6j"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group s_website_form_field s_website_form_model_required" data-type="email" data-name="Field" style="margin-top:2px">
+                  <div class="row s_col_no_resize s_col_no_bgcolor">
+                    <label class="col-form-label col-sm-auto s_website_form_label " style="width: 100%; padding-bottom:0px;padding-top:0px; !important;" for="v5b4mozaoq">
+                      <span class="s_website_form_label_content">E-mail</span>
+                    </label>
+                    <div class="col-sm">
+                      <input type="email" name="email_from" style="padding: 1px;margin: 0px; width:100%;background-color:rgba(0, 0, 0, 0); border:none;         border-bottom:1px solid #fff;" required="true" id="v5b4mozaoq"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group s_website_form_field s_website_form_model_required" data-type="tel" data-name="Field" style="margin-top:2px">
+                  <div class="row s_col_no_resize s_col_no_bgcolor">
+                    <label class="col-form-label col-sm-auto s_website_form_label" style="width: 100%; padding-bottom:0px;padding-top:0px; !important;" for="isgh6k338t">
+                      <span class="s_website_form_label_content">Teléfono</span>
+                    </label>
+                    <div class="col-sm">
+                      <input type="tel" name="Phone Number" style="padding: 1px;margin: 0px; width:100%;background-color:rgba(0, 0, 0, 0);border:none;         border-bottom:1px solid #fff; " id="isgh6k338t"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group s_website_form_field s_website_form_model_required" data-type="char" data-name="Field" style="margin-top:2px">
+                  <div class="row s_col_no_resize s_col_no_bgcolor">
+                    <label class="col-form-label col-sm-auto s_website_form_label" style="width: 100%;padding-bottom:0px;padding-top:0px; !important;" for="v8715rf9sp">
+                      <span class="s_website_form_label_content">Motivo de la consulta</span>
+                    </label>
+                    <div class="col-sm">
+                      <input type="text" name="subject" style="padding: 1px;margin: 0px; width:100%; background-color:rgba(0, 0, 0, 0);border:none;         border-bottom:1px solid #fff;" required="true" id="v8715rf9sp"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group s_website_form_field s_website_form_dnone" data-name="Field" style="margin-top:2px">
+                  <div class="row s_col_no_resize s_col_no_bgcolor">
+                    <label class="col-form-label col-sm-auto s_website_form_label " style="width: 100%">
+                  </label>
+                    <div class="col-sm">
+                      <input type="hidden" class="form-control s_website_form_input" name="email_to" value="info@yourcompany.example.com"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group s_website_form_submit" data-name="Submit Button" style="margin-top:2px;">
+                  <div class="row s_col_no_resize s_col_no_bgcolor">
+                    <div style="!important; " class="s_website_form_label"/>
+                    <a href="#" role="button" class="btn btn-primary btn-sm s_website_form_send te_theme_button o_default_snippet_text">ENVIAR</a>
+                    <span id="s_website_form_result"/>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="s_picture o_colored_level undefined o_cc o_cc1 pb0 pt16" style="background-color:#f2f4f3" data-snippet="s_picture" data-name="Picture">
+        <div class="container">
+          <div class="row s_nb_column_fixed">
+            <div class="col-lg-12 o_colored_level pt16">
+              <h2 class="te_text_small_title" style="text-align:center;font-size: 24px;">
+                <span style="margin:0 auto 10px auto;width:50px;display:block;border-top:2px solid #00f987;"/>
+                <b>
+                   NUESTRAS MARCAS
+                </b>
+                <span style="margin:10px auto 0 auto;width:50px;display:block;border-bottom:2px solid #00f987;"/>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="te_numbers o_colored_level pt112 pb256 oe_img_bg" style="background-image: url(&quot;/web/image/19721-b8cc757a/nuestras_marcas.jpg&quot;);" data-snippet="number_counter" data-name="Number Count" data-original-id="19720" data-original-src="/web/image/19720-14799253/nuestras_marcas.jpg" data-mimetype="image/jpeg" data-resize-width="1911">
+        <div class="o_container_small" style="margin-top :0; padding-top:0px">
+
+        </div>
+      </section>
+      <section class="te_numbers o_colored_level oe_img_bg" style="background-position: center center; background-image: url(&quot;/web/image/19685-77b184d6/burganas_nros.png&quot;);" data-snippet="number_counter" data-name="Number Count" data-original-id="19678" data-original-src="/web/image/19678-be641705/burganas_nros.png" data-mimetype="image/png" data-resize-width="1344">
+        <div class="container">
+          <dv class="row">
+            <div id="te_counter" class="col-xl-2 col-md-4">
+              <span class="te_count_value" style="color:#84FC9A; font-weight:bold; size:20px">56</span>
+              <p>
+                <font style="font-size: 18px; color:#F8F9FA">Marcas con las que trabajamos</font>
+              </p>
+            </div>
+            <div id="te_counter" class="col-xl-2 col-md-4 o_colored_level" style="color:lime; weight: bold; size:20px">
+              <span class="te_count_value" style="color:#84FC9A; font-weight: bold; size:20px">23400</span>
+              <p>
+                <font style="font-size: 18px; color:#F8F9FA">Envíos realizados</font>
+              </p>
+            </div>
+            <div id="te_counter" class="col-xl-2 col-md-4 o_colored_level">
+              <span class="te_count_value" style="color:#84FC9A; font-weight:bold; size: 20px;">56444</span>
+              <p>
+                <font style="font-size: 18px; color:#F8F9FA">Clientes que confian en nosotros</font>
+              </p>
+            </div>
+            <div id="te_counter" class="col-xl-2 col-md-4 o_colored_level" style="">
+              <span class="te_count_value" style="color:#84FC9A; font-weight: bold; size:20px">650</span>
+              <p>
+                <font style="font-size: 18px; color:#F8F9FA">Artículos</font>
+              </p>
+            </div>
+          </dv>
+        </div>
+      </section>
+      <section data-snippet="three_columns_icon_style_1" data-name="Style 11" style="margin-top:10px" class="o_colored_level pb0">
+        <div class="container">
+          <div class="row" style="margin-bottom: 0px; padding-bottom: 0px; margin-top: 10px">
+            <div class="col-lg-4 col-md-4 col-sm-4 te_menu_flip_box o_colored_level pt96">
+              <section class="te_icon_1 o_colored_level">
+                <div class="te_icon_1_before">
+                  <img class="img-fluid o_we_custom_image" src="/web/image/19677-150cfa1a/iconenvio.png" alt="" loading="lazy" data-original-title="" title="" aria-describedby="tooltip217635" data-original-id="19672" data-original-src="/web/image/19672-86ab8359/iconenvio.png" data-mimetype="image/png" data-resize-width="98" style=""/>
+                </div>
+              </section>
+              <section class="te_title_tex o_colored_level">
+                <a href="#" class="te_icon_title_1 o_default_snippet_text">Envíos a todo el país</a>
+                <p class="te_sub_text">Todos los días</p>
+              </section>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 te_menu_flip_box o_colored_level pt104">
+              <section class="te_icon_1 o_colored_level">
+                <div class="te_icon_1_before">
+                  <img class="img-fluid o_we_custom_image " src="/web/image/19673-384997c3/iconchat.png" alt="" loading="lazy" data-original-title="" title="" aria-describedby="tooltip217635" data-original-id="19673" data-original-src="/web/image/19673-384997c3/iconchat.png" data-mimetype="image/png" style=""/>
+                </div>
+              </section>
+              <section class="te_title_tex o_colored_level">
+                <a href="#" class="te_icon_title_1 o_default_snippet_text">Chatea con nosotros!</a>
+                <p class="te_sub_text">Disponibles las 24hrs</p>
+              </section>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 te_menu_flip_box o_colored_level pt104">
+              <section class="te_icon_1 o_colored_level">
+                <div class="te_icon_1_before">
+                  <img class="img-fluid o_we_custom_image" src="/web/image/19676-b8182823/iconlogistica.png" alt="" data-original-title="" title="" aria-describedby="tooltip320918" data-original-id="19674" data-original-src="/web/image/19674-bbb83021/iconlogistica.png" data-mimetype="image/png" data-resize-width="96" loading="lazy" style=""/>
+                </div>
+              </section>
+              <section class="te_title_tex o_colored_level">
+                <a href="#" class="te_icon_title_1 o_default_snippet_text">Envíos GRATIS</a>
+                <p class="te_sub_text">En compras de +8500</p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </t>
+</t>
