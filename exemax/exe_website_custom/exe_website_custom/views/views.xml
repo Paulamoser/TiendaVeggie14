@@ -4,12 +4,13 @@
         <field name="model">product.template</field>
         <field name="inherit_id" ref="website_sale.products_item"/>
         <field name="arch" type="xml">
-            <!--<xpath expr="//field[@name='label_line_ids']" position="after">-->
-            <xpath expr="//div[hasclass('oe_product_image')]" position="after">
+            <!--<xpath expr="//field[@name='label_line_ids']" position="after">
+            <xpath expr="//div[hasclass('oe_product_image')]" position="after">-->
+            <page>
                 <div id="web_description">
                  <field name="website_description" />
                 </div>
-            </xpath>
+            </page>
         </field>
     </record>
 </odoo>
