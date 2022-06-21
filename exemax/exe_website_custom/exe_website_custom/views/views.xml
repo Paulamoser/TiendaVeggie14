@@ -7,11 +7,9 @@
             <!--<xpath expr="//field[@name='label_line_ids']" position="after">
             <xpath expr="//div[hasclass('oe_product_image')]" position="after">
             -->
-            <page>
-                <div id="web_description">
+            <xpath expr="//page[@name='product_tabs']" position="inside">
                  <field name="website_description" />
-                </div>
-            </page>
+            </xpath>
         </field>
     </record>
 </odoo>
