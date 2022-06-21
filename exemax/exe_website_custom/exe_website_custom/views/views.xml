@@ -6,7 +6,9 @@
         <field name="arch" type="xml">
            <xpath expr="//field[@name='label_line_ids']" position="after">
                <div id="webdescription" class="row">
-                 <field name="website_description" />
+                   <group>
+                        <field name="website_description" />
+                   </group>
                </div>
             </xpath>
         </field>
