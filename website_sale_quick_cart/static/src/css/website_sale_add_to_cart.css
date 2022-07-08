@@ -1,0 +1,6 @@
+.quick_add_to_cart {
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+    opacity: 0.9;
+}
